@@ -64,6 +64,20 @@ const RunnerHero: React.FC<{ f: number; phase: number; amp?: number; scale?: num
   );
 };
 
+const CelebHero: React.FC<{ f: number; lc: number }> = ({ f, lc }) => {
+  const h = Math.abs(Math.sin(lc * 0.2));
+  const pump = Math.sin(lc * 0.2);
+  const p: BlockyPose = { ...restPose(), armL: { sx: -2.7 - pump * 0.25, sz: 0.4, twist: 0, elbow: -0.35 }, armR: { sx: -2.7 + pump * 0.25, sz: -0.4, twist: 0, elbow: -0.35 }, mouth: "grin", brow: 0.5, browUp: 0.5, eyeOpen: 0.85, bob: h * 0.06, legL: { hip: -0.15 * h, sz: 0.05, knee: 0.25 * h }, legR: { hip: -0.15 * h, sz: 0.05, knee: 0.25 * h } };
+  const sp = 0.5 + 0.5 * Math.sin(lc * 0.2);
+  return (
+    <group position={[0, h * 0.12, 0]}>
+      <Blocky pose={alive(p, f, 3, 0.3)} colors={HERO} headband="#D9473B" />
+      <group position={[0.19, 0.3, -0.27]}><Coil h={0.5 + 0.3 * sp} r={0.17} tube={0.045} turns={5} glow={sp < 0.2 ? 1 : 0} /></group>
+      <group position={[-0.19, 0.3, -0.27]}><Coil h={0.5 + 0.3 * sp} r={0.17} tube={0.045} turns={5} glow={sp < 0.2 ? 1 : 0} /></group>
+    </group>
+  );
+};
+
 const Treadmill: React.FC<{ f: number; speed?: number }> = ({ f, speed = 0.09 }) => (
   <group>
     <Part geo={rbox(1.5, 0.22, 3.6, 0.06)} color="#3A3F4A" position={[0, 0.11, 0]} />
@@ -178,14 +192,13 @@ const RoomBeats: React.FC<{ f: number; cuts: number[] }> = ({ f, cuts }) => {
         )}
       </group>
       {!cta && (
-        <group position={[3.0, 0.0, 1.6]} scale={[1, 0.8 + 0.3 * b, 1]}>
+        <group position={[2.5, 0.0, 1.6]} scale={[1, 0.8 + 0.3 * b, 1]}>
           <Coil h={1.5} r={0.34} tube={0.075} turns={6} glow={b > 0.9 ? 1 : 0} />
         </group>
       )}
       {cta && (
         <group position={[0.2 + Math.min(1, lc / 14) * 0.2, 0.02, 4.2]} rotation={[0, 0.25 + Math.sin(lc * 0.05) * 0.2, 0]}>
-          <RunnerHero f={f} phase={f * 0.26} amp={lc < 80 ? 0.7 : 0.35} scale={1} />
-          
+          <CelebHero f={f} lc={lc} />
         </group>
       )}
     </group>
@@ -199,7 +212,7 @@ const beatCam = (frame: number, cuts: number[], i: number) => {
   const d = clamp((frame - cuts[i]) / Math.max(1, next - cuts[i]));
   switch (i) {
     case 0: return { eye: [2.2 - d * 0.5, 1.7, 7.8 - d * 1.0] as V3, look: [0, 1.15, 0] as V3 };
-    case 1: return { eye: [1.8 - d * 1.2, 4.6 + d * 0.5, 14.5 + d * 0.8] as V3, look: [0.2, 1.5, -4.2] as V3 };
+    case 1: return { eye: [1.8 - d * 1.2, 4.0 + d * 0.3, 14.5 - d * 3.0] as V3, look: [0.2, 1.5, -4.2] as V3 };
     case 2: return { eye: [2.6 - d * 0.6, 1.9 + d * 0.1, 9.4 - d * 0.7] as V3, look: [0.1, 1.35, 0] as V3 };
     case 3: return { eye: [0.4 + d * 0.9, 2.6, 11.6 - d * 0.9] as V3, look: [1.2, 1.5, 1.2] as V3 };
     default: return { eye: [1.0 - d * 0.5, 2.4, 12.4 - d * 0.7] as V3, look: [0.5, 1.35, 3.6] as V3 };
