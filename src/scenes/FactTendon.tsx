@@ -67,7 +67,7 @@ const RunnerHero: React.FC<{ f: number; phase: number; amp?: number; scale?: num
 const CelebHero: React.FC<{ f: number; lc: number }> = ({ f, lc }) => {
   const h = Math.abs(Math.sin(lc * 0.2));
   const pump = Math.sin(lc * 0.2);
-  const p: BlockyPose = { ...restPose(), armL: { sx: -0.6 - pump * 0.2, sz: 2.5, twist: 0, elbow: -0.3 }, armR: { sx: -0.6 + pump * 0.2, sz: -2.5, twist: 0, elbow: -0.3 }, mouth: "smile", brow: 0, browUp: 0.15, eyeOpen: 0.55, bob: h * 0.06, legL: { hip: -0.15 * h, sz: 0.05, knee: 0.25 * h }, legR: { hip: -0.15 * h, sz: 0.05, knee: 0.25 * h } };
+  const p: BlockyPose = { ...restPose(), armL: { sx: -0.6 - pump * 0.2, sz: 2.5, twist: 0, elbow: -0.3 }, armR: { sx: -0.6 + pump * 0.2, sz: -2.5, twist: 0, elbow: -0.3 }, mouth: "smile", brow: 0.3, browUp: 0.3, eyeOpen: 1, bob: h * 0.06, legL: { hip: -0.15 * h, sz: 0.05, knee: 0.25 * h }, legR: { hip: -0.15 * h, sz: 0.05, knee: 0.25 * h } };
   const sp = 0.5 + 0.5 * Math.sin(lc * 0.2);
   return (
     <group position={[0, h * 0.12, 0]}>
