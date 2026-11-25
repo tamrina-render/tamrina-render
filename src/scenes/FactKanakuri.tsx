@@ -337,7 +337,7 @@ const StadiumWorld: React.FC<{ f: number; crossF: number; startF: number; runF: 
   const runT = seg(f, runF + 4, crossF, easeInOut);
   const afterX = f > crossF ? seg(f, crossF, crossF + 30, easeOut) * 1.4 : 0;
   const waitK = f >= startF && f < runF + 4 ? 1 - seg(f, runF - 26, runF + 4) : 0;
-  const paceX = Math.sin((f - startF) * 0.05) * 0.55 * waitK;
+  const paceX = (Math.sin((f - startF) * 0.05) + 1) * 0.3 * waitK;
   const heroX = lerp(-4.4, 0.6, runT) + afterX + paceX;
   const running = f >= runF + 4 && f < crossF + 6;
   const celebrating = f >= crossF + 6;
@@ -350,7 +350,7 @@ const StadiumWorld: React.FC<{ f: number; crossF: number; startF: number; runF: 
     return p;
   })();
   const pose = celebrating ? celebratePose(f, crossF + 6) : running ? oldTrot(f) : waitPose;
-  const faceYaw = celebrating ? 0.35 + Math.sin((f - crossF) * 0.03) * 0.25 : f < runF + 4 ? 0.9 + Math.cos((f - startF) * 0.05) * 0.55 * waitK : Math.PI / 2 - 0.85;
+  const faceYaw = celebrating ? 0.35 + Math.sin((f - crossF) * 0.03) * 0.25 : f < runF + 4 ? 0.9 + Math.cos((f - startF) * 0.05) * 0.4 * waitK : Math.PI / 2 - 0.85;
   return (
     <group position={[0, 0, Z.stadium]}>
       <Part geo={circle(60, 48)} color="#C98F57" rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]} />
@@ -405,7 +405,11 @@ const beatCam = (frame: number, cuts: number[], fps: number, i: number) => {
     return { eye: [look[0] + 1.2 + Math.sin(frame * 0.03) * 0.6, 3.4 + Math.sin(frame * 0.021) * 0.2, look[2] + 11.5 - drift * 0.8] as V3, look: [look[0] + 1.4, 3.1, look[2]] as V3 };
   }
   const crossF = cuts[4] + Math.round(2.1 * fps);
-  if (i === 3) return { eye: [-4.7 + Math.sin(local * 0.025) * 0.7, 2.7, Z.stadium + 9.6 - drift * 0.9] as V3, look: [-4.6 + Math.sin(local * 0.025) * 0.5, 1.6, Z.stadium + 1.0] as V3 };
+  if (i === 3) {
+    const wk = frame < cuts[4] + 4 ? 1 - seg(frame, cuts[4] - 26, cuts[4] + 4) : 0;
+    const px = (Math.sin((frame - cuts[3]) * 0.05) + 1) * 0.3 * wk;
+    return { eye: [-4.4 + px - 0.3, 2.7, Z.stadium + 9.6 - drift * 0.9] as V3, look: [-4.4 + px - 0.1, 1.6, Z.stadium + 1.0] as V3 };
+  }
   const runT = seg(frame, cuts[4] + 4, crossF, easeInOut);
   const heroX = lerp(-4.4, 0.6, runT) + (frame > crossF ? seg(frame, crossF, crossF + 30, easeOut) * 1.4 : 0);
   if (frame < crossF + 8) return { eye: [heroX * 0.8 - 0.3, 2.6, Z.stadium + 9.6] as V3, look: [heroX * 0.8 + 0.3, 1.5, Z.stadium + 0.2] as V3 };
@@ -432,7 +436,7 @@ const useCam = (frame: number, cuts: number[], fps: number) => {
   if (i === 0 || (i === 1 && frame < f0)) return beatCam(frame, cuts, fps, 0);
   const g0 = cuts[4] - 20, g1 = cuts[4] + 30;
   if (frame >= g0 && frame < g1) {
-    const a = beatCam(g0, cuts, fps, 3), b = beatCam(g1, cuts, fps, 4);
+    const a = beatCam(frame, cuts, fps, 3), b = beatCam(frame, cuts, fps, 4);
     const t = smooth((frame - g0) / (g1 - g0));
     return { eye: lerp3(a.eye, b.eye, t), look: lerp3(a.look, b.look, t) };
   }
