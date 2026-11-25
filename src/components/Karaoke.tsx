@@ -100,7 +100,7 @@ export const Chunk: React.FC<{ scene: Scene; theme: Theme; t: number; lead: numb
   if (t > tokens[g[g.length - 1]].end + 0.6) return null;
   const k = 1 - Math.pow(1 - Math.min(1, (t - t0) / 0.12), 3); // ease out, 0.12 s
   return (
-    <div style={{ position: "absolute", left: 60, right: 60, top: y - 70, textAlign: "center", direction: rtl ? "rtl" : "ltr", opacity: k, transform: `scale(${(0.92 + 0.08 * k).toFixed(4)})`,
+    <div style={{ position: "absolute", left: 60, right: 60, top: y - 70, textAlign: "center", direction: rtl ? "rtl" : "ltr", opacity: 1, transform: `scale(${(0.92 + 0.08 * k).toFixed(4)})`,
       fontFamily: rtl ? `${FONT.arabicEmph}, ${FONT.arabic}, sans-serif` : `${FONT.head}, sans-serif`, fontWeight: 800, fontSize: 96, lineHeight: 1.3, color: "#fff",
       WebkitTextStroke: "14px #111", paintOrder: "stroke fill", textShadow: "0 6px 18px rgba(0,0,0,0.55)" }}>
       {g.map((j) => <span key={j} style={{ color: tokens[j].emph ? theme.accent : undefined }}>{tokens[j].text}{" "}</span>)}
