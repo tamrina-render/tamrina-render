@@ -106,6 +106,20 @@ const Footage: React.FC<{ f: NonNullable<Scene["footage"]>; fps: number; local: 
   );
 };
 
+const isStill = (src?: string) => !!src && /\.(jpe?g|png|webp)$/i.test(src);
+/** image reels: a still dissolves in over the previous still (default 0.5 s) so there are no visible cuts between stills */
+const xfDur = (tl: Timeline, sc: Scene): number => {
+  const prev = tl.scenes[sc.index - 1];
+  if (!prev || !isStill(sc.footage?.src) || !isStill(prev.footage?.src) || sc.footage?.src === prev.footage?.src) return 0;
+  return (sc.footage as any)?.xfade ?? 0.5;
+};
+const xfOpacity = (tl: Timeline, sc: Scene, local: number): number => {
+  const d = xfDur(tl, sc);
+  if (!d) return 1;
+  const k = Math.min(1, Math.max(0, local / d));
+  return k * k * (3 - 2 * k);
+};
+
 const SceneView: React.FC<{ scene: Scene; tl: Timeline; theme: Theme; rtl: boolean; cam?: React.CSSProperties; bgCam?: React.CSSProperties }> = ({ scene, tl, theme: theme0, rtl, cam, bgCam = cam }) => {
   // duo videos: this scene's headline + visual use the speaker's colour
   const theme: Theme = scene.accent ? { ...theme0, accent: scene.accent, soft: scene.accent + "24" } : theme0;
@@ -144,7 +158,7 @@ const SceneView: React.FC<{ scene: Scene; tl: Timeline; theme: Theme; rtl: boole
     {/* {peek} lifts the card over the coin; the footage stays under him (a full-frame photo would hide him) */}
     {peek && scene.footage && <AbsoluteFill style={{ zIndex: 0 }}><Footage f={scene.footage} fps={fps} local={local} cam={bgCam} mute={tl.ghost} /><EditLayer which="Back" tl={tl} scene={scene} t={t} theme={theme} cam={cam} /></AbsoluteFill>}
     <AbsoluteFill style={{ zIndex: peek ? 2 : 0 }}>
-      {!peek && scene.footage && <Footage f={scene.footage} fps={fps} local={local} cam={bgCam} mute={tl.ghost} />}
+      {!peek && scene.footage && <div style={{ position: 'absolute', inset: 0, opacity: xfOpacity(tl, scene, local) }}><Footage f={scene.footage} fps={fps} local={local} cam={bgCam} mute={tl.ghost} /></div>}
       {/* a named edit's back layer (Edits.tsx): over the footage, under the coin and this scene's text */}
       {!peek && <EditLayer which="Back" tl={tl} scene={scene} t={t} theme={theme} cam={cam} />}
       {tl.text !== false && mode !== "chunk" && <SectionLabel scene={scene} theme={theme} local={local} dir={tl.dir} top={L.labelTop} varsity={tl.brand === "tamrina"} handle={tl.handle} />}
@@ -271,10 +285,14 @@ export const Reel: React.FC<Timeline> = (tl) => {
         {tl.scenes.map((sc) => {
           const from = Math.round(sc.start * fps);
           const dur = Math.max(1, Math.round(sc.end * fps) - from) + (sc === tl.scenes[tl.scenes.length - 1] ? 2 : 0); // to the next scene's first frame: rounding the length by itself left a one-frame hole (the dark stage flashed) when a cut fell between two frames
+          const xd = xfDur(tl, sc);
           return (
-            <Sequence key={sc.id} from={from} durationInFrames={dur} name={`${sc.id} · ${sc.label}`}>
+            <React.Fragment key={sc.id}>
+            {xd > 0 && <Sequence from={from} durationInFrames={Math.round(xd * fps) + 1} name={`${sc.id} · dissolve from previous`}><AbsoluteFill><Footage f={tl.scenes[sc.index - 1].footage!} fps={fps} local={0} cam={bgCam} mute /></AbsoluteFill></Sequence>}
+            <Sequence from={from} durationInFrames={dur} name={`${sc.id} · ${sc.label}`}>
               <SceneView scene={sc} tl={tl} theme={theme} rtl={rtl} cam={cam} bgCam={bgCam} />
             </Sequence>
+            </React.Fragment>
           );
         })}
         </div>
