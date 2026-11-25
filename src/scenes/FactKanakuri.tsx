@@ -17,7 +17,7 @@ export type FactKanakuriProps = {
   debug?: boolean;
 };
 
-const DEFAULT_STARTS = [0, 2.6, 5.443, 10.957, 14.4];
+const DEFAULT_STARTS = [0, 3.9, 7.0, 13.01, 16.55];
 const DEFAULT_DURATION = 36;
 
 type V3 = [number, number, number];
@@ -336,12 +336,21 @@ const StadiumWorld: React.FC<{ f: number; crossF: number; startF: number; runF: 
   // the old man waits by the missing board, then trots to the tape, breaks it and celebrates for the rest of the reel
   const runT = seg(f, runF + 4, crossF, easeInOut);
   const afterX = f > crossF ? seg(f, crossF, crossF + 30, easeOut) * 1.4 : 0;
-  const heroX = lerp(-4.4, 0.6, runT) + afterX;
+  const waitK = f >= startF && f < runF + 4 ? 1 - seg(f, runF - 26, runF + 4) : 0;
+  const paceX = Math.sin((f - startF) * 0.05) * 0.55 * waitK;
+  const heroX = lerp(-4.4, 0.6, runT) + afterX + paceX;
   const running = f >= runF + 4 && f < crossF + 6;
   const celebrating = f >= crossF + 6;
   const hop = celebrating ? Math.abs(Math.sin((f - crossF) * 0.18)) * 0.35 : 0;
-  const pose = celebrating ? celebratePose(f, crossF + 6) : running ? oldTrot(f) : standWorry(f);
-  const faceYaw = celebrating ? 0.35 + Math.sin((f - crossF) * 0.03) * 0.25 : f < runF + 4 ? 0.9 : Math.PI / 2 - 0.85;
+  const waitPose = (() => {
+    const p = standWorry(f);
+    const w = walkPose(f * 0.13, 0.4);
+    p.legL = w.legL;
+    p.legR = w.legR;
+    return p;
+  })();
+  const pose = celebrating ? celebratePose(f, crossF + 6) : running ? oldTrot(f) : waitPose;
+  const faceYaw = celebrating ? 0.35 + Math.sin((f - crossF) * 0.03) * 0.25 : f < runF + 4 ? 0.9 + Math.cos((f - startF) * 0.05) * 0.55 * waitK : Math.PI / 2 - 0.85;
   return (
     <group position={[0, 0, Z.stadium]}>
       <Part geo={circle(60, 48)} color="#C98F57" rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]} />
@@ -381,10 +390,8 @@ const CameraRig: React.FC<{ frame: number; cuts: number[] }> = ({ frame, cuts })
 };
 void CameraRig;
 
-const useCam = (frame: number, cuts: number[], fps: number) => {
+const beatCam = (frame: number, cuts: number[], fps: number, i: number) => {
   // beat 0 = the race, 1 = the garden nap, 2 = the ship, 3 = the missing board (hero beside it), 4 = the finish + long celebration
-  let i = 0;
-  for (let k = 1; k < cuts.length; k++) if (frame >= cuts[k]) i = k;
   const local = frame - cuts[i];
   const next = cuts[i + 1] ?? cuts[i] + 400;
   const drift = clamp(local / Math.max(1, next - cuts[i]));
@@ -398,7 +405,7 @@ const useCam = (frame: number, cuts: number[], fps: number) => {
     return { eye: [look[0] + 1.2 + Math.sin(frame * 0.03) * 0.6, 3.4 + Math.sin(frame * 0.021) * 0.2, look[2] + 11.5 - drift * 0.8] as V3, look: [look[0] + 1.4, 3.1, look[2]] as V3 };
   }
   const crossF = cuts[4] + Math.round(2.1 * fps);
-  if (i === 3) return { eye: [-4.7, 2.7, Z.stadium + 9.6 - drift * 0.4] as V3, look: [-4.9, 1.6, Z.stadium + 1.0] as V3 };
+  if (i === 3) return { eye: [-4.7 + Math.sin(local * 0.025) * 0.7, 2.7, Z.stadium + 9.6 - drift * 0.9] as V3, look: [-4.6 + Math.sin(local * 0.025) * 0.5, 1.6, Z.stadium + 1.0] as V3 };
   const runT = seg(frame, cuts[4] + 4, crossF, easeInOut);
   const heroX = lerp(-4.4, 0.6, runT) + (frame > crossF ? seg(frame, crossF, crossF + 30, easeOut) * 1.4 : 0);
   if (frame < crossF + 8) return { eye: [heroX * 0.8 - 0.3, 2.6, Z.stadium + 9.6] as V3, look: [heroX * 0.8 + 0.3, 1.5, Z.stadium + 0.2] as V3 };
@@ -408,11 +415,35 @@ const useCam = (frame: number, cuts: number[], fps: number) => {
   return { eye: eyes[c], look: [heroX + 0.2, 1.45, Z.stadium + 0.3] as V3 };
 };
 
+const lerp3 = (a: V3, b: V3, t: number): V3 => [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)];
+const smooth = (t: number) => t * t * (3 - 2 * t);
+// v1e: only 2 hard cuts (garden->ship, ship->stadium). road->garden is a flying camera, board->finish is a glide.
+export const FLY_A = 22; // frames of fly before the garden beat starts
+export const FLY_B = 18; // frames of fly after
+const useCam = (frame: number, cuts: number[], fps: number) => {
+  let i = 0;
+  for (let k = 1; k < cuts.length; k++) if (frame >= cuts[k]) i = k;
+  const f0 = cuts[1] - FLY_A, f1 = cuts[1] + FLY_B;
+  if (frame >= f0 && frame < f1 && i <= 1) {
+    const a = beatCam(f0, cuts, fps, 0), b = beatCam(f1, cuts, fps, 1);
+    const t = smooth((frame - f0) / (f1 - f0));
+    return { eye: lerp3(a.eye, b.eye, t), look: lerp3(a.look, b.look, t) };
+  }
+  if (i === 0 || (i === 1 && frame < f0)) return beatCam(frame, cuts, fps, 0);
+  const g0 = cuts[4] - 20, g1 = cuts[4] + 30;
+  if (frame >= g0 && frame < g1) {
+    const a = beatCam(g0, cuts, fps, 3), b = beatCam(g1, cuts, fps, 4);
+    const t = smooth((frame - g0) / (g1 - g0));
+    return { eye: lerp3(a.eye, b.eye, t), look: lerp3(a.look, b.look, t) };
+  }
+  return beatCam(frame, cuts, fps, i);
+};
+
 // ---------- composition ----------
 const World: React.FC<{ cuts: number[]; fps: number }> = ({ cuts, fps }) => {
   const frame = useCurrentFrame();
-  const sipF = Math.round(3.4 * fps);
-  const lieF = Math.round(4.35 * fps);
+  const sipF = cuts[1] + 24;
+  const lieF = cuts[1] + 53;
   const crossF = cuts[4] + Math.round(2.1 * fps); // the old man breaks the tape on 'وقطع خط النهاية'
   return (
     <>
@@ -424,8 +455,8 @@ const World: React.FC<{ cuts: number[]; fps: number }> = ({ cuts, fps }) => {
       <directionalLight position={[7, 12, 8]} intensity={2.7} color="#FFE7C0" castShadow shadow-mapSize={[1024, 1024]} />
       {/* one warm floor far under everything */}
       <Part geo={circle(320, 48)} color={PAL.sand} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.6, -60]} />
-      {frame < cuts[1] + 8 && <RoadWorld f={frame} />}
-      {frame >= cuts[1] - 8 && frame < cuts[2] + 6 && <GardenWorld f={frame} sipF={sipF} lieF={lieF} enterF={cuts[1]} />}
+      {frame < cuts[1] + FLY_B + 4 && <RoadWorld f={frame} />}
+      {frame >= cuts[1] - FLY_A - 6 && frame < cuts[2] + 6 && <GardenWorld f={frame} sipF={sipF} lieF={lieF} enterF={cuts[1]} />}
       {frame >= cuts[2] - 2 && frame < cuts[3] + 8 && <SeaWorld f={frame} startF={cuts[2]} />}
       {frame >= cuts[3] - 30 && <StadiumWorld f={frame} crossF={crossF} startF={cuts[3]} runF={cuts[4]} />}
     </>

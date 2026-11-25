@@ -1,0 +1,501 @@
+{
+ "title": "كاناكوري - أطول ماراثون في التاريخ (coin-fact: the world is the FactKanakuri composition rendered to footage/kanakuri2-run/world.mp4, timed to the Sadachbia voice lines; Mr. Coin walks in for the app CTA)",
+ "brand": "tamrina",
+ "pool": "male",
+ "format": "fact",
+ "fps": 30,
+ "captions": "chunk",
+ "captionY": 1400,
+ "gap": 0.25,
+ "read": false,
+ "seam": false,
+ "sfx": {
+  "scene": null
+ },
+ "presenter": {
+  "flip": false,
+  "exit": false
+ },
+ "cast": [
+  {
+   "id": "mr",
+   "place": "off"
+  }
+ ],
+ "scenes": [
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "[curious] عداء ياباني في أولمبياد *1912* تعب في نص الماراثون.. [laughs] فدخل جنينة، شرب عصير، *ونام*.",
+   "audio": {
+    "src": "v/kanakuri2/L1.wav",
+    "words": [
+     {
+      "w": "عداء",
+      "start": 0.0,
+      "end": 0.4
+     },
+     {
+      "w": "ياباني",
+      "start": 0.4,
+      "end": 0.8
+     },
+     {
+      "w": "في",
+      "start": 0.8,
+      "end": 0.86
+     },
+     {
+      "w": "أولمبياد",
+      "start": 0.86,
+      "end": 1.32
+     },
+     {
+      "w": "1912",
+      "start": 1.32,
+      "end": 2.32
+     },
+     {
+      "w": "تعب",
+      "start": 2.32,
+      "end": 3.14
+     },
+     {
+      "w": "في",
+      "start": 3.14,
+      "end": 3.24
+     },
+     {
+      "w": "نص",
+      "start": 3.24,
+      "end": 3.42
+     },
+     {
+      "w": "الماراثون..",
+      "start": 3.42,
+      "end": 4.21
+     },
+     {
+      "w": "فدخل",
+      "start": 4.21,
+      "end": 5.0
+     },
+     {
+      "w": "جنينة،",
+      "start": 5.0,
+      "end": 5.34
+     },
+     {
+      "w": "شرب",
+      "start": 5.34,
+      "end": 5.78
+     },
+     {
+      "w": "عصير،",
+      "start": 5.78,
+      "end": 6.16
+     },
+     {
+      "w": "ونام.",
+      "start": 6.16,
+      "end": 6.72
+     }
+    ]
+   },
+   "footage": {
+    "src": "footage/kanakuri2-run/world.mp4",
+    "volume": 0,
+    "from": 0
+   },
+   "visual": {
+    "type": "none"
+   }
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "[surprised] ولما صحي اتكسف، فركب *المركب* وروح اليابان من غير ما يقول لحد!",
+   "audio": {
+    "src": "v/kanakuri2/L2.wav",
+    "words": [
+     {
+      "w": "ولما",
+      "start": 0.0,
+      "end": 0.4
+     },
+     {
+      "w": "صحي",
+      "start": 0.4,
+      "end": 0.8
+     },
+     {
+      "w": "اتكسف،",
+      "start": 0.8,
+      "end": 1.54
+     },
+     {
+      "w": "فركب",
+      "start": 1.54,
+      "end": 2.22
+     },
+     {
+      "w": "المركب",
+      "start": 2.22,
+      "end": 2.68
+     },
+     {
+      "w": "وروح",
+      "start": 2.68,
+      "end": 3.16
+     },
+     {
+      "w": "اليابان",
+      "start": 3.16,
+      "end": 3.54
+     },
+     {
+      "w": "من",
+      "start": 3.54,
+      "end": 3.66
+     },
+     {
+      "w": "غير",
+      "start": 3.66,
+      "end": 3.88
+     },
+     {
+      "w": "ما",
+      "start": 3.88,
+      "end": 4.0
+     },
+     {
+      "w": "يقول",
+      "start": 4.0,
+      "end": 4.18
+     },
+     {
+      "w": "لحد!",
+      "start": 4.18,
+      "end": 4.66
+     }
+    ]
+   },
+   "footage": {
+    "src": "footage/kanakuri2-run/world.mp4",
+    "volume": 0,
+    "from": 7.0
+   },
+   "visual": {
+    "type": "none"
+   }
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "[surprised] وفضل مسجل *مفقود* في السويد لحد *1967*.. [excited] لما رجع وقطع خط النهاية!",
+   "audio": {
+    "src": "v/kanakuri2/L3.wav",
+    "words": [
+     {
+      "w": "وفضل",
+      "start": 0.0,
+      "end": 0.54
+     },
+     {
+      "w": "مسجل",
+      "start": 0.54,
+      "end": 1.0
+     },
+     {
+      "w": "مفقود",
+      "start": 1.0,
+      "end": 1.38
+     },
+     {
+      "w": "في",
+      "start": 1.38,
+      "end": 1.5
+     },
+     {
+      "w": "السويد",
+      "start": 1.5,
+      "end": 1.9
+     },
+     {
+      "w": "لحد",
+      "start": 1.9,
+      "end": 2.22
+     },
+     {
+      "w": "1967..",
+      "start": 2.22,
+      "end": 3.2
+     },
+     {
+      "w": "لما",
+      "start": 4.33,
+      "end": 4.74
+     },
+     {
+      "w": "رجع",
+      "start": 4.74,
+      "end": 5.14
+     },
+     {
+      "w": "وقطع",
+      "start": 5.14,
+      "end": 5.8
+     },
+     {
+      "w": "خط",
+      "start": 5.8,
+      "end": 6.02
+     },
+     {
+      "w": "النهاية!",
+      "start": 6.02,
+      "end": 6.44
+     }
+    ]
+   },
+   "footage": {
+    "src": "footage/kanakuri2-run/world.mp4",
+    "volume": 0,
+    "from": 13.01
+   },
+   "visual": {
+    "type": "none"
+   }
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "[happy] أطول ماراثون في التاريخ: *54* سنة و8 شهور! [laughs] إنت بتحس بتأنيب ضمير لو كسلت.. وهو سابه شغال وسافر قارة تانية!",
+   "audio": {
+    "src": "v/kanakuri2/L4.wav",
+    "words": [
+     {
+      "w": "أطول",
+      "start": 0.0,
+      "end": 0.36
+     },
+     {
+      "w": "ماراثون",
+      "start": 0.36,
+      "end": 0.72
+     },
+     {
+      "w": "في",
+      "start": 0.72,
+      "end": 0.9
+     },
+     {
+      "w": "التاريخ:",
+      "start": 0.9,
+      "end": 1.3
+     },
+     {
+      "w": "54",
+      "start": 1.3,
+      "end": 1.88
+     },
+     {
+      "w": "سنة",
+      "start": 1.88,
+      "end": 2.58
+     },
+     {
+      "w": "و8",
+      "start": 2.58,
+      "end": 2.9
+     },
+     {
+      "w": "شهور!",
+      "start": 2.9,
+      "end": 3.28
+     },
+     {
+      "w": "إنت",
+      "start": 4.0,
+      "end": 4.34
+     },
+     {
+      "w": "بتحس",
+      "start": 4.34,
+      "end": 4.69
+     },
+     {
+      "w": "بتأنيب",
+      "start": 4.69,
+      "end": 5.04
+     },
+     {
+      "w": "ضمير",
+      "start": 5.04,
+      "end": 5.28
+     },
+     {
+      "w": "لو",
+      "start": 5.28,
+      "end": 5.4
+     },
+     {
+      "w": "كسلت..",
+      "start": 5.4,
+      "end": 5.88
+     },
+     {
+      "w": "وهو",
+      "start": 5.88,
+      "end": 6.26
+     },
+     {
+      "w": "سابه",
+      "start": 6.26,
+      "end": 6.46
+     },
+     {
+      "w": "شغال",
+      "start": 6.46,
+      "end": 6.8
+     },
+     {
+      "w": "وسافر",
+      "start": 6.8,
+      "end": 7.11
+     },
+     {
+      "w": "قارة",
+      "start": 7.11,
+      "end": 7.42
+     },
+     {
+      "w": "تانية!",
+      "start": 7.42,
+      "end": 7.72
+     }
+    ]
+   },
+   "footage": {
+    "src": "footage/kanakuri2-run/world.mp4",
+    "volume": 0,
+    "from": 19.74
+   },
+   "visual": {
+    "type": "none"
+   }
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "770,1500,1.0"
+   },
+   "camera": "wide",
+   "say": "{mr:walkIn} [happy] مستر كوين بينزل بوست جري في *تمرينة*، واللي قريب منك بينزل يجري معاك. [excited] نزل تمرينة.",
+   "audio": {
+    "src": "v/kanakuri2/CTA.wav",
+    "words": [
+     {
+      "w": "مستر",
+      "start": 0.0,
+      "end": 0.28
+     },
+     {
+      "w": "كوين",
+      "start": 0.28,
+      "end": 0.56
+     },
+     {
+      "w": "بينزل",
+      "start": 0.56,
+      "end": 0.96
+     },
+     {
+      "w": "بوست",
+      "start": 0.96,
+      "end": 1.18
+     },
+     {
+      "w": "جري",
+      "start": 1.18,
+      "end": 1.46
+     },
+     {
+      "w": "في",
+      "start": 1.46,
+      "end": 1.74
+     },
+     {
+      "w": "تمرينة،",
+      "start": 1.74,
+      "end": 2.02
+     },
+     {
+      "w": "واللي",
+      "start": 2.02,
+      "end": 2.3
+     },
+     {
+      "w": "قريب",
+      "start": 2.3,
+      "end": 2.58
+     },
+     {
+      "w": "منك",
+      "start": 2.58,
+      "end": 2.92
+     },
+     {
+      "w": "بينزل",
+      "start": 2.92,
+      "end": 3.42
+     },
+     {
+      "w": "يجري",
+      "start": 3.42,
+      "end": 3.62
+     },
+     {
+      "w": "معاك.",
+      "start": 3.62,
+      "end": 3.98
+     },
+     {
+      "w": "نزل",
+      "start": 3.98,
+      "end": 4.62
+     },
+     {
+      "w": "تمرينة.",
+      "start": 4.62,
+      "end": 5.04
+     }
+    ]
+   },
+   "footage": {
+    "src": "footage/kanakuri2-run/world.mp4",
+    "volume": 0,
+    "from": 28.89
+   },
+   "visual": {
+    "type": "none"
+   }
+  }
+ ],
+ "theme": {
+  "accent": "#D6FF3C",
+  "onAccent": "#111111"
+ }
+}
