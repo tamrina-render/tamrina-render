@@ -395,7 +395,10 @@ const beatCam = (frame: number, cuts: number[], fps: number, i: number) => {
   const local = frame - cuts[i];
   const next = cuts[i + 1] ?? cuts[i] + 400;
   const drift = clamp(local / Math.max(1, next - cuts[i]));
-  if (i === 0) return { eye: [0.4 + drift * 0.5, 2.9, 12.4 - drift * 0.8] as V3, look: [0.5, 1.2, Z.road] as V3 };
+  if (i === 0) {
+    const hx = -1.1 + seg(frame, 0, 70, easeInOut) * 3.0;
+    return { eye: [hx * 0.8 + 0.1 + drift * 0.3, 2.9, 12.4 - drift * 0.8] as V3, look: [hx * 0.8 + 0.5, 1.2, Z.road] as V3 };
+  }
   if (i === 1) return { eye: [1.2 + drift * 0.6, 2.9, Z.garden + 10.6 - drift * 0.8] as V3, look: [1.8, 1.7, Z.garden + 1.6] as V3 };
   if (i === 2) {
     const sp = shipPos(frame, cuts[2]);
