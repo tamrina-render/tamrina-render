@@ -185,7 +185,7 @@ const TrackWorld: React.FC<{ f: number; cuts: number[]; fps: number }> = ({ f, c
         <Part key={i} geo={torusArc(0.5 + i * 0.1, 0.03, Math.PI)} color="#FFFFFF" basic opacity={0.15} position={[-4 + i * 3.2, 0.6 + Math.sin(f * 0.1 + i) * 0.12, -2.2]} rotation={[0.2, 0, 0]} shadow={false} />
       ))}
       <CourseFlag position={[-3.4, 0, 2.6]} f={f} />
-      <FinishBanner position={[0.9, 0, 0]} f={f} crossF={pushF} />
+      <FinishBanner position={[beat < 2 ? 5.2 : 0.9, 0, 0]} f={f} crossF={pushF} />
       {/* background racers streaming past (they finish while Jonny struggles) */}
       {(beat <= 1) && (
         <>
@@ -209,12 +209,12 @@ const TrackWorld: React.FC<{ f: number; cuts: number[]; fps: number }> = ({ f, c
       {beat !== 1 && !celebrating && (
         <>
           {/* Alistair underneath */}
-          <group position={[pairX, 0.14, 0.45]} rotation={[0, Math.PI / 2 - 0.35, 0]}>
+          <group position={[pairX, 0.14, 0.45]} rotation={[0, beat === 0 ? 0.9 : Math.PI / 2 - 0.35, 0]}>
             <Blocky pose={beat === 0 ? carryPose(f) : supporting(f)} colors={ALI} scale={1} />
           </group>
           {/* Jonny: on the shoulders (beat 0) or leaning on the shoulder (beat 2+), lunges at the push */}
           {beat === 0 ? (
-            <group position={[pairX, 2.15, 0.45]} rotation={[Math.PI / 2 - 0.15, Math.PI / 2 - 0.35, 0]}>
+            <group position={[pairX - 0.3, 1.95, 0.2]} rotation={[Math.PI / 2 - 0.15, 0.9 + Math.PI / 2, 0, "YXZ"]}>
               <Blocky pose={limpPose(f)} colors={JONNY} scale={0.96} noBlob />
             </group>
           ) : (
@@ -229,10 +229,10 @@ const TrackWorld: React.FC<{ f: number; cuts: number[]; fps: number }> = ({ f, c
       {celebrating && (
         <>
           <group position={[0.9, 0.14, 0.4]} rotation={[0, 0.35, 0]}>
-            <Blocky pose={alive({ ...proudPose(), armR: { sx: -2.3, sz: -0.5, twist: 0, elbow: -0.5 }, mouth: "grin", brow: 0.5 }, f, 43)} colors={JONNY} scale={0.98} />
+            <Blocky pose={alive({ ...proudPose(), armR: { sx: -2.3, sz: -0.5, twist: 0, elbow: -0.5 }, mouth: "smile", eyeOpen: 1, brow: 0.3 }, f, 43)} colors={JONNY} scale={0.98} />
           </group>
           <group position={[-0.35, 0.14, 0.55]} rotation={[0, -0.3, 0]}>
-            <Blocky pose={alive({ ...proudPose(), armL: { sx: -2.3, sz: 0.5, twist: 0, elbow: -0.5 }, mouth: "grin", brow: 0.5 }, f, 47)} colors={ALI} scale={1} />
+            <Blocky pose={alive({ ...proudPose(), armL: { sx: -2.3, sz: 0.5, twist: 0, elbow: -0.5 }, mouth: "smile", eyeOpen: 1, brow: 0.3 }, f, 47)} colors={ALI} scale={1} />
           </group>
           <Confetti f={f} startF={cuts[3] + 6} />
         </>
@@ -251,8 +251,8 @@ const useCam = (frame: number, cuts: number[]) => {
     { eye: [-0.8, 2.9, 12.8], look: [-1.4, 1.8, 0.4] },
     { eye: [-2.0, 2.8, 13.0], look: [-1.2, 1.3, 0.4] },
     { eye: [-1.5, 3.0, 14.0], look: [-1.5, 1.4, 0] },
-    { eye: [0.3, 2.8, 12.4], look: [0.3, 1.5, 0.3] },
-    { eye: [0.3, 2.8, 12.4], look: [0.3, 1.5, 0.3] },
+    { eye: [0.3, 2.4, 12.4], look: [0.3, 0.8, 0.3] },
+    { eye: [0.3, 2.4, 12.4], look: [0.3, 0.8, 0.3] },
   ];
   let i = 0;
   for (let k = 1; k < cuts.length; k++) if (frame >= cuts[k]) i = k;
