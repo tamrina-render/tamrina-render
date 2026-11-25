@@ -1,0 +1,54 @@
+# Tamrina reel render farm on GitHub Actions (DRAFT, untested on a runner).
+# Inputs are committed to the repo: scene code (src/), videos/<slug>/peek-timeline.json, public/v/<slug>/ (voice),
+# and ci/<slug>-plan.json = {"comp":"FactKanakuri","world":[[0,45],[45,45],...],"reel":[[0,60],[60,60],...],"total":1050,"trim":34.9}
+name: render-img
+on:
+  workflow_dispatch:
+    inputs:
+      slug: { description: "video slug (videos/<slug>)", required: true }
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      world: ${{ steps.p.outputs.world }}
+      reel: ${{ steps.p.outputs.reel }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: p
+        run: |
+          P=ci/${{ inputs.slug }}-plan.json
+          echo "world=$(jq -c '[.world[]|{s:.[0],n:.[1]}]' $P)" >> $GITHUB_OUTPUT
+          echo "reel=$(jq -c '[.reel[]|{s:.[0],n:.[1]}]' $P)" >> $GITHUB_OUTPUT
+  reel:
+    needs: [plan]
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+      matrix:
+        c: ${{ fromJson(needs.plan.outputs.reel) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg libnss3 libdbus-1-3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2t64 libxkbcommon0 libpango-1.0-0
+      - run: |
+          E=$(( ${{ matrix.c.s }} + ${{ matrix.c.n }} - 1 ))
+          node scripts/render.mjs videos/${{ inputs.slug }}/peek-timeline.json --out r.mp4 --frames ${{ matrix.c.s }}-$E --concurrency 2
+      - uses: actions/upload-artifact@v4
+        with: { name: "reel-${{ matrix.c.s }}", path: r.mp4 }
+  final:
+    needs: [plan, reel]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - uses: actions/download-artifact@v4
+        with: { pattern: "reel-*", path: rc }
+      - run: |
+          for d in $(ls rc | sed 's/reel-//' | sort -n); do echo "file '$PWD/rc/reel-$d/r.mp4'"; done > l.txt
+          ffmpeg -loglevel error -f concat -safe 0 -i l.txt -c copy all.mp4
+          ffmpeg -loglevel error -i all.mp4 -t $(jq -r .trim ci/${{ inputs.slug }}-plan.json) -c copy ${{ inputs.slug }}-final.mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: "${{ inputs.slug }}-final", path: "${{ inputs.slug }}-final.mp4", retention-days: 7 }

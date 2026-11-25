@@ -1,0 +1,145 @@
+{
+ "title": "Sam Bartram fog image sample",
+ "brand": "tamrina",
+ "pool": "male",
+ "format": "fact",
+ "captions": "chunk",
+ "captionY": 1470,
+ "gap": 0.25,
+ "tail": 0.6,
+ "read": false,
+ "seam": false,
+ "sfx": {
+  "scene": null
+ },
+ "presenter": {
+  "flip": false,
+  "exit": false
+ },
+ "cast": [
+  {
+   "id": "mr",
+   "place": "off"
+  }
+ ],
+ "scenes": [
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "كريسماس *1937*.. شبورة تقيلة، والحكم وقف ماتش *تشيلسي* وتشارلتون!",
+   "audio": {
+    "src": "audio/bartram-img/voice.wav",
+    "from": 0.0,
+    "to": 5.829999999999999
+   },
+   "footage": {
+    "src": "footage/bartram-img/01.jpg",
+    "hold": true
+   },
+   "visual": {
+    "type": "none"
+   },
+   "seam": "cut",
+   "creep": 1.1
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "الكل دخل *أوض اللبس*.. ما عدا حارس تشارلتون، سام بارترام، اللي مسمعش الصفارة.",
+   "audio": {
+    "src": "audio/bartram-img/voice.wav",
+    "from": 6.06,
+    "to": 11.26
+   },
+   "footage": {
+    "src": "footage/bartram-img/02.jpg",
+    "hold": true
+   },
+   "visual": {
+    "type": "none"
+   },
+   "seam": "cut",
+   "creep": 1.08
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "فضل واقف في الجون مركز، فاكر إن فريقه *ضاغط هجوم*.. والملعب *فاضي خالص*!",
+   "audio": {
+    "src": "audio/bartram-img/voice.wav",
+    "from": 11.49,
+    "to": 17.03
+   },
+   "footage": {
+    "src": "footage/bartram-img/03.jpg",
+    "hold": true
+   },
+   "visual": {
+    "type": "none"
+   },
+   "seam": "cut",
+   "creep": 1.1
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "off"
+   },
+   "camera": "wide",
+   "say": "لحد ما *عسكري شرطة* جه وقاله: يا كابتن.. الناس كلها مشيت!",
+   "audio": {
+    "src": "audio/bartram-img/voice.wav",
+    "from": 17.26,
+    "to": 22.919999999999998
+   },
+   "footage": {
+    "src": "footage/bartram-img/04.jpg",
+    "hold": true
+   },
+   "visual": {
+    "type": "none"
+   },
+   "seam": "cut",
+   "creep": 1.12
+  },
+  {
+   "speaker": "mr",
+   "place": {
+    "mr": "895,335,0.45"
+   },
+   "camera": "wide",
+   "say": "ومحدش يتنسي في الجون لوحده.. على *تمرينة* هتلاقي اللي يلعب معاك.",
+   "audio": {
+    "src": "audio/bartram-img/voice.wav",
+    "from": 23.15,
+    "to": 27.45
+   },
+   "footage": {
+    "src": "footage/bartram-img/05.jpg",
+    "hold": true
+   },
+   "visual": {
+    "type": "image",
+    "props": {
+     "src": "footage/muscle-mouse/logo.png",
+     "x": 540,
+     "y": 1480,
+     "w": 320,
+     "at": 0.4,
+     "drop": true
+    }
+   },
+   "seam": "cut",
+   "creep": 1.06
+  }
+ ]
+}
