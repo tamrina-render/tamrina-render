@@ -27,7 +27,7 @@
   "captions": {
     "mode": "chunk",
     "lead": 0.15,
-    "y": 1400
+    "y": 1200
   },
   "theme": {
     "paper": "#0E0F12",
