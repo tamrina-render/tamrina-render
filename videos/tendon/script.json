@@ -517,5 +517,7 @@
  "theme": {
   "accent": "#D6FF3C",
   "onAccent": "#111111"
- }
+ },
+ "captionCtaY": 1220,
+ "captionCtaT": 25.4
 }
