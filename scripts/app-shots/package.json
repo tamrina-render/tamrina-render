@@ -1,0 +1,1 @@
+{ "name": "app-shots", "private": true, "type": "module", "dependencies": { "playwright-core": "1.56.0" } }

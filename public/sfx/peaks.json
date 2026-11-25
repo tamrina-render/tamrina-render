@@ -1,0 +1,9 @@
+{ "$comment": "seconds from the start of each file to its loudest moment (measured with ffmpeg astats, 10 ms windows). sfx.mjs starts a sound this much early so the peak lands ON the movement.",
+  "check-click": 0, "coin-touch": 0, "coin-win": 0.13, "el-click": 0.03, "el-pop": 0.01, "el-success": 0.14, "el-swoosh": 0.48, "el-whoosh": 0.09,
+  "k-card-place": 0.06, "k-card-slide": 0.08, "k-chips": 0.01, "k-punch": 0.02, "msg-pop": 0, "mx-bell-ding": 0.01, "mx-pop-whoosh": 0.02, "mx-stomp": 0.11, "whoosh-fast": 0.5,
+  "whistle": 0.05, "bonk": 0,
+  "trend/01-whoosh-air": 0.71, "trend/02-whoosh-fast": 0.71, "trend/03-whoosh-cinematic": 1.08, "trend/04-whoosh-stutter": 1.82,
+  "trend/05-riser-short-cut": 2.38, "trend/06-riser-drama-cut": 2.57, "trend/07-impact-deep": 0.55, "trend/08-impact-big": 2.17, "trend/07-impact-deep-phone": 0.55, "trend/08-impact-big-phone": 2.17,
+  "trend/09-vine-boom": 0.21, "trend/10-record-scratch": 0.03, "trend/11-sad-trombone": 0.81, "trend/12-bruh": 0.2, "trend/13-metal-pipe": 0.02,
+  "trend/14-crowd-ooh": 0.78, "trend/15-pop-hard": 0, "trend/16-pop-whoosh": 0.03, "trend/17-typing-phone-1s": 0, "trend/19-tap-select": 0.06, "trend/20-tap-interface": 0
+}

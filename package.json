@@ -1,0 +1,32 @@
+{
+  "name": "reel-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One-line -> animated reel system (script -> voice -> motion -> render -> score)",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "node scripts/render.mjs",
+    "make": "node scripts/make.mjs",
+    "tts": "node scripts/tts.mjs",
+    "master": "node scripts/master.mjs",
+    "score": "node scripts/score.mjs",
+    "setup": "node scripts/setup.mjs"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "@remotion/cli": "^4.0.538",
+    "@remotion/fonts": "^4.0.538",
+    "@remotion/google-fonts": "^4.0.538",
+    "@remotion/three": "4.0.538",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.538",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "typescript": "^7.0.2"
+  }
+}
