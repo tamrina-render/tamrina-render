@@ -5,7 +5,7 @@
  "format": "fact",
  "fps": 30,
  "captions": "chunk",
- "captionY": 1400,
+ "captionY": 1470,
  "gap": 0.25,
  "read": false,
  "seam": false,

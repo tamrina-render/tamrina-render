@@ -6,7 +6,7 @@ import { Blocky, BlockyColors, BlockyPose, restPose } from "./fact3d/Blocky";
 import { Cloud, OliveTree, SkyDome } from "./fact3d/props";
 import { PAL, Part, box, circle, cyl, rbox, sphere, torusArc } from "./fact3d/parts";
 import { clamp, easeInOut, easeOut, hash, lerp, seg, wobble } from "./fact3d/anim";
-import { alive, proudPose, runnerPose, walkPose, wavePose, tremble } from "./fact3d/acting";
+import { alive, proudPose, runnerPose, walkPose, wavePose, tremble, shyPose, lerpPose } from "./fact3d/acting";
 
 // Shizo Kanakuri, Stockholm 1912: dizzy in the marathon -> garden juice + nap -> ship home ->
 // "missing" for 54 years -> crosses the line in 1967. 4 clause starts drive every cut.
@@ -35,9 +35,9 @@ const Z = { road: 0, garden: -38, sea: -78, stadium: -122 };
 // ---------- heat-dizzy stagger (clause 1) ----------
 const dizzyPose = (f: number): BlockyPose => {
   const p = walkPose(f * 0.11, 0.55);
-  p.lean = 0.34 + Math.sin(f * 0.06) * 0.07;
+  p.lean = 0.2 + Math.sin(f * 0.06) * 0.06;
   p.roll = Math.sin(f * 0.09) * 0.16;
-  p.headPitch = 0.3;
+  p.headPitch = 0.05;
   p.headTilt = Math.sin(f * 0.07) * 0.14;
   p.eyeOpen = 0.55;
   p.brow = 0.8;
@@ -112,6 +112,48 @@ const Sofa: React.FC<{ position?: V3; rotationY?: number }> = ({ position, rotat
   </group>
 );
 
+const scratchPose = (lf: number): BlockyPose => {
+  const p = shyPose();
+  const w = Math.sin(lf * 0.5);
+  p.armL = { sx: -2.5, sz: 0.5, twist: 0, elbow: -2.3 + w * 0.25 };
+  p.armR = { sx: -0.15, sz: 0.3, twist: 0, elbow: -0.5 };
+  p.shrug = 0.5; p.hunch = 0.2; p.blush = 1; p.headTilt = 0.15;
+  return p;
+};
+const tiptoePose = (lf: number): BlockyPose => {
+  const p = walkPose(lf * 0.12, 0.35);
+  p.lean = 0.22; p.bob = -0.04;
+  p.armL = { sx: -0.3, sz: 0.5, twist: 0, elbow: -0.7 };
+  p.armR = { sx: 0.4, sz: 0.5, twist: 0, elbow: -0.7 };
+  p.eyeX = Math.sin(lf * 0.1); p.brow = 0.5; p.mouth = "grin";
+  return p;
+};
+const shhPose = (lf: number): BlockyPose => {
+  const p = restPose();
+  p.armR = { sx: -2.3, sz: 0.2, twist: 0, elbow: -2.35 };
+  p.armL = { sx: -0.1, sz: 0.4, twist: 0, elbow: -0.5 };
+  p.eyeX = 0.8 * Math.sin(lf * 0.12); p.brow = 0.4; p.browUp = 0.5; p.mouth = "flat"; p.headTilt = 0.1;
+  return p;
+};
+// ship beat poses change every ~1.5-2s: wave, scratch (shy), tiptoe, shh, wave
+const shipPose = (lf: number): BlockyPose => {
+  const segs: [number, (l: number) => BlockyPose][] = [
+    [0, (l) => wavePose(l, 5)],
+    [40, scratchPose],
+    [95, tiptoePose],
+    [150, shhPose],
+    [215, (l) => wavePose(l, 3)],
+  ];
+  let i = 0;
+  for (let k = 1; k < segs.length; k++) if (lf >= segs[k][0]) i = k;
+  const cur = segs[i][1](lf);
+  if (i > 0) {
+    const k = seg(lf, segs[i][0], segs[i][0] + 10);
+    if (k < 1) return lerpPose(segs[i - 1][1](lf), cur, k);
+  }
+  return cur;
+};
+
 export const shipPos = (f: number, startF: number) => {
   const t = clamp((f - startF) / 190);
   return { x: lerp(-3.5, 8, easeInOut(t)), z: lerp(-3, -14, t), s: lerp(1.45, 1.15, t) };
@@ -134,7 +176,7 @@ const Ship: React.FC<{ f: number; startF: number }> = ({ f, startF }) => {
       })}
       {/* hero at the stern rail, waving goodbye */}
       <group position={[-3.1, 1.55 + Math.abs(Math.sin(f * 0.11)) * 0.06, 0.55]} rotation={[0, 0, Math.sin(f * 0.07) * 0.05]}>
-        <Blocky pose={alive(wavePose(f, 5), f, 77, 0.8)} colors={HERO} scale={0.78} headband="#D9473B" rotationY={0.4 + Math.sin(f * 0.045) * 0.3} />
+        <Blocky pose={alive(shipPose(f - startF), f, 77, 0.8)} colors={HERO} scale={0.78} headband="#D9473B" rotationY={0.4 + Math.sin(f * 0.045) * 0.3} />
       </group>
     </group>
   );
@@ -200,7 +242,7 @@ const Confetti: React.FC<{ f: number; startF: number }> = ({ f, startF }) => (
 );
 
 // ---------- the worlds ----------
-const RoadWorld: React.FC<{ f: number }> = ({ f }) => {
+const RoadWorld: React.FC<{ f: number; hideF: number }> = ({ f, hideF }) => {
   // hero staggers toward the garden side (+x); two racers keep running off-frame
   const heroX = -1.1 + seg(f, 0, 70, easeInOut) * 3.0;
   return (
@@ -211,9 +253,11 @@ const RoadWorld: React.FC<{ f: number }> = ({ f }) => {
       ))}
       <Blocky pose={runnerPose(f * 0.32, 1)} colors={RACER1} position={[-7 + ((f * 0.055) % 26), 0.16, -1.1]} rotationY={Math.PI / 2} scale={0.95} />
       <Blocky pose={runnerPose(f * 0.3 + 2, 1)} colors={RACER2} position={[-11 + ((f * 0.05 + 6) % 26), 0.16, 1.2]} rotationY={Math.PI / 2} scale={0.95} />
-      <group position={[heroX, 0.16, 0.4]} rotation={[0, Math.PI / 2 - 0.35, 0]}>
-        <Blocky pose={dizzyPose(f)} colors={HERO} headband="#D9473B" scale={1} />
-      </group>
+      {f < hideF && (
+        <group position={[heroX, 0.16, 0.4]} rotation={[0, 0.5, 0]}>
+          <Blocky pose={dizzyPose(f)} colors={HERO} headband="#D9473B" scale={1.15} />
+        </group>
+      )}
       {/* sweat drops */}
       {[0, 1].map((i) => {
         const age = (f + i * 14) % 28;
@@ -247,7 +291,7 @@ const GardenWorld: React.FC<{ f: number; sipF: number; lieF: number; enterF: num
           </group>
         </group>
       ) : (
-        <group position={[0.4 + seg(f, enterF, sipF - 14, easeInOut) * 1.6, 0.02, 2.6 - seg(f, enterF, sipF - 14, easeInOut) * 0.7]} rotation={[0, -2.6, 0]}>
+        <group position={[0.4 + seg(f, enterF, sipF - 14, easeInOut) * 1.6, 0.02, 2.6 - seg(f, enterF, sipF - 14, easeInOut) * 0.7]} rotation={[0, -1.4, 0]}>
           <Blocky pose={f < sipF - 14 ? walkPose(f * 0.16, 0.8) : drinkPose(f, sipF)} colors={HERO} headband="#D9473B" />
           {f >= sipF - 14 && (
             <group position={[0.32, 1.55 + seg(f, sipAt(sipF) - 8, sipF) * 0.28, 0.42]}>
@@ -405,7 +449,7 @@ const beatCam = (frame: number, cuts: number[], fps: number, i: number) => {
     // look at the stern rail where he waves: ship rotated 0.5 about y
     const lx = -3.1 * Math.cos(0.5) + 0.55 * Math.sin(0.5), lz = 3.1 * Math.sin(0.5) + 0.55 * Math.cos(0.5);
     const look: V3 = [sp.x + lx * sp.s, 3.0, Z.sea + sp.z + lz * sp.s];
-    return { eye: [look[0] + 1.2 + Math.sin(frame * 0.03) * 0.6, 3.4 + Math.sin(frame * 0.021) * 0.2, look[2] + 11.5 - drift * 0.8] as V3, look: [look[0] + 1.4, 3.1, look[2]] as V3 };
+    return { eye: [look[0] + 0.3 + Math.sin(frame * 0.03) * 0.3, 3.4 + Math.sin(frame * 0.021) * 0.2, look[2] + 11.5 - drift * 0.8] as V3, look: [look[0] + 0.45, 3.1, look[2]] as V3 };
   }
   const crossF = cuts[4] + Math.round(2.1 * fps);
   if (i === 3) {
@@ -462,8 +506,8 @@ const World: React.FC<{ cuts: number[]; fps: number }> = ({ cuts, fps }) => {
       <directionalLight position={[7, 12, 8]} intensity={2.7} color="#FFE7C0" castShadow shadow-mapSize={[1024, 1024]} />
       {/* one warm floor far under everything */}
       <Part geo={circle(320, 48)} color={PAL.sand} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.6, -60]} />
-      {frame < cuts[1] + FLY_B + 4 && <RoadWorld f={frame} />}
-      {frame >= cuts[1] - FLY_A - 6 && frame < cuts[2] + 6 && <GardenWorld f={frame} sipF={sipF} lieF={lieF} enterF={cuts[1]} />}
+      {frame < cuts[1] + FLY_B + 4 && <RoadWorld f={frame} hideF={cuts[1] - FLY_A + 8} />}
+      {frame >= cuts[1] - FLY_A - 6 && frame < cuts[2] + 6 && <GardenWorld f={frame} sipF={sipF} lieF={lieF} enterF={cuts[1] - 26} />}
       {frame >= cuts[2] - 2 && frame < cuts[3] + 8 && <SeaWorld f={frame} startF={cuts[2]} />}
       {frame >= cuts[3] - 30 && <StadiumWorld f={frame} crossF={crossF} startF={cuts[3]} runF={cuts[4]} />}
     </>
