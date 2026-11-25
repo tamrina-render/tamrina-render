@@ -5,7 +5,7 @@
  "format": "fact",
  "captions": "chunk",
  "captionY": 1470,
- "gap": 0.25,
+ "gap": 0.1,
  "tail": 0.6,
  "read": false,
  "seam": false,
@@ -32,8 +32,8 @@
    "say": "كريسماس *1937*.. شبورة تقيلة، والحكم وقف ماتش *تشيلسي* وتشارلتون!",
    "audio": {
     "src": "audio/bartram-img/voice.wav",
-    "from": 0.0,
-    "to": 5.829999999999999
+    "from": 0,
+    "to": 5.811
    },
    "footage": {
     "src": "footage/bartram-img/01.jpg",
@@ -43,7 +43,7 @@
     "type": "none"
    },
    "seam": "cut",
-   "creep": 1.1
+   "creep": 1.04
   },
   {
    "speaker": "mr",
@@ -54,8 +54,8 @@
    "say": "الكل دخل *أوض اللبس*.. ما عدا حارس تشارلتون، سام بارترام، اللي مسمعش الصفارة.",
    "audio": {
     "src": "audio/bartram-img/voice.wav",
-    "from": 6.06,
-    "to": 11.26
+    "from": 5.911,
+    "to": 11.09
    },
    "footage": {
     "src": "footage/bartram-img/02.jpg",
@@ -65,7 +65,7 @@
     "type": "none"
    },
    "seam": "cut",
-   "creep": 1.08
+   "creep": 1.04
   },
   {
    "speaker": "mr",
@@ -76,8 +76,8 @@
    "say": "فضل واقف في الجون مركز، فاكر إن فريقه *ضاغط هجوم*.. والملعب *فاضي خالص*!",
    "audio": {
     "src": "audio/bartram-img/voice.wav",
-    "from": 11.49,
-    "to": 17.03
+    "from": 11.19,
+    "to": 16.707
    },
    "footage": {
     "src": "footage/bartram-img/03.jpg",
@@ -87,7 +87,7 @@
     "type": "none"
    },
    "seam": "cut",
-   "creep": 1.1
+   "creep": 1.04
   },
   {
    "speaker": "mr",
@@ -98,8 +98,8 @@
    "say": "لحد ما *عسكري شرطة* جه وقاله: يا كابتن.. الناس كلها مشيت!",
    "audio": {
     "src": "audio/bartram-img/voice.wav",
-    "from": 17.26,
-    "to": 22.919999999999998
+    "from": 16.807,
+    "to": 22.445
    },
    "footage": {
     "src": "footage/bartram-img/04.jpg",
@@ -109,7 +109,7 @@
     "type": "none"
    },
    "seam": "cut",
-   "creep": 1.12
+   "creep": 1.04
   },
   {
    "speaker": "mr",
@@ -120,8 +120,8 @@
    "say": "ومحدش يتنسي في الجون لوحده.. على *تمرينة* هتلاقي اللي يلعب معاك.",
    "audio": {
     "src": "audio/bartram-img/voice.wav",
-    "from": 23.15,
-    "to": 27.45
+    "from": 22.545,
+    "to": 26.826
    },
    "footage": {
     "src": "footage/bartram-img/05.jpg",
@@ -139,7 +139,7 @@
     }
    },
    "seam": "cut",
-   "creep": 1.06
+   "creep": 1.04
   }
  ]
 }
