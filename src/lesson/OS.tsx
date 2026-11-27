@@ -92,14 +92,14 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
 };
 
 export type OSProps = { starts: number[]; total: number; ep?: string };
-export const makeOS = (specs: Spec[], defEp: string) => {
+export const makeOS = (specs: Spec[], defEp: string, brand = "OpenShift") => {
   const SC = specs.map((s, i) => mk(s, i + 1));
   const L: React.FC<OSProps> = ({ starts, total, ep }) => {
     const { fps } = useVideoConfig();
     const [h] = React.useState(() => delayRender("fonts"));
     React.useEffect(() => { loadFonts().then(() => continueRender(h)).catch(() => continueRender(h)); }, [h]);
     return (
-      <LessonCtx.Provider value={{ ep: ep || defEp, total: specs.length, brand: "OpenShift" }}>
+      <LessonCtx.Provider value={{ ep: ep || defEp, total: specs.length, brand }}>
         <AbsoluteFill style={{ background: C.bg }}>
           {SC.map((S, i) => {
             const from = Math.round(starts[i] * fps);

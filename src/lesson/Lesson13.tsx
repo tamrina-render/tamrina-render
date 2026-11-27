@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  { k: "title", title: "الحلقة الأولى", l1: "Terraform", l2: "Infrastructure as Code", sub: "Interview Prep", chip: "Episode 1" },
+  { k: "chips", title: "المشكلة", chips: ["Manual setup", "Forgotten steps", "Mistakes", "Not repeatable"], note: "clicking in the cloud console" },
+  { k: "flow", title: "الفكرة", steps: ["Infrastructure", "as Code", "Files in Git"] },
+  { k: "rows", title: "التعريف", rows: [["Terraform", "Infrastructure as Code tool"], ["Targets", "cloud and on-prem"], ["Files", "versioned and shared"]] },
+  { k: "chips", title: "بيدير إيه", chips: ["Compute", "Storage", "Networking", "DNS"] },
+  { k: "flow", title: "إزاي بيشتغل", steps: ["Terraform", "Provider", "Cloud API"] },
+  { k: "chips", title: "الـ providers", chips: ["AWS", "Azure", "GCP", "Kubernetes", "GitHub"], note: "Terraform Registry" },
+  { k: "cmp", title: "طريقة الكتابة", l: "Step by step", r: "Declarative", ls: ["You write", "every step"], rs: ["You write", "the end state"] },
+  { k: "rows", title: "لغة الكتابة", rows: [["HCL", "the Terraform language"], ["resource block", "one piece of infrastructure"]] },
+  { k: "rows", title: "شكل الـ resource", rows: [["Type", "selects the provider"], ["Name", "your own label"], ["Arguments", "defined by the provider"]] },
+  { k: "flow", title: "دورة الشغل", steps: ["Write", "Plan", "Apply"] },
+  { k: "chips", title: "الكتابة", chips: ["Resources", "Many clouds", "Many services"] },
+  { k: "rows", title: "الأمر الأول", rows: [["terraform init", "first command to run"], ["Safe", "run it many times"]] },
+  { k: "chips", title: "ملف القفل", chips: ["terraform.lock.hcl", "Provider versions", "Commit to Git"] },
+  { k: "rows", title: "الخطة", rows: [["terraform plan", "preview the changes"], ["Create", "new resources"], ["Update or destroy", "existing ones"]] },
+  { k: "rows", title: "التنفيذ", rows: [["terraform apply", "runs after approval"], ["Order", "follows dependencies"]] },
+  { k: "flow", title: "مثال", steps: ["Change network", "Network first", "Then servers"] },
+  { k: "chips", title: "بالتوازي", chips: ["Independent", "resources", "Run together"] },
+  { k: "rows", title: "المسح", rows: [["terraform destroy", "removes managed resources"]] },
+  { k: "chips", title: "المميزات", chips: ["Repeatable", "Stored in Git", "Reviewed first"] },
+  { k: "q", title: "سؤال 1", q: "What is Terraform?", terms: ["IaC tool", "Config files", "Declarative"] },
+  { k: "q", title: "سؤال 2", q: "plan vs apply?", terms: ["plan: preview", "apply: execute"] },
+  { k: "q", title: "سؤال 3", q: "What is a provider?", terms: ["Talks to the API", "Per platform"] },
+  { k: "q", title: "سؤال 4", q: "What is declarative?", terms: ["Desired end state", "Terraform plans steps"] },
+  { k: "end", title: "الختام", l1: "Terraform", sub: "Interview Prep", chips: ["IaC", "Providers", "Plan", "Apply", "State", "Next: Variables"] },
+];
+export const Lesson13 = makeOS(SP, "Terraform - Episode 1", "Terraform");
