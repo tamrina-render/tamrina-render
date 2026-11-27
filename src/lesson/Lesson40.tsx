@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الرابعة", "l1": "Linux", "l2": "Networking + Logs", "sub": "Interview Prep", "chip": "Episode 4"},
+  {"k": "rows", "title": "العناوين", "rows": [["ip addr", "interfaces + IP addresses"]]},
+  {"k": "rows", "title": "المسارات", "rows": [["ip route", "routing table"], ["Includes", "the default gateway"]]},
+  {"k": "rows", "title": "الاختبار", "rows": [["ping", "does the host reply"], ["Uses", "ICMP"]]},
+  {"k": "rows", "title": "المقابس", "rows": [["ss", "open sockets"], ["ss -tulnp", "listening TCP + UDP + process"]]},
+  {"k": "rows", "title": "الفائدة", "rows": [["Check", "the service is listening"], ["On", "the right port"]]},
+  {"k": "rows", "title": "الطلب", "rows": [["curl", "sends HTTP requests"], ["curl -I", "headers only"]]},
+  {"k": "rows", "title": "الأسماء", "rows": [["dig", "DNS lookup"], ["Example", "dig example.com"]]},
+  {"k": "rows", "title": "الملفات", "rows": [["/etc/hosts", "local names"], ["/etc/resolv.conf", "DNS servers"]]},
+  {"k": "rows", "title": "الاتصال", "rows": [["ssh", "encrypted remote login"], ["Format", "ssh user@host"]]},
+  {"k": "rows", "title": "النسخ", "rows": [["scp", "copy files over ssh"]]},
+  {"k": "flow", "title": "الترتيب", "steps": ["IP address", "Route", "DNS", "Port + service"], "note": "troubleshooting order"},
+  {"k": "rows", "title": "السجلات", "rows": [["/var/log", "text log files"]]},
+  {"k": "rows", "title": "الجورنال", "rows": [["journal", "systemd logging"], ["journalctl", "reads it"]]},
+  {"k": "rows", "title": "الفلترة", "rows": [["-u", "one service"], ["-f", "follow new entries"], ["-b", "current boot"]]},
+  {"k": "rows", "title": "الاختلاف", "rows": [["Ubuntu", "/var/log/syslog"], ["Red Hat", "/var/log/messages"]]},
+  {"k": "rows", "title": "الدمج", "rows": [["grep -i error", "errors only"], ["tail -f", "live log"]]},
+  {"k": "rows", "title": "التدوير", "rows": [["logrotate", "rotates + compresses logs"], ["Goal", "keep the disk from filling"]]},
+  {"k": "rows", "title": "القرص", "rows": [["df -h", "free space per filesystem"], ["du -sh", "size of a folder"]]},
+  {"k": "rows", "title": "الذاكرة", "rows": [["free -h", "memory usage"], ["uptime", "uptime + load average"]]},
+  {"k": "rows", "title": "الحمل", "rows": [["Load average", "pressure on the system"], ["Compare with", "CPU cores"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Service not responding?", "terms": ["status, ss", "journalctl, curl"]},
+  {"k": "q", "title": "سؤال 2", "q": "ping vs curl?", "terms": ["ping: host replies", "curl: the service"]},
+  {"k": "q", "title": "سؤال 3", "q": "Disk is full?", "terms": ["df, then du", "check the logs"]},
+  {"k": "end", "title": "الختام", "l1": "Linux", "sub": "Interview Prep", "chips": ["Network tools", "Logs + monitoring", "Next: Scripting"]},
+];
+export const Lesson40 = makeOS(SP, "Linux - Episode 4", "Linux");

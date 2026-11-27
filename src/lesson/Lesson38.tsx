@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثانية", "l1": "Linux", "l2": "Files + Permissions", "sub": "Interview Prep", "chip": "Episode 2"},
+  {"k": "rows", "title": "العرض", "rows": [["ls -l", "type + permissions"], ["Also", "owner, group, size, date"]]},
+  {"k": "rows", "title": "المجموعات", "rows": [["Owner", "the file's user"], ["Group", "the file's group"], ["Others", "everyone else"]]},
+  {"k": "rows", "title": "الصلاحيات", "rows": [["r", "read"], ["w", "write"], ["x", "execute"]]},
+  {"k": "rows", "title": "الملف", "rows": [["r", "read the content"], ["w", "modify it"], ["x", "run it as a program"]]},
+  {"k": "rows", "title": "المجلد", "rows": [["r", "list the names"], ["w", "create or delete files"], ["x", "enter the directory"]]},
+  {"k": "rows", "title": "الأرقام", "rows": [["r", "4"], ["w", "2"], ["x", "1"], ["Add", "per group"]]},
+  {"k": "rows", "title": "مثال", "rows": [["chmod 755", "owner rwx"], ["Group + others", "r-x"]]},
+  {"k": "rows", "title": "مثال آخر", "rows": [["chmod 644", "owner rw"], ["Others", "read only"]]},
+  {"k": "rows", "title": "الرموز", "rows": [["chmod u+x", "add execute for the owner"], ["u g o a", "owner, group, others, all"]]},
+  {"k": "rows", "title": "المالك", "rows": [["chown", "changes owner + group"], ["Format", "user:group file"], ["Usually", "needs root"]]},
+  {"k": "rows", "title": "الافتراضي", "rows": [["umask", "default permissions for new files"], ["Works by", "removing permissions"]]},
+  {"k": "rows", "title": "الجذر", "rows": [["root", "full access to the system"], ["Daily work", "avoid using root"]]},
+  {"k": "rows", "title": "الخاصة", "rows": [["setuid", "runs with the owner's rights"], ["Example", "passwd"]]},
+  {"k": "rows", "title": "الملصق", "rows": [["Sticky bit", "only the owner deletes a file"], ["Used on", "/tmp"]]},
+  {"k": "rows", "title": "الروابط", "rows": [["Hard link", "another name, same file"], ["Symlink", "points to a path"]]},
+  {"k": "rows", "title": "الكسر", "rows": [["ln -s", "creates a symlink"], ["Delete the target", "symlink breaks"], ["Hard link", "keeps working"]]},
+  {"k": "rows", "title": "البحث", "rows": [["find", "search by name, type, size"], ["By name", "find /var/log -name '*.log'"]]},
+  {"k": "rows", "title": "الحجم", "rows": [["find . -type f", "files only"], ["-size +100M", "bigger than 100 MB"]]},
+  {"k": "rows", "title": "الأرشيف", "rows": [["tar", "many files into one"], ["-z", "compress with gzip"]]},
+  {"k": "rows", "title": "الخطأ", "rows": [["Permission denied", "check ls -l"], ["whoami", "who am I"]]},
+  {"k": "q", "title": "سؤال 1", "q": "What is chmod 755?", "terms": ["Owner: rwx", "Others: r-x"]},
+  {"k": "q", "title": "سؤال 2", "q": "Hard link vs symlink?", "terms": ["Hard: same file", "Symlink: a pointer"]},
+  {"k": "q", "title": "سؤال 3", "q": "x on a directory?", "terms": ["Enter it", "Reach its files"]},
+  {"k": "end", "title": "الختام", "l1": "Linux", "sub": "Interview Prep", "chips": ["Permissions + Links", "find + tar", "Next: Processes"]},
+];
+export const Lesson38 = makeOS(SP, "Linux - Episode 2", "Linux");

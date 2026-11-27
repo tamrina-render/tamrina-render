@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة السادسة", "l1": "Linux", "l2": "Users + Packages", "sub": "Interview Prep", "chip": "Episode 6"},
+  {"k": "rows", "title": "الرقم", "rows": [["UID", "a number per user"], ["root", "UID 0"]]},
+  {"k": "rows", "title": "الملف", "rows": [["/etc/passwd", "name, UID, home, shell"], ["/etc/shadow", "password hashes"]]},
+  {"k": "rows", "title": "الإدارة", "rows": [["useradd", "create a user"], ["passwd", "set a password"], ["userdel", "delete a user"]]},
+  {"k": "rows", "title": "المجموعة", "rows": [["Group", "users sharing permissions"], ["groupadd", "create a group"]]},
+  {"k": "rows", "title": "الإضافة", "rows": [["usermod -aG", "add to a group"], ["Option a", "keeps other groups"]]},
+  {"k": "rows", "title": "الهوية", "rows": [["id", "UID + groups"], ["whoami", "user name"]]},
+  {"k": "rows", "title": "الصلاحية", "rows": [["sudo", "run a command as root"], ["Rules", "come from sudoers"]]},
+  {"k": "rows", "title": "الأفضل", "rows": [["visudo", "edits sudoers safely"], ["sudo", "logs who ran what"]]},
+  {"k": "rows", "title": "التبديل", "rows": [["su", "switch to another user"], ["Asks for", "that user's password"]]},
+  {"k": "rows", "title": "المفاتيح", "rows": [["ssh-keygen", "creates a key pair"], ["Public key", "goes to authorized_keys"]]},
+  {"k": "rows", "title": "السرية", "rows": [["Private key", "keep it secret"], ["SSH", "rejects open permissions"]]},
+  {"k": "rows", "title": "الحزم", "rows": [["Package manager", "installs from repositories"], ["Also", "installs dependencies"]]},
+  {"k": "rows", "title": "ديبيان", "rows": [["apt install", "install a package"], ["apt remove", "remove it"]]},
+  {"k": "rows", "title": "التحديث", "rows": [["apt update", "refreshes the package list"], ["apt upgrade", "installs newer versions"]]},
+  {"k": "rows", "title": "ريد هات", "rows": [["dnf install", "install a package"], ["dnf search", "find a package"]]},
+  {"k": "rows", "title": "الجدولة", "rows": [["cron", "recurring jobs"], ["crontab -e", "edit"], ["crontab -l", "list"]]},
+  {"k": "rows", "title": "الخانات", "rows": [["Five fields", "min, hour, day, month, weekday"], ["Then", "the command"]]},
+  {"k": "rows", "title": "المثال", "rows": [["0 2 * * *", "every day at 2 AM"]]},
+  {"k": "rows", "title": "التنبيه", "rows": [["cron", "minimal environment"], ["Use", "full paths + a log file"]]},
+  {"k": "chips", "title": "المراجعة", "chips": ["Files + Permissions", "Processes + systemd", "Networking + Logs", "Scripts + Users"], "note": "series recap"},
+  {"k": "q", "title": "سؤال 1", "q": "Why sudo over root?", "terms": ["Temporary rights", "Logs who ran what"]},
+  {"k": "q", "title": "سؤال 2", "q": "apt update vs upgrade?", "terms": ["update: the list", "upgrade: versions"]},
+  {"k": "q", "title": "سؤال 3", "q": "What is 0 2 * * *?", "terms": ["Every day", "at 2 AM"]},
+  {"k": "end", "title": "الختام", "l1": "Linux", "sub": "Interview Prep", "chips": ["Users + sudo", "Packages + cron", "Good luck!"]},
+];
+export const Lesson42 = makeOS(SP, "Linux - Episode 6", "Linux");

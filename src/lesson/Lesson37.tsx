@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الأولى", "l1": "Linux", "l2": "Basics + Commands", "sub": "Interview Prep", "chip": "Episode 1"},
+  {"k": "rows", "title": "النواة", "rows": [["Kernel", "manages hardware + processes"]]},
+  {"k": "rows", "title": "التوزيعة", "rows": [["Distribution", "kernel + tools"], ["Examples", "Ubuntu, Debian, Red Hat"]]},
+  {"k": "rows", "title": "الصدفة", "rows": [["Shell", "where you type commands"], ["Popular", "bash"]]},
+  {"k": "rows", "title": "الجذر", "rows": [["Root directory", "/"], ["Everything", "lives under it"]]},
+  {"k": "rows", "title": "الإعدادات", "rows": [["/etc", "configuration files"]]},
+  {"k": "rows", "title": "المستخدمين", "rows": [["/home", "a folder per user"], ["/root", "the root user's home"]]},
+  {"k": "rows", "title": "المتغيرة", "rows": [["/var", "changing data"], ["/var/log", "logs"]]},
+  {"k": "rows", "title": "المؤقتة", "rows": [["/tmp", "temporary files"], ["/usr", "programs + libraries"]]},
+  {"k": "rows", "title": "التنقل", "rows": [["pwd", "where am I"], ["cd", "change directory"], ["ls", "list contents"]]},
+  {"k": "rows", "title": "المسارات", "rows": [["Absolute", "starts with /"], ["Relative", "from the current folder"], ["..", "one folder up"]]},
+  {"k": "rows", "title": "الإنشاء", "rows": [["mkdir", "new folder"], ["touch", "empty file"], ["cp + mv", "copy, move, rename"]]},
+  {"k": "rows", "title": "الحذف", "rows": [["rm", "deletes permanently"], ["rm -r", "removes a directory"], ["Note", "no recycle bin"]]},
+  {"k": "rows", "title": "القراءة", "rows": [["cat", "shows the whole file"], ["less", "scroll page by page"], ["head + tail", "start and end"]]},
+  {"k": "rows", "title": "المتابعة", "rows": [["tail -f", "follows new lines"], ["Useful for", "logs"]]},
+  {"k": "rows", "title": "البحث", "rows": [["grep", "searches text"], ["-i", "ignore case"], ["-n", "line numbers"], ["-r", "search a folder"]]},
+  {"k": "rows", "title": "الأنبوب", "rows": [["Pipe |", "output to the next command"], ["Example", "ls | grep log"]]},
+  {"k": "rows", "title": "التحويل", "rows": [[">", "overwrites the file"], [">>", "appends to the file"]]},
+  {"k": "rows", "title": "المجاري", "rows": [["stdin", "input"], ["stdout", "output"], ["stderr", "errors"], ["2>", "errors to a file"]]},
+  {"k": "rows", "title": "الدليل", "rows": [["man", "manual pages"], ["help option", "quick summary"]]},
+  {"k": "rows", "title": "المسار", "rows": [["PATH", "folders searched for commands"], ["Order", "left to right"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Kernel vs shell?", "terms": ["Kernel: hardware", "Shell: commands"]},
+  {"k": "q", "title": "سؤال 2", "q": "> vs >>?", "terms": ["> overwrites", ">> appends"]},
+  {"k": "q", "title": "سؤال 3", "q": "What does a pipe do?", "terms": ["Output to input", "of the next command"]},
+  {"k": "end", "title": "الختام", "l1": "Linux", "sub": "Interview Prep", "chips": ["Basics + Paths", "Files + Pipes", "Next: Permissions"]},
+];
+export const Lesson37 = makeOS(SP, "Linux - Episode 1", "Linux");

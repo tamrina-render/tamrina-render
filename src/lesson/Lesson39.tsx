@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثالثة", "l1": "Linux", "l2": "Processes + systemd", "sub": "Interview Prep", "chip": "Episode 3"},
+  {"k": "rows", "title": "العملية", "rows": [["Process", "a running program"], ["PID", "a unique number"]]},
+  {"k": "rows", "title": "العرض", "rows": [["ps aux", "lists processes"], ["top", "live view"]]},
+  {"k": "rows", "title": "الخلفية", "rows": [["Foreground", "the default"], ["Add &", "runs in the background"]]},
+  {"k": "rows", "title": "الوظائف", "rows": [["jobs", "lists background jobs"], ["fg", "brings one back"]]},
+  {"k": "rows", "title": "المقاطعة", "rows": [["Ctrl+C", "sends SIGINT"], ["Meaning", "asks the program to stop"]]},
+  {"k": "rows", "title": "الإنهاء", "rows": [["kill", "sends a signal by PID"], ["Default", "SIGTERM (15)"]]},
+  {"k": "rows", "title": "النظيف", "rows": [["SIGTERM", "asks for a clean stop"], ["Program", "can handle it"]]},
+  {"k": "rows", "title": "القسري", "rows": [["kill -9", "sends SIGKILL"], ["Program", "cannot ignore it"], ["Result", "no cleanup"]]},
+  {"k": "flow", "title": "الترتيب", "steps": ["SIGTERM first", "Wait", "SIGKILL last"], "note": "last resort"},
+  {"k": "rows", "title": "بالاسم", "rows": [["pkill", "signal by process name"], ["No need", "to find the PID"]]},
+  {"k": "rows", "title": "الأولوية", "rows": [["nice", "sets priority"], ["Higher value", "lower priority"]]},
+  {"k": "rows", "title": "الأول", "rows": [["PID 1", "systemd on most distros"]]},
+  {"k": "rows", "title": "المدير", "rows": [["systemd", "init system"], ["Also", "service manager"]]},
+  {"k": "rows", "title": "الوحدات", "rows": [["Unit", "a resource systemd manages"], ["Service unit", "ends with .service"]]},
+  {"k": "rows", "title": "التحكم", "rows": [["start", "run it now"], ["stop", "stop it"], ["restart", "stop then start"]]},
+  {"k": "rows", "title": "الحالة", "rows": [["systemctl status", "state + recent logs"]]},
+  {"k": "rows", "title": "التفعيل", "rows": [["enable", "start at boot"], ["Not", "started right now"], ["enable + now", "both together"]]},
+  {"k": "rows", "title": "الملف", "rows": [["Unit file", "Unit, Service, Install"], ["ExecStart", "the command to run"]]},
+  {"k": "rows", "title": "الاستمرار", "rows": [["Restart=on-failure", "restart after a failure"]]},
+  {"k": "rows", "title": "التحديث", "rows": [["daemon-reload", "after editing a unit file"]]},
+  {"k": "q", "title": "سؤال 1", "q": "SIGTERM vs SIGKILL?", "terms": ["TERM: clean stop", "KILL: immediate"]},
+  {"k": "q", "title": "سؤال 2", "q": "start vs enable?", "terms": ["start: now", "enable: at boot"]},
+  {"k": "q", "title": "سؤال 3", "q": "What is systemd?", "terms": ["Init system", "Service manager"]},
+  {"k": "end", "title": "الختام", "l1": "Linux", "sub": "Interview Prep", "chips": ["Processes + Signals", "systemd", "Next: Networking"]},
+];
+export const Lesson39 = makeOS(SP, "Linux - Episode 3", "Linux");

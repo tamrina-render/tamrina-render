@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الخامسة", "l1": "Linux", "l2": "Shell Scripting", "sub": "Interview Prep", "chip": "Episode 5"},
+  {"k": "rows", "title": "السكريبت", "rows": [["Script", "a file of commands"], ["First line", "#!/bin/bash"]]},
+  {"k": "rows", "title": "التشغيل", "rows": [["chmod +x", "make it executable"], ["./script.sh", "run it"]]},
+  {"k": "rows", "title": "المتغير", "rows": [["name=Ali", "no spaces around ="], ["Read it", "$name"]]},
+  {"k": "rows", "title": "الاقتباس", "rows": [["Double quotes", "expand variables"], ["Single quotes", "literal text"]]},
+  {"k": "rows", "title": "التعويض", "rows": [["$(date)", "command output"], ["Used", "inside text or variables"]]},
+  {"k": "rows", "title": "المدخلات", "rows": [["$1 $2", "script arguments"], ["$#", "argument count"], ["$@", "all arguments"]]},
+  {"k": "rows", "title": "الخروج", "rows": [["Exit code 0", "success"], ["Not 0", "failure"], ["$?", "last exit code"]]},
+  {"k": "flow", "title": "الشرط", "steps": ["if", "then", "fi"], "note": "test between brackets"},
+  {"k": "rows", "title": "الاختبارات", "rows": [["-f", "file exists"], ["-d", "directory exists"], ["-z", "string is empty"], ["-eq", "numbers equal"]]},
+  {"k": "rows", "title": "الربط", "rows": [["&&", "run next if success"], ["||", "run next if failure"]]},
+  {"k": "flow", "title": "التكرار", "steps": ["for f in *.log", "do", "done"]},
+  {"k": "rows", "title": "الحلقة", "rows": [["while", "repeats while true"], ["Can", "read a file line by line"]]},
+  {"k": "rows", "title": "الدالة", "rows": [["function", "name() { ... }"], ["Call it", "by its name"]]},
+  {"k": "rows", "title": "القراءة", "rows": [["read", "input from the user"], ["Stored in", "a variable"]]},
+  {"k": "rows", "title": "الأمان", "rows": [["set -e", "stop on first failure"], ["set -u", "unset variable is an error"]]},
+  {"k": "rows", "title": "الأنابيب", "rows": [["set -o pipefail", "fails if any step fails"], ["Common", "set -euo pipefail"]]},
+  {"k": "rows", "title": "الصحيح", "rows": [["Quote", "\"$file\""], ["Why", "names with spaces"]]},
+  {"k": "rows", "title": "التصحيح", "rows": [["bash -x", "prints each command"], ["Shows", "where it stops"]]},
+  {"k": "rows", "title": "الإرجاع", "rows": [["exit 1", "returns failure"], ["Useful in", "automation + pipelines"]]},
+  {"k": "rows", "title": "المعالجة", "rows": [["sed", "search and replace"], ["awk", "pick a column"]]},
+  {"k": "q", "title": "سؤال 1", "q": "What is an exit code?", "terms": ["0 = success", "Other = failure"]},
+  {"k": "q", "title": "سؤال 2", "q": "Single vs double quotes?", "terms": ["Double: expands", "Single: literal"]},
+  {"k": "q", "title": "سؤال 3", "q": "What does set -e do?", "terms": ["Stops on failure", "in most cases"]},
+  {"k": "end", "title": "الختام", "l1": "Linux", "sub": "Interview Prep", "chips": ["Variables + Logic", "Loops + Functions", "Next: Users"]},
+];
+export const Lesson41 = makeOS(SP, "Linux - Episode 5", "Linux");
