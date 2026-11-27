@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الخامسة", "l1": "Grafana", "l2": "Visualization", "sub": "Interview Prep", "chip": "Episode 5"},
+  {"k": "rows", "title": "التعريف", "rows": [["Grafana", "open source visualization"], ["Does", "query, visualize, alert"], ["Data", "metrics, logs, traces"]]},
+  {"k": "rows", "title": "المنظومة", "rows": [["Loki", "logs"], ["Tempo", "traces"], ["Mimir", "long-term Prometheus storage"]]},
+  {"k": "cmp", "title": "الفرق المهم", "l": "Prometheus", "r": "Grafana", "ls": ["Collects", "and stores"], "rs": ["Queries", "and displays"]},
+  {"k": "rows", "title": "مصدر البيانات", "rows": [["Data source", "connection to a storage backend"]]},
+  {"k": "flow", "title": "الإضافة", "steps": ["Connections", "Data sources", "Add new"], "note": "admin only"},
+  {"k": "rows", "title": "مع Prometheus", "rows": [["Prometheus", "built in to Grafana"], ["Queries", "written in PromQL"]]},
+  {"k": "chips", "title": "بيدعم كمان", "chips": ["Mimir", "Thanos"], "note": "Prometheus-compatible backends"},
+  {"k": "chips", "title": "بيدعم إيه", "chips": ["Metrics", "Alerting", "Annotations", "Recording rules"]},
+  {"k": "rows", "title": "لوحة المتابعة", "rows": [["Dashboard", "a set of panels"], ["Layout", "rows or tabs"]]},
+  {"k": "rows", "title": "اللوحة الفرعية", "rows": [["Panel", "query plus visualization"]]},
+  {"k": "rows", "title": "الدمج", "rows": [["One dashboard", "many data sources"]]},
+  {"k": "rows", "title": "المتغيرات", "rows": [["Variable", "placeholder"], ["Shown as", "a drop-down list"]]},
+  {"k": "flow", "title": "الفايدة", "steps": ["One dashboard", "Variable selects", "Any server"]},
+  {"k": "rows", "title": "الاستكشاف", "rows": [["Explore", "query and investigate"], ["No need", "to build a dashboard"]]},
+  {"k": "rows", "title": "التنبيهات", "rows": [["Grafana Alerting", "alert rules"], ["Queries from", "many data sources"]]},
+  {"k": "flow", "title": "قاعدة التنبيه", "steps": ["Queries", "Threshold condition", "Alert fires"]},
+  {"k": "rows", "title": "جهة الاتصال", "rows": [["Contact point", "message and destination"], ["Examples", "email, Slack, PagerDuty, webhook"]]},
+  {"k": "rows", "title": "السياسات", "rows": [["Notification policies", "flexible routing"]]},
+  {"k": "rows", "title": "الأتمتة", "rows": [["Provisioning", "config files"], ["Defines", "data sources and dashboards"]]},
+  {"k": "rows", "title": "التحكم في الإصدارات", "rows": [["Files in Git", "version controlled"], ["Fits", "GitOps"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Prometheus vs Grafana?", "terms": ["Collects + stores", "Queries + displays"]},
+  {"k": "q", "title": "سؤال 2", "q": "What is a data source?", "terms": ["Storage connection", "Example: Prometheus"]},
+  {"k": "q", "title": "سؤال 3", "q": "Why use variables?", "terms": ["One dashboard", "Many targets"]},
+  {"k": "end", "title": "الختام", "l1": "Grafana", "sub": "Interview Prep", "chips": ["Data source", "Dashboard", "Panel", "Variables", "Provisioning", "Next: Full Stack"]},
+];
+export const Lesson23 = makeOS(SP, "Grafana - Episode 5", "Grafana");
