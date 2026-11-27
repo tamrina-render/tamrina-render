@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثالثة", "l1": "PromQL", "l2": "Query Language", "sub": "Interview Prep", "chip": "Episode 3"},
+  {"k": "rows", "title": "الفكرة", "rows": [["PromQL", "query language"], ["Uses", "labels to filter and group"]]},
+  {"k": "rows", "title": "أبسط استعلام", "rows": [["Metric name", "returns all its series"], ["Example", "http_requests_total"]]},
+  {"k": "rows", "title": "الفلترة", "rows": [["Label matchers", "in curly braces"], ["Example", "job=\"api-server\""]]},
+  {"k": "chips", "title": "أنواع المطابقة", "chips": ["=", "!=", "=~", "!~"], "note": "equal, not equal, regex, not regex"},
+  {"k": "rows", "title": "Regex", "rows": [["Fully anchored", "matches the whole value"], ["Example", "env=~\"foo\" means ^foo$"]]},
+  {"k": "rows", "title": "Instant vector", "rows": [["One sample", "per series, same moment"]]},
+  {"k": "rows", "title": "Range vector", "rows": [["Many samples", "per series over a range"]]},
+  {"k": "chips", "title": "باقي الأنواع", "chips": ["Scalar", "String"], "note": "a plain number, and a string"},
+  {"k": "rows", "title": "الصيغة", "rows": [["Range selector", "duration in brackets"], ["Example", "[5m]"]]},
+  {"k": "rows", "title": "الرجوع للماضي", "rows": [["offset", "query the past"], ["Example", "offset 1h"]]},
+  {"k": "rows", "title": "rate", "rows": [["rate()", "per-second increase of a counter"], ["Input", "a range vector"]]},
+  {"k": "rows", "title": "للـ Counters", "rows": [["rate", "counters only"], ["Best for", "alerting"]]},
+  {"k": "rows", "title": "irate", "rows": [["irate()", "instant rate"], ["Best for", "graphing fast, volatile counters"]]},
+  {"k": "rows", "title": "increase", "rows": [["increase()", "total increase in the window"], ["Equals", "rate times seconds"]]},
+  {"k": "rows", "title": "إعادة التشغيل", "rows": [["rate", "adjusts for counter resets"], ["Result", "the safe choice"]]},
+  {"k": "rows", "title": "التجميع", "rows": [["sum", "aggregation operator"], ["Result", "fewer series"]]},
+  {"k": "cmp", "title": "by و without", "l": "by", "r": "without", "ls": ["Keeps", "the listed labels"], "rs": ["Removes", "the listed labels"]},
+  {"k": "flow", "title": "مثال", "steps": ["rate()", "sum by (job)", "Rate per job"]},
+  {"k": "rows", "title": "Histogram", "rows": [["histogram_quantile", "takes a quantile, like 0.9"], ["Input", "rate of the buckets"]]},
+  {"k": "chips", "title": "العمليات", "chips": ["Arithmetic", "Comparison", "Logical"], "note": "used in alerts, like value above a limit"},
+  {"k": "q", "title": "سؤال 1", "q": "Instant vs range vector?", "terms": ["One sample", "Samples over time"]},
+  {"k": "q", "title": "سؤال 2", "q": "When do you use rate?", "terms": ["Counters only", "Alerting"]},
+  {"k": "q", "title": "سؤال 3", "q": "What are by and without?", "terms": ["by: keep labels", "without: drop labels"]},
+  {"k": "end", "title": "الختام", "l1": "PromQL", "sub": "Interview Prep", "chips": ["Matchers", "Vectors", "rate", "sum by", "histogram_quantile", "Next: Alerting"]},
+];
+export const Lesson21 = makeOS(SP, "Prometheus - Episode 3", "Prometheus");
