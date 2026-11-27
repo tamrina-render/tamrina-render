@@ -27,9 +27,9 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
     <Frame title={sp.title} n={n}>
       {sp.rows.map(([a, b], i) => (
         <g key={a} opacity={ap(t, 0.8 + i * 2.4)}>
-          <Chip x={140} y={220 + i * 150} w={720} label={a} col={COLS[i % 5]} s={a.length > 22 ? 30 : 34} />
-          <Arr x1={890} y1={262 + i * 150} x2={980} y2={262 + i * 150} />
-          <T x={1010} y={276 + i * 150} s={36} a="start" c={C.ink} w={600}>{b}</T>
+          <Chip x={140} y={290 + i * 150} w={720} label={a} col={COLS[i % 5]} s={a.length > 22 ? 30 : 34} />
+          <Arr x1={890} y1={332 + i * 150} x2={980} y2={332 + i * 150} />
+          <T x={1010} y={346 + i * 150} s={36} a="start" c={C.ink} w={600}>{b}</T>
         </g>
       ))}
     </Frame>
@@ -40,33 +40,33 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
         const per = sp.chips.length <= 3 ? sp.chips.length : sp.chips.length === 4 ? 2 : 3;
         const row = Math.floor(i / per), col = i % per, inRow = Math.min(per, sp.chips.length - row * per);
         const w = 520, gap = 50, x0 = 960 - (inRow * w + (inRow - 1) * gap) / 2;
-        return <Chip key={a} x={x0 + col * (w + gap)} y={260 + row * 150} w={w} label={a} col={COLS[i % 5]} s={a.length > 20 ? 30 : 36} o={ap(t, 0.8 + i * 1.6)} />;
+        return <Chip key={a} x={x0 + col * (w + gap)} y={330 + row * 150} w={w} label={a} col={COLS[i % 5]} s={a.length > 20 ? 30 : 36} o={ap(t, 0.8 + i * 1.6)} />;
       })}
-      {sp.note && <T x={960} y={760} s={46} c={C.grey} o={ap(t, 0.8 + sp.chips.length * 1.6)} w={700}>{sp.note}</T>}
+      {sp.note && <T x={960} y={800} s={46} c={C.grey} o={ap(t, 0.8 + sp.chips.length * 1.6)} w={700}>{sp.note}</T>}
     </Frame>
   );
   if (sp.k === "flow") {
     const m = sp.steps.length, gap = 100, w = Math.min(520, (1700 - (m - 1) * gap) / m), x0 = 960 - (m * w + (m - 1) * gap) / 2;
     return (
       <Frame title={sp.title} n={n}>
+        {sp.steps.slice(1).map((a, i) => <Arr key={"ar" + a} x1={x0 + i * (w + gap) + w + 14} y1={442} x2={x0 + (i + 1) * (w + gap) - 14} y2={442} o={ap(t, 0.8 + (i + 1) * 2)} />)}
         {sp.steps.map((a, i) => (
           <g key={a} opacity={ap(t, 0.8 + i * 2)}>
-            <Chip x={x0 + i * (w + gap)} y={340} w={w} label={a} col={COLS[i % 5]} s={a.length > 16 ? 28 : 34} />
-            {i < m - 1 && <Arr x1={x0 + i * (w + gap) + w + 14} y1={382} x2={x0 + (i + 1) * (w + gap) - 14} y2={382} />}
+            <Chip x={x0 + i * (w + gap)} y={400} w={w} label={a} col={COLS[i % 5]} s={a.length > 16 ? 28 : 34} />
           </g>
         ))}
-        {sp.note && <T x={960} y={620} s={46} c={C.grey} o={ap(t, 0.8 + m * 2)} w={700}>{sp.note}</T>}
+        {sp.note && <T x={960} y={690} s={46} c={C.grey} o={ap(t, 0.8 + m * 2)} w={700}>{sp.note}</T>}
       </Frame>
     );
   }
   if (sp.k === "q") return (
     <Frame title={sp.title} n={n}>
-      <Box x={200} y={190} w={1520} h={230} col={C.blue} fill="#fff" o={ap(t, 0.3)}>
-        <T x={960} y={325} s={sp.q.length > 40 ? 46 : 54} c={C.blue} w={800}>{sp.q}</T>
+      <Box x={200} y={230} w={1520} h={230} col={C.blue} fill="#fff" o={ap(t, 0.3)}>
+        <T x={960} y={365} s={sp.q.length > 40 ? 46 : 54} c={C.blue} w={800}>{sp.q}</T>
       </Box>
       {sp.terms.map((a, i) => {
         const m = sp.terms.length, w = Math.min(460, 1700 / m - 40), x0 = 960 - (m * w + (m - 1) * 40) / 2;
-        return <Chip key={a} x={x0 + i * (w + 40)} y={560} w={w} label={a} col={COLS[i % 5]} s={a.length > 18 ? 28 : 32} o={ap(t, 2 + i * 1.5)} />;
+        return <Chip key={a} x={x0 + i * (w + 40)} y={620} w={w} label={a} col={COLS[i % 5]} s={a.length > 18 ? 28 : 32} o={ap(t, 2 + i * 1.5)} />;
       })}
     </Frame>
   );
@@ -74,9 +74,9 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
     <Frame title={sp.title} n={n}>
       {[[sp.l, sp.ls, 150, C.grey], [sp.r, sp.rs, 1010, C.blue]].map(([h, ls, x, col], j) => (
         <g key={String(h)} opacity={ap(t, 0.6 + j * 3)}>
-          <Chip x={(x as number) + 20} y={190} w={700} label={String(h)} col={col as string} s={36} />
-          <Box x={x as number} y={300} w={760} h={90 + (ls as string[]).length * 100} col={col as string}>
-            {(ls as string[]).map((l, i) => <T key={l} x={(x as number) + 380} y={385 + i * 100} s={34} w={700}>{l}</T>)}
+          <Chip x={(x as number) + 20} y={230} w={700} label={String(h)} col={col as string} s={36} />
+          <Box x={x as number} y={340} w={760} h={90 + (ls as string[]).length * 100} col={col as string}>
+            {(ls as string[]).map((l, i) => <T key={l} x={(x as number) + 380} y={425 + i * 100} s={34} w={700}>{l}</T>)}
           </Box>
         </g>
       ))}

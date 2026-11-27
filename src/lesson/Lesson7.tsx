@@ -7,7 +7,7 @@ const SP: Spec[] = [
   { k: "chips", title: "المعادلة", chips: ["Kubernetes", "+ RHCOS", "+ Install & Update", "+ Operators", "+ Web console", "+ Security"] },
   { k: "chips", title: "أماكن التشغيل", chips: ["Bare metal", "Virtual machines", "On-premise", "Cloud"] },
   { k: "rows", title: "نظام التشغيل", rows: [["Control plane", "RHCOS required"], ["Workers", "RHCOS or RHEL"]] },
-  { k: "chips", title: "جوه RHCOS", chips: ["Ignition", "CRI-O", "kubelet"], note: "configure, run, manage" },
+  { k: "chips", title: "جوه نظام التشغيل", chips: ["Ignition", "CRI-O", "kubelet"], note: "configure, run, manage" },
   { k: "rows", title: "المحرك", rows: [["OpenShift 3", "Docker Engine"], ["Now", "CRI-O"]] },
   { k: "rows", title: "العقد", rows: [["Control plane", "manages the work"], ["Worker nodes", "run the containers"]] },
   { k: "rows", title: "التثبيت", rows: [["Supported cloud", "one command"], ["Data center", "also supported"]] },
