@@ -117,6 +117,7 @@ const S2: React.FC<P> = ({ t }) => {
   return (
     <Frame title="خمس حالات بس" n={2}>
       {ph.map(([l, c], i) => <Chip key={l} x={110 + i * 350} y={300} w={320} label={l} col={c} o={ap(t, 0.6 + i * 0.6)} />)}
+      <T x={960} y={590} s={34} c={C.grey} o={ap(t, 5.5)}>STATUS</T>
       <Chip x={600} y={620} w={720} label="CrashLoopBackOff" col={C.red} o={ap(t, 5.5)} s={44} />
       <ARt x={960} y={780} s={52} c={C.ink} o={ap(t, 6.5)}>دي مش واحدة من الخمسة</ARt>
       {t > 6.8 && <g opacity={ap(t, 6.8)}><line x1={600} y1={662} x2={1320} y2={662} stroke={C.ink} strokeWidth={8} /></g>}
@@ -405,7 +406,7 @@ const S18: React.FC<P> = ({ t }) => {
 };
 
 const S19: React.FC<P> = ({ t }) => {
-  const cyc = (t * 0.45) % 1;
+  const cyc = (t * 0.33) % 1;
   const ang = cyc * Math.PI * 2 - Math.PI / 2;
   const cx = 600, cy = 560, R = 250;
   const stages: [string, string][] = [["start", C.green], ["crash", C.red], ["wait", C.amber]];
@@ -417,7 +418,8 @@ const S19: React.FC<P> = ({ t }) => {
         const a = -Math.PI / 2 + (i / 3) * Math.PI * 2;
         return <g key={l}><circle cx={cx + R * Math.cos(a)} cy={cy + R * Math.sin(a)} r={60} fill={c} /><T x={cx + R * Math.cos(a)} y={cy + R * Math.sin(a) + 12} s={32} c="#fff">{l}</T></g>;
       })}
-      <circle cx={cx + R * Math.cos(ang)} cy={cy + R * Math.sin(ang)} r={22} fill={C.ink} />
+      <circle cx={cx + R * Math.cos(ang)} cy={cy + R * Math.sin(ang)} r={30} fill="#fff" stroke={C.blue} strokeWidth={10} />
+      <T x={cx} y={cy + 110} s={30} c={C.blue} w={700}>container</T>
       <Chip x={420} y={440} w={360} label="CrashLoop" col={C.red} s={32} o={ap(t, 0.2)} />
       <T x={1260} y={250} s={34} c={C.grey}>wait before restart (sec)</T>
       {bars.map((b, i) => (
@@ -501,8 +503,8 @@ const S24: React.FC<P> = ({ t }) => {
       ))}
       <g opacity={ap(t, 6.5)}>
         <Box x={200} y={740} w={1520} h={250} col={C.blue}>
-          <T x={960} y={820} s={38} c={C.blue}>ErrImagePull vs ImagePullBackOff ?</T>
-          <T x={960} y={900} s={38} c={C.blue}>a node goes down, what happens to its Pod ?</T>
+          <T x={960} y={820} s={38} c={C.blue}>ErrImagePull vs ImagePullBackOff?</T>
+          <T x={960} y={900} s={38} c={C.blue}>a node goes down, what happens to its Pod?</T>
         </Box>
       </g>
     </Frame>
