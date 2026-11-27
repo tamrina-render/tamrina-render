@@ -11,7 +11,7 @@ const SP: Spec[] = [
   {"k": "rows", "title": "الخروج", "rows": [["Exit code 0", "success"], ["Not 0", "failure"], ["$?", "last exit code"]]},
   {"k": "flow", "title": "الشرط", "steps": ["if", "then", "fi"], "note": "test between brackets"},
   {"k": "rows", "title": "الاختبارات", "rows": [["-f", "file exists"], ["-d", "directory exists"], ["-z", "string is empty"], ["-eq", "numbers equal"]]},
-  {"k": "rows", "title": "الربط", "rows": [["&&", "run next if success"], ["||", "run next if failure"]]},
+  {"k": "rows", "title": "الربط", "rows": [["&&", "run next if success"], ["Double bar", "run next if failure"]]},
   {"k": "flow", "title": "التكرار", "steps": ["for f in *.log", "do", "done"]},
   {"k": "rows", "title": "الحلقة", "rows": [["while", "repeats while true"], ["Can", "read a file line by line"]]},
   {"k": "rows", "title": "الدالة", "rows": [["function", "name() { ... }"], ["Call it", "by its name"]]},
