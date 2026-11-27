@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الأولى", "l1": "CI/CD", "l2": "Jenkins Basics", "sub": "Interview Prep", "chip": "Episode 1"},
+  {"k": "flow", "title": "التعريف", "steps": ["Build", "Test + Deploy", "Monitor"], "note": "every code change, continuously"},
+  {"k": "rows", "title": "الفكرة", "rows": [["Goal", "no new code on buggy versions"]]},
+  {"k": "rows", "title": "الفايدة", "rows": [["Catches bugs", "early in development"]]},
+  {"k": "rows", "title": "المعايير", "rows": [["Deployed code", "meets your standards"]]},
+  {"k": "rows", "title": "CI", "rows": [["Continuous Integration", "merge, build, test automatically"]]},
+  {"k": "rows", "title": "CD", "rows": [["Continuous Delivery", "or Deployment"], ["Goal", "get builds to users"]]},
+  {"k": "flow", "title": "خط الإنتاج", "steps": ["Code", "Pipeline", "Users"]},
+  {"k": "rows", "title": "Jenkins", "rows": [["Open source", "automation server"], ["Used for", "build, test, deliver"]]},
+  {"k": "rows", "title": "الإضافات", "rows": [["Plugins", "extend Jenkins"]]},
+  {"k": "flow", "title": "البناء الموزع", "steps": ["Controller", "Agents", "Executors"]},
+  {"k": "rows", "title": "المتحكم", "rows": [["Controller", "the Jenkins service itself"], ["Role", "the brain"]]},
+  {"k": "chips", "title": "مهام المتحكم", "chips": ["Configuration", "Authorization", "Authentication"], "note": "decides how, when and where"},
+  {"k": "rows", "title": "العقدة", "rows": [["Node", "a machine that runs builds"], ["Types", "agents and built-in node"]]},
+  {"k": "rows", "title": "الداخلية", "rows": [["Built-in node", "inside the controller"], ["Running tasks", "discouraged"]]},
+  {"k": "rows", "title": "الوكيل", "rows": [["Agent", "small Java client"], ["Connects to", "the controller"]]},
+  {"k": "rows", "title": "النظام", "rows": [["Agent OS", "any system with Java"]]},
+  {"k": "rows", "title": "المنفذ", "rows": [["Executor", "a slot for tasks"], ["Equals", "a thread in the agent"]]},
+  {"k": "rows", "title": "العدد", "rows": [["Executors count", "concurrent tasks"]]},
+  {"k": "rows", "title": "الأكثر أمانًا", "rows": [["Safest", "one executor per node"]]},
+  {"k": "rows", "title": "الاستثناء", "rows": [["Small tasks", "one per CPU core"], ["Watch", "CPU, memory, I/O"]]},
+  {"k": "q", "title": "سؤال 1", "q": "CI vs CD?", "terms": ["CI: merge + test", "CD: deliver to users"]},
+  {"k": "q", "title": "سؤال 2", "q": "Controller vs agent?", "terms": ["Controller: brain", "Agent: runs tasks"]},
+  {"k": "q", "title": "سؤال 3", "q": "What is an executor?", "terms": ["A task slot", "Sets concurrency"]},
+  {"k": "end", "title": "الختام", "l1": "CI/CD", "sub": "Interview Prep", "chips": ["CI + CD", "Controller + Agent", "Next: Pipeline"]},
+];
+export const Lesson25 = makeOS(SP, "CI/CD - Episode 1", "Jenkins");
