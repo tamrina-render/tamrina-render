@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الأولى", "l1": "Monitoring", "l2": "Prometheus", "sub": "Interview Prep", "chip": "Episode 1"},
+  {"k": "chips", "title": "المشكلة", "chips": ["App is slow", "No numbers", "No answers"], "note": "why monitoring matters"},
+  {"k": "rows", "title": "المقاييس", "rows": [["Metrics", "numeric measurements"], ["Example", "request latency"], ["Example", "active connections"]]},
+  {"k": "flow", "title": "الفايدة", "steps": ["Request count", "Find the cause", "Add servers"]},
+  {"k": "rows", "title": "Prometheus", "rows": [["Open source", "monitoring and alerting"], ["Built at", "SoundCloud"], ["Joined CNCF", "2016"]]},
+  {"k": "rows", "title": "السلاسل الزمنية", "rows": [["Time series", "values with timestamps"], ["Labels", "key-value pairs"]]},
+  {"k": "flow", "title": "الهوية", "steps": ["Metric name", "+ labels", "One time series"]},
+  {"k": "rows", "title": "الاستعلام", "rows": [["PromQL", "query language"], ["Uses", "the labels dimensions"]]},
+  {"k": "rows", "title": "الاستقلال", "rows": [["Single server", "autonomous"], ["No", "distributed storage"]]},
+  {"k": "flow", "title": "نموذج Pull", "steps": ["Prometheus", "HTTP scrape", "Targets"], "note": "Prometheus asks the targets"},
+  {"k": "chips", "title": "الأهداف", "chips": ["Static config", "Service discovery"], "note": "how targets are found"},
+  {"k": "rows", "title": "المكون الأول", "rows": [["Prometheus server", "scrapes targets"], ["Stores", "time series data"]]},
+  {"k": "rows", "title": "المكون الثاني", "rows": [["Client libraries", "instrument app code"]]},
+  {"k": "rows", "title": "المكون الثالث", "rows": [["Exporters", "for services you can't change"], ["Examples", "HAProxy, Linux stats"]]},
+  {"k": "rows", "title": "المكون الرابع", "rows": [["Pushgateway", "short-lived jobs"]]},
+  {"k": "rows", "title": "المكون الخامس", "rows": [["Alertmanager", "handles the alerts"], ["Receives from", "Prometheus"]]},
+  {"k": "rows", "title": "اللغة", "rows": [["Written in Go", "most components"], ["Result", "simple static binary"]]},
+  {"k": "flow", "title": "جوه السيرفر", "steps": ["Stores samples", "Runs rules", "Aggregates or alerts"]},
+  {"k": "rows", "title": "العرض", "rows": [["Grafana", "visualization"], ["Or any tool", "that reads the API"]]},
+  {"k": "chips", "title": "مناسب لإيه", "chips": ["Numeric time series", "Microservices", "Dynamic environments"]},
+  {"k": "rows", "title": "الاعتمادية", "rows": [["Designed for", "reliability"], ["During outage", "diagnose quickly"]]},
+  {"k": "q", "title": "سؤال 1", "q": "What is Prometheus?", "terms": ["Open source", "Metrics as time series"]},
+  {"k": "q", "title": "سؤال 2", "q": "How does it collect data?", "terms": ["Pull model", "HTTP scrape"]},
+  {"k": "q", "title": "سؤال 3", "q": "What are its components?", "terms": ["Server", "Exporters", "Alertmanager"]},
+  {"k": "end", "title": "الختام", "l1": "Prometheus", "sub": "Interview Prep", "chips": ["Metrics", "Time series", "Pull", "Exporters", "Alertmanager", "Next: Data Model"]},
+];
+export const Lesson19 = makeOS(SP, "Prometheus - Episode 1", "Prometheus");
