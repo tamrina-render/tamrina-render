@@ -14,7 +14,8 @@ export type Spec =
   | { k: "cmp"; title: string; l: string; r: string; ls: string[]; rs: string[] }
   | { k: "end"; title: string; l1: string; sub: string; chips: string[] };
 
-export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
+export const mk = (sp: Spec, n: number, dur = 20): React.FC<P> => ({ t }) => {
+  const g = (i: number, cnt: number, gap: number, base = 0.6) => base + i * Math.min(gap, Math.max(0.3, (dur - base - 1.4) / Math.max(cnt, 1)));
   if (sp.k === "title") return (
     <Frame title={sp.title} n={n}>
       <T x={960} y={330} s={120} w={900} o={ap(t, 0.1)}>{sp.l1}</T>
@@ -26,7 +27,7 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
   if (sp.k === "rows") return (
     <Frame title={sp.title} n={n}>
       {sp.rows.map(([a, b], i) => (
-        <g key={a} opacity={ap(t, 0.8 + i * 1.8)}>
+        <g key={a} opacity={ap(t, g(i, sp.rows.length, 1.8))}>
           <Chip x={140} y={290 + i * 150} w={720} label={a} col={COLS[i % 5]} s={a.length > 22 ? 30 : 34} />
           <Arr x1={890} y1={332 + i * 150} x2={980} y2={332 + i * 150} />
           <T x={1010} y={346 + i * 150} s={36} a="start" c={C.ink} w={600}>{b}</T>
@@ -40,22 +41,22 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
         const per = sp.chips.length <= 3 ? sp.chips.length : sp.chips.length === 4 ? 2 : 3;
         const row = Math.floor(i / per), col = i % per, inRow = Math.min(per, sp.chips.length - row * per);
         const w = 520, gap = 50, x0 = 960 - (inRow * w + (inRow - 1) * gap) / 2;
-        return <Chip key={a} x={x0 + col * (w + gap)} y={330 + row * 150} w={w} label={a} col={COLS[i % 5]} s={a.length > 20 ? 30 : 36} o={ap(t, 0.8 + i * 1.0)} />;
+        return <Chip key={a} x={x0 + col * (w + gap)} y={330 + row * 150} w={w} label={a} col={COLS[i % 5]} s={a.length > 20 ? 30 : 36} o={ap(t, g(i, sp.chips.length, 1.0))} />;
       })}
-      {sp.note && <T x={960} y={800} s={46} c={C.grey} o={ap(t, 0.8 + sp.chips.length * 1.0)} w={700}>{sp.note}</T>}
+      {sp.note && <T x={960} y={800} s={46} c={C.grey} o={ap(t, g(sp.chips.length, sp.chips.length, 1.0))} w={700}>{sp.note}</T>}
     </Frame>
   );
   if (sp.k === "flow") {
     const m = sp.steps.length, gap = 100, w = Math.min(520, (1700 - (m - 1) * gap) / m), x0 = 960 - (m * w + (m - 1) * gap) / 2;
     return (
       <Frame title={sp.title} n={n}>
-        {sp.steps.slice(1).map((a, i) => <Arr key={"ar" + a} x1={x0 + i * (w + gap) + w + 14} y1={442} x2={x0 + (i + 1) * (w + gap) - 14} y2={442} o={ap(t, 0.8 + (i + 1) * 1.3)} />)}
+        {sp.steps.slice(1).map((a, i) => <Arr key={"ar" + a} x1={x0 + i * (w + gap) + w + 14} y1={442} x2={x0 + (i + 1) * (w + gap) - 14} y2={442} o={ap(t, g(i + 1, m, 1.3))} />)}
         {sp.steps.map((a, i) => (
-          <g key={a} opacity={ap(t, 0.8 + i * 1.3)}>
+          <g key={a} opacity={ap(t, g(i, m, 1.3))}>
             <Chip x={x0 + i * (w + gap)} y={400} w={w} label={a} col={COLS[i % 5]} s={a.length > 16 ? 28 : 34} />
           </g>
         ))}
-        {sp.note && <T x={960} y={690} s={46} c={C.grey} o={ap(t, 0.8 + m * 1.3)} w={700}>{sp.note}</T>}
+        {sp.note && <T x={960} y={690} s={46} c={C.grey} o={ap(t, g(m, m, 1.3))} w={700}>{sp.note}</T>}
       </Frame>
     );
   }
@@ -66,7 +67,7 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
       </Box>
       {sp.terms.map((a, i) => {
         const m = sp.terms.length, w = Math.min(460, 1700 / m - 40), x0 = 960 - (m * w + (m - 1) * 40) / 2;
-        return <Chip key={a} x={x0 + i * (w + 40)} y={620} w={w} label={a} col={COLS[i % 5]} s={a.length > 18 ? 28 : 32} o={ap(t, 1.5 + i * 1.0)} />;
+        return <Chip key={a} x={x0 + i * (w + 40)} y={620} w={w} label={a} col={COLS[i % 5]} s={a.length > 18 ? 28 : 32} o={ap(t, g(i, sp.terms.length, 1.0, 1.2))} />;
       })}
     </Frame>
   );
@@ -93,8 +94,8 @@ export const mk = (sp: Spec, n: number): React.FC<P> => ({ t }) => {
 
 export type OSProps = { starts: number[]; total: number; ep?: string };
 export const makeOS = (specs: Spec[], defEp: string, brand = "OpenShift") => {
-  const SC = specs.map((s, i) => mk(s, i + 1));
   const L: React.FC<OSProps> = ({ starts, total, ep }) => {
+    const SC = React.useMemo(() => specs.map((s, i) => mk(s, i + 1, (i + 1 < starts.length ? starts[i + 1] : total) - starts[i])), [starts, total]);
     const { fps } = useVideoConfig();
     const [h] = React.useState(() => delayRender("fonts"));
     React.useEffect(() => { loadFonts().then(() => continueRender(h)).catch(() => continueRender(h)); }, [h]);
