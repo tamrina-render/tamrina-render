@@ -69,7 +69,7 @@ const S4: React.FC<P> = ({ t }) => (
   </Frame>
 );
 const S5: React.FC<P> = ({ t }) => {
-  const it = [["requests too high", "أكبر من أي node"], ["nodes are full", "مفيش مكان"], ["hostPort", "عدد Pods محدود"], ["taint / selector", "بيمنع الجدولة"]];
+  const it = [["requests too high", "أكبر من المتاح"], ["nodes are full", "مفيش مكان"], ["hostPort", "أماكن محدودة"], ["taint / selector", "بيمنع الجدولة"]];
   return (
     <Frame title="الأسباب" n={5}>
       {it.map(([a, b], i) => (
