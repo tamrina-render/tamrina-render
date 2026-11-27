@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الرابعة", "l1": "GitLab CI", "l2": "Runners", "sub": "Interview Prep", "chip": "Episode 4"},
+  {"k": "rows", "title": "التعريف", "rows": [["GitLab CI/CD", "build, test, deploy, monitor"], ["Method", "continuous"]]},
+  {"k": "rows", "title": "الملف", "rows": [[".gitlab-ci.yml", "in the project root"]]},
+  {"k": "rows", "title": "المحتوى", "rows": [["The file defines", "stages, jobs, scripts"]]},
+  {"k": "rows", "title": "الاسم", "rows": [["File name", "case-sensitive"], ["Custom name", "allowed"]]},
+  {"k": "flow", "title": "التركيب", "steps": ["Pipeline", "Stages", "Jobs"]},
+  {"k": "rows", "title": "المراحل", "rows": [["Stages", "define the order"], ["Examples", "build, test, deploy"]]},
+  {"k": "rows", "title": "المهام", "rows": [["Jobs", "tasks inside a stage"], ["Example", "compile or test"]]},
+  {"k": "rows", "title": "الربط", "rows": [["stage", "puts a job in a stage"]]},
+  {"k": "rows", "title": "المهمة", "rows": [["A job", "has a name"], ["And", "a script"]]},
+  {"k": "rows", "title": "الأوامر", "rows": [["script", "shell commands"], ["Run by", "the runner"]]},
+  {"k": "rows", "title": "قبل وبعد", "rows": [["before_script", "before the job"], ["after_script", "after the job"]]},
+  {"k": "rows", "title": "Docker", "rows": [["image", "use a Docker image"], ["services", "add service images"]]},
+  {"k": "chips", "title": "التشغيل", "chips": ["Commit", "Merge request", "Schedule", "Manual"], "note": "each creates a pipeline"},
+  {"k": "rows", "title": "المنفذ", "rows": [["Runner", "runs the jobs"]]},
+  {"k": "rows", "title": "التسجيل", "rows": [["Register", "with GitLab first"], ["Result", "a persistent connection"]]},
+  {"k": "flow", "title": "التنفيذ", "steps": ["Pipeline starts", "Jobs available", "Runners pick up"]},
+  {"k": "rows", "title": "المهمة الواحدة", "rows": [["One job", "per runner"], ["Results", "reported in real time"]]},
+  {"k": "rows", "title": "الطابور", "rows": [["Jobs", "wait in a queue"], ["Match", "tags, type, status, capacity"]]},
+  {"k": "rows", "title": "الوسوم", "rows": [["tags", "select the runner"]]},
+  {"k": "chips", "title": "المنفذات", "chips": ["Shell", "Docker", "Kubernetes"], "note": "runner executors"},
+  {"k": "rows", "title": "الأنواع", "rows": [["Shared", "or group runners"], ["Project runner", "dedicated needs"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Stage vs job?", "terms": ["Stage: order", "Job: the task"]},
+  {"k": "q", "title": "سؤال 2", "q": "What is a runner?", "terms": ["Runs the jobs", "Registered with GitLab"]},
+  {"k": "end", "title": "الختام", "l1": "GitLab CI", "sub": "Interview Prep", "chips": ["Stages + Jobs", "Runners", "Next: Variables"]},
+];
+export const Lesson28 = makeOS(SP, "GitLab CI - Episode 4", "GitLab CI");
