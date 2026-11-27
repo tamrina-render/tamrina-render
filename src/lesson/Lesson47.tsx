@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الخامسة", "l1": "Networking", "l2": "LB + NAT + Firewalls", "sub": "Interview Prep", "chip": "Episode 5"},
+  {"k": "rows", "title": "التوزيع", "rows": [["Load balancer", "spreads traffic across servers"]]},
+  {"k": "rows", "title": "الفائدة", "rows": [["Load", "is shared"], ["Server down", "traffic continues"]]},
+  {"k": "rows", "title": "الفحص", "rows": [["Health checks", "find healthy servers"]]},
+  {"k": "rows", "title": "الطرق", "rows": [["Round robin", "in turn"], ["Least connections", "the least busy"]]},
+  {"k": "rows", "title": "الرابعة", "rows": [["Layer 4", "TCP + UDP"]]},
+  {"k": "rows", "title": "السابعة", "rows": [["Layer 7", "understands HTTP"], ["Routes by", "URL or headers"]]},
+  {"k": "rows", "title": "أمازون", "rows": [["ALB", "Layer 7"], ["NLB", "Layer 4"]]},
+  {"k": "rows", "title": "العكسي", "rows": [["Reverse proxy", "in front of servers"]]},
+  {"k": "rows", "title": "التشفير", "rows": [["TLS termination", "decrypts for the servers"]]},
+  {"k": "rows", "title": "المثال", "rows": [["nginx", "a common reverse proxy"]]},
+  {"k": "rows", "title": "الأمامي", "rows": [["Forward proxy", "in front of clients"]]},
+  {"k": "rows", "title": "الترجمة", "rows": [["NAT", "changes the IP in the packet"]]},
+  {"k": "rows", "title": "المشاركة", "rows": [["Many private IPs", "share one public IP"]]},
+  {"k": "rows", "title": "البوابة", "rows": [["NAT gateway", "for private subnets"], ["Where", "in AWS"]]},
+  {"k": "rows", "title": "الاتجاه", "rows": [["Outbound", "allowed"], ["Inbound from internet", "not started"]]},
+  {"k": "rows", "title": "الجدار", "rows": [["Firewall", "allows or blocks traffic"]]},
+  {"k": "rows", "title": "القواعد", "rows": [["Rules", "IP, port, protocol"]]},
+  {"k": "rows", "title": "الحالة", "rows": [["Stateful", "remembers connections"], ["Reply", "allowed automatically"]]},
+  {"k": "rows", "title": "اللاحالة", "rows": [["Stateless", "checks every packet"], ["Reply", "must be allowed"]]},
+  {"k": "rows", "title": "الأمثلة", "rows": [["Security group", "stateful"], ["Network ACL", "stateless"]]},
+  {"k": "rows", "title": "لينكس", "rows": [["iptables", "firewall rules"], ["nftables", "the newer tool"]]},
+  {"k": "rows", "title": "النفق", "rows": [["VPN", "encrypted tunnel"]]},
+  {"k": "rows", "title": "المحتوى", "rows": [["CDN", "content closer to users"]]},
+  {"k": "end", "title": "الختام", "l1": "Networking", "sub": "Interview Prep", "chips": ["Load balancing", "NAT + Firewalls", "Next: VPC"]},
+];
+export const Lesson47 = makeOS(SP, "Networking - Episode 5", "Networking");

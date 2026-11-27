@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثالثة", "l1": "Networking", "l2": "DNS + DHCP", "sub": "Interview Prep", "chip": "Episode 3"},
+  {"k": "rows", "title": "الاسم", "rows": [["DNS", "domain name to IP"]]},
+  {"k": "rows", "title": "الفائدة", "rows": [["You type", "a name"], ["DNS returns", "the IP"]]},
+  {"k": "rows", "title": "الهرم", "rows": [["DNS", "hierarchical"], ["Read", "right to left"]]},
+  {"k": "rows", "title": "المثال", "rows": [["com", "top-level domain"], ["example", "the domain"]]},
+  {"k": "rows", "title": "الجذر", "rows": [["Root servers", "top of the hierarchy"]]},
+  {"k": "rows", "title": "السؤال", "rows": [["Recursive resolver", "answers the client"], ["Often", "the ISP's"]]},
+  {"k": "flow", "title": "الرحلة", "steps": ["Root", "TLD", "Authoritative"], "note": "the resolver asks in this order"},
+  {"k": "rows", "title": "الإجابة", "rows": [["Authoritative server", "final answer for the domain"]]},
+  {"k": "rows", "title": "التخزين", "rows": [["Resolver", "caches the result"]]},
+  {"k": "rows", "title": "المدة", "rows": [["TTL", "how long it stays cached"]]},
+  {"k": "rows", "title": "الأنواع", "rows": [["A", "name to IPv4"]]},
+  {"k": "rows", "title": "السادس", "rows": [["AAAA", "name to IPv6"]]},
+  {"k": "rows", "title": "الاسم المستعار", "rows": [["CNAME", "name to another name"]]},
+  {"k": "rows", "title": "البريد", "rows": [["MX", "the mail server"]]},
+  {"k": "rows", "title": "الخوادم", "rows": [["NS", "the name servers"]]},
+  {"k": "rows", "title": "النصوص", "rows": [["TXT", "text, domain verification"]]},
+  {"k": "rows", "title": "المنفذ", "rows": [["Port 53", "UDP usually, TCP when needed"]]},
+  {"k": "rows", "title": "الأدوات", "rows": [["nslookup", "query DNS"], ["dig", "query DNS"]]},
+  {"k": "rows", "title": "التلقائي", "rows": [["DHCP", "assigns an IP automatically"]]},
+  {"k": "rows", "title": "الإضافات", "rows": [["DHCP also gives", "default gateway"], ["And", "DNS servers"]]},
+  {"k": "rows", "title": "الرسائل", "rows": [["Discover", "Offer"], ["Request", "Acknowledge"]]},
+  {"k": "rows", "title": "المحلي", "rows": [["/etc/resolv.conf", "nameserver entries"]]},
+  {"k": "rows", "title": "الثابت", "rows": [["/etc/hosts", "static name to IP"], ["Usually", "read before DNS"]]},
+  {"k": "end", "title": "الختام", "l1": "Networking", "sub": "Interview Prep", "chips": ["DNS flow", "Records + TTL", "Next: HTTP + HTTPS"]},
+];
+export const Lesson45 = makeOS(SP, "Networking - Episode 3", "Networking");

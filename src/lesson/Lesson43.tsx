@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الأولى", "l1": "Networking", "l2": "Basics + IP Addressing", "sub": "Interview Prep", "chip": "Episode 1"},
+  {"k": "rows", "title": "الشبكة", "rows": [["Network", "devices exchanging data"]]},
+  {"k": "rows", "title": "القواعد", "rows": [["Protocol", "agreed rules between devices"]]},
+  {"k": "rows", "title": "النموذج", "rows": [["OSI model", "7 layers, theoretical"]]},
+  {"k": "flow", "title": "الطبقات", "steps": ["Physical", "Data Link", "Network", "Transport", "Session", "Presentation", "Application"]},
+  {"k": "rows", "title": "الواقع", "rows": [["TCP/IP", "what the internet runs on"], ["Simpler", "fewer layers"]]},
+  {"k": "rows", "title": "الشبكة الثالثة", "rows": [["Network layer", "IP + routing"]]},
+  {"k": "rows", "title": "النقل", "rows": [["Transport layer", "TCP + UDP"]]},
+  {"k": "rows", "title": "العنوان", "rows": [["IPv4", "32 bits"], ["Example", "192.168.1.10"]]},
+  {"k": "rows", "title": "الأرقام", "rows": [["Each number", "0 to 255"]]},
+  {"k": "rows", "title": "التقسيم", "rows": [["Network part", "identifies the network"], ["Host part", "identifies the device"]]},
+  {"k": "rows", "title": "القناع", "rows": [["Subnet mask", "where the split is"]]},
+  {"k": "rows", "title": "الاختصار", "rows": [["CIDR", "compact notation"], ["Example", "192.168.1.0/24"]]},
+  {"k": "rows", "title": "البتات", "rows": [["After the slash", "network bits"]]},
+  {"k": "rows", "title": "المعنى", "rows": [["/24", "24 network bits"], ["Remaining", "8 host bits"]]},
+  {"k": "rows", "title": "المقارنة", "rows": [["/16", "more host bits than /24"]]},
+  {"k": "rows", "title": "العدد", "rows": [["/24", "256 addresses"], ["/16", "65536 addresses"]]},
+  {"k": "rows", "title": "الخاص", "rows": [["Private IPs", "reserved for internal networks"]]},
+  {"k": "rows", "title": "النطاقات", "rows": [["10.0.0.0/8", "Class A range"], ["172.16.0.0/12", "middle range"], ["192.168.0.0/16", "home networks"]]},
+  {"k": "rows", "title": "التوجيه", "rows": [["Private IPs", "not routed on the public internet"]]},
+  {"k": "rows", "title": "العام", "rows": [["Public IP", "your identity on the internet"]]},
+  {"k": "rows", "title": "البوابة", "rows": [["Default gateway", "the router for outside traffic"]]},
+  {"k": "rows", "title": "العنوان المادي", "rows": [["ARP", "IP to MAC address"], ["Scope", "the local network"]]},
+  {"k": "rows", "title": "الفحص", "rows": [["ping", "is the host alive"], ["Uses", "ICMP"]]},
+  {"k": "end", "title": "الختام", "l1": "Networking", "sub": "Interview Prep", "chips": ["Layers + IP", "CIDR + Private ranges", "Next: TCP + UDP"]},
+];
+export const Lesson43 = makeOS(SP, "Networking - Episode 1", "Networking");

@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الرابعة", "l1": "Networking", "l2": "HTTP + HTTPS + TLS", "sub": "Interview Prep", "chip": "Episode 4"},
+  {"k": "rows", "title": "الويب", "rows": [["HTTP", "how browsers request pages"]]},
+  {"k": "rows", "title": "النمط", "rows": [["Client", "sends a request"], ["Server", "sends a response"]]},
+  {"k": "rows", "title": "الطلب", "rows": [["Request", "method + URL + headers"], ["Sometimes", "a body"]]},
+  {"k": "rows", "title": "الطرق", "rows": [["GET", "read data"], ["POST", "create data"]]},
+  {"k": "rows", "title": "الطرق الأخرى", "rows": [["PUT", "update data"], ["DELETE", "remove data"]]},
+  {"k": "rows", "title": "الرؤوس", "rows": [["Headers", "content type, cookies"]]},
+  {"k": "rows", "title": "الرد", "rows": [["Response", "has a status code"]]},
+  {"k": "rows", "title": "النجاح", "rows": [["2xx", "success"], ["Example", "200 OK"]]},
+  {"k": "rows", "title": "التحويل", "rows": [["3xx", "redirection"], ["Example", "301"]]},
+  {"k": "rows", "title": "خطأ العميل", "rows": [["4xx", "client error"], ["Example", "404"]]},
+  {"k": "rows", "title": "خطأ الخادم", "rows": [["5xx", "server error"], ["Example", "500"]]},
+  {"k": "rows", "title": "الكشف", "rows": [["Plain HTTP", "not encrypted"]]},
+  {"k": "rows", "title": "التشفير", "rows": [["HTTPS", "HTTP over TLS"]]},
+  {"k": "rows", "title": "الفوائد", "rows": [["TLS", "encryption"], ["Also", "server identity"], ["Also", "tamper protection"]]},
+  {"k": "rows", "title": "الهوية", "rows": [["Server", "proves identity with a certificate"]]},
+  {"k": "rows", "title": "التوقيع", "rows": [["Certificate", "signed by a CA"], ["Browser", "trusts known CAs"]]},
+  {"k": "rows", "title": "الانتهاء", "rows": [["Certificate", "has an expiry date"], ["Expired", "browser warning"]]},
+  {"k": "rows", "title": "المصافحة", "rows": [["TLS handshake", "agree on settings + keys"]]},
+  {"k": "rows", "title": "المنفذ", "rows": [["HTTPS", "port 443"]]},
+  {"k": "rows", "title": "الإصدار", "rows": [["TLS 1.3", "faster and more secure"]]},
+  {"k": "rows", "title": "الثاني", "rows": [["HTTP/2", "many requests, one connection"]]},
+  {"k": "rows", "title": "الثالث", "rows": [["HTTP/3", "runs over QUIC"], ["QUIC", "uses UDP"]]},
+  {"k": "rows", "title": "الأداة", "rows": [["curl", "test from the terminal"], ["curl -I", "headers only"]]},
+  {"k": "end", "title": "الختام", "l1": "Networking", "sub": "Interview Prep", "chips": ["HTTP basics", "HTTPS + TLS", "Next: Load Balancers"]},
+];
+export const Lesson46 = makeOS(SP, "Networking - Episode 4", "Networking");

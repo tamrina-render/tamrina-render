@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثانية", "l1": "Networking", "l2": "TCP + UDP + Ports", "sub": "Interview Prep", "chip": "Episode 2"},
+  {"k": "rows", "title": "النقل", "rows": [["Transport layer", "two main protocols"], ["They are", "TCP and UDP"]]},
+  {"k": "rows", "title": "الاتصال", "rows": [["TCP", "opens a connection first"]]},
+  {"k": "rows", "title": "الضمان", "rows": [["TCP", "ordered, no loss"], ["How", "retransmission"]]},
+  {"k": "rows", "title": "الخفة", "rows": [["UDP", "lighter and faster"], ["But", "no delivery guarantee"]]},
+  {"k": "rows", "title": "الاستخدام", "rows": [["UDP", "DNS, video calls"]]},
+  {"k": "rows", "title": "الاستخدام الآخر", "rows": [["TCP", "web, files, email"]]},
+  {"k": "rows", "title": "التحكم", "rows": [["TCP", "controls the send rate"]]},
+  {"k": "rows", "title": "البداية", "rows": [["Three-way handshake", "opens a TCP connection"]]},
+  {"k": "rows", "title": "الأولى", "rows": [["Step 1", "client sends SYN"]]},
+  {"k": "rows", "title": "الثانية", "rows": [["Step 2", "server replies SYN-ACK"]]},
+  {"k": "rows", "title": "الثالثة", "rows": [["Step 3", "client sends ACK"]]},
+  {"k": "rows", "title": "الإغلاق", "rows": [["FIN", "closes the connection"]]},
+  {"k": "rows", "title": "المنفذ", "rows": [["Port", "which application receives"]]},
+  {"k": "rows", "title": "النقطة", "rows": [["IP + port", "a full endpoint"]]},
+  {"k": "rows", "title": "المدى", "rows": [["Ports", "0 to 65535"]]},
+  {"k": "rows", "title": "المشهورة", "rows": [["Well-known", "0 to 1023"]]},
+  {"k": "rows", "title": "الويب", "rows": [["HTTP", "80"], ["HTTPS", "443"]]},
+  {"k": "rows", "title": "الخدمات", "rows": [["SSH", "22"], ["DNS", "53"]]},
+  {"k": "rows", "title": "الخطر", "rows": [["RDP", "3389"], ["Seen often", "in security groups"]]},
+  {"k": "rows", "title": "المؤقت", "rows": [["Ephemeral port", "random, client side"]]},
+  {"k": "rows", "title": "المقبس", "rows": [["Socket", "IP + port + protocol"]]},
+  {"k": "rows", "title": "المراقبة", "rows": [["ss", "open ports on Linux"], ["Option", "-tulnp"]]},
+  {"k": "rows", "title": "التجربة", "rows": [["nc", "test a port"], ["curl", "test a service"]]},
+  {"k": "end", "title": "الختام", "l1": "Networking", "sub": "Interview Prep", "chips": ["TCP vs UDP", "Handshake + Ports", "Next: DNS"]},
+];
+export const Lesson44 = makeOS(SP, "Networking - Episode 2", "Networking");

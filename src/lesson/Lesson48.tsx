@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة السادسة", "l1": "Networking", "l2": "VPC + Troubleshooting", "sub": "Interview Prep", "chip": "Episode 6"},
+  {"k": "rows", "title": "السحابة", "rows": [["VPC", "your isolated network in AWS"]]},
+  {"k": "rows", "title": "النطاق", "rows": [["VPC CIDR", "example 10.0.0.0/16"]]},
+  {"k": "rows", "title": "التقسيم", "rows": [["Subnets", "each in one AZ"]]},
+  {"k": "rows", "title": "العامة", "rows": [["Public subnet", "route to an internet gateway"]]},
+  {"k": "rows", "title": "الخاصة", "rows": [["Private subnet", "no direct route to it"]]},
+  {"k": "rows", "title": "الجدول", "rows": [["Route table", "where traffic goes"]]},
+  {"k": "rows", "title": "المحلي", "rows": [["Local route", "inside the VPC"]]},
+  {"k": "rows", "title": "البوابة", "rows": [["Internet gateway", "connects to the internet"]]},
+  {"k": "rows", "title": "العنوان", "rows": [["Instance", "needs a public IP + route"]]},
+  {"k": "rows", "title": "النات", "rows": [["NAT gateway", "lives in a public subnet"], ["Serves", "private subnets"]]},
+  {"k": "rows", "title": "الطبقتان", "rows": [["Security group", "instance level"], ["Network ACL", "subnet level"]]},
+  {"k": "rows", "title": "الأولى", "rows": [["Security group", "stateful"]]},
+  {"k": "rows", "title": "الثانية", "rows": [["Network ACL", "stateless"]]},
+  {"k": "rows", "title": "الترتيب", "rows": [["Rules", "lowest number first"], ["First match", "wins"]]},
+  {"k": "rows", "title": "السماح", "rows": [["Security group", "allow rules only"]]},
+  {"k": "rows", "title": "الربط", "rows": [["VPC peering", "connects two VPCs"]]},
+  {"k": "rows", "title": "التداخل", "rows": [["CIDR ranges", "must not overlap"]]},
+  {"k": "rows", "title": "التشخيص", "rows": [["Start", "from the bottom up"]]},
+  {"k": "rows", "title": "الفحص الأول", "rows": [["ping the IP", "is the network up"]]},
+  {"k": "rows", "title": "الاسم", "rows": [["Try the name", "is DNS working"]]},
+  {"k": "rows", "title": "المنفذ", "rows": [["nc or curl", "is the port open"]]},
+  {"k": "rows", "title": "المراجعة", "rows": [["Port closed", "check SG, NACL, firewall"]]},
+  {"k": "rows", "title": "الطريق", "rows": [["traceroute", "where traffic stops"]]},
+  {"k": "end", "title": "الختام", "l1": "Networking", "sub": "Interview Prep", "chips": ["Basics + TCP", "DNS + HTTPS", "LB + VPC"]},
+];
+export const Lesson48 = makeOS(SP, "Networking - Episode 6", "Networking");
