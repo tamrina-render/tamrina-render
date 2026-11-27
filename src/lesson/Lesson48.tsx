@@ -23,7 +23,7 @@ const SP: Spec[] = [
   {"k": "rows", "title": "الفحص الأول", "rows": [["ping the IP", "is the network up"]]},
   {"k": "rows", "title": "الاسم", "rows": [["Try the name", "is DNS working"]]},
   {"k": "rows", "title": "المنفذ", "rows": [["nc or curl", "is the port open"]]},
-  {"k": "rows", "title": "المراجعة", "rows": [["Port closed", "check SG, NACL, firewall"]]},
+  {"k": "rows", "title": "المراجعة", "rows": [["Port closed", "check the security group, network ACL, firewall"]]},
   {"k": "rows", "title": "الطريق", "rows": [["traceroute", "where traffic stops"]]},
   {"k": "end", "title": "الختام", "l1": "Networking", "sub": "Interview Prep", "chips": ["Basics + TCP", "DNS + HTTPS", "LB + VPC"]},
 ];
