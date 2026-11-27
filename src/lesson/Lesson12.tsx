@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  { k: "title", title: "الحلقة السادسة", l1: "Interview", l2: "Review", sub: "OpenShift Interview Prep", chip: "10 questions" },
+  { k: "rows", title: "الحلقات الخمسة", rows: [["1", "Platform vs Kubernetes"], ["2", "Projects, RBAC, SCC"], ["3", "Routes and networking"], ["4", "Builds and Deployments"], ["5", "oc, console, Operators"]] },
+  { k: "q", title: "سؤال 1", q: "OpenShift vs Kubernetes?", terms: ["Built on Kubernetes", "Adds platform"] },
+  { k: "rows", title: "إجابة 1", rows: [["Built on", "Kubernetes"], ["Adds", "RHCOS, install + update"], ["Adds", "Operators, console, security"]] },
+  { k: "q", title: "سؤال 2", q: "Operator and OLM?", terms: ["Operator", "OLM"] },
+  { k: "rows", title: "إجابة 2", rows: [["Operator", "encodes operations, uses CRDs"], ["Operator", "watches the cluster"], ["OLM", "install, upgrade, RBAC"]] },
+  { k: "q", title: "سؤال 3", q: "Project vs namespace?", terms: ["Project", "namespace"] },
+  { k: "rows", title: "إجابة 3", rows: [["Project", "namespace + extras"], ["oc new-project", "creates it"], ["openshift-* kube-*", "reserved"]] },
+  { k: "q", title: "سؤال 4", q: "Default RBAC roles?", terms: ["admin", "edit", "view"] },
+  { k: "rows", title: "إجابة 4", rows: [["admin", "project manager"], ["edit", "modify most objects"], ["view", "read only"], ["cluster-admin local", "limited to the project"]] },
+  { k: "q", title: "سؤال 5", q: "Image fails on OpenShift?", terms: ["SCC", "UID"] },
+  { k: "rows", title: "إجابة 5", rows: [["restricted-v2", "default SCC"], ["Pod", "runs with a random UID"], ["Fix", "non-root, or anyuid with care"]] },
+  { k: "q", title: "سؤال 6", q: "Route vs Ingress?", terms: ["Route", "Ingress"] },
+  { k: "rows", title: "إجابة 6", rows: [["Both", "reach a service"], ["Route", "re-encrypt, passthrough, splitting"], ["Ingress", "becomes Routes"]] },
+  { k: "q", title: "سؤال 7", q: "TLS termination types?", terms: ["edge", "re-encrypt", "passthrough"] },
+  { k: "rows", title: "إجابة 7", rows: [["edge", "controller decrypts"], ["re-encrypt", "decrypt, then encrypt again"], ["passthrough", "no path-based routing"]] },
+  { k: "q", title: "سؤال 8", q: "What is S2I?", terms: ["Source-to-image"] },
+  { k: "rows", title: "إجابة 8", rows: [["S2I", "source into a builder image"], ["Result", "ready image, no Dockerfile"], ["Default", "Docker and S2I"]] },
+  { k: "q", title: "سؤال 9", q: "What is an ImageStream?", terms: ["ImageStream"] },
+  { k: "rows", title: "إجابة 9", rows: [["ImageStream", "virtual view of images"], ["Use", "tags and triggers"], ["Tag", "can be rolled back"]] },
+  { k: "q", title: "سؤال 10", q: "Deployment vs DeploymentConfig?", terms: ["Deployment", "DeploymentConfig"] },
+  { k: "rows", title: "إجابة 10", rows: [["Deployment", "ReplicaSets, recommended"], ["DeploymentConfig", "deprecated since 4.14"]] },
+  { k: "flow", title: "ترتيب الإجابة", steps: ["Definition", "Command", "Reason"], note: "mention what is deprecated" },
+  { k: "chips", title: "جرّب بإيدك", chips: ["oc get", "oc describe", "oc logs"], note: "same way as Kubernetes" },
+  { k: "end", title: "الختام", l1: "OpenShift", sub: "Interview Prep", chips: ["Platform", "Access", "Network", "Build", "Tools", "Good luck"] },
+];
+export const Lesson12 = makeOS(SP, "OpenShift - Episode 6");
