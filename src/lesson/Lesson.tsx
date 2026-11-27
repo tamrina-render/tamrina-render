@@ -79,13 +79,13 @@ export const Cloud: React.FC<{ x: number; y: number; label: string; col?: string
   </g>
 );
 
-export const LessonCtx = React.createContext<{ ep: string; total: number }>({ ep: "Episode 1", total: 24 });
+export const LessonCtx = React.createContext<{ ep: string; total: number; brand?: string }>({ ep: "Episode 1", total: 24 });
 // ---------- scene frame ----------
 export const Frame: React.FC<{ title: string; n: number; children: React.ReactNode }> = ({ title, n, children }) => {
   const cx = React.useContext(LessonCtx);
   return (
   <AbsoluteFill style={{ background: C.bg }}>
-    <div style={{ position: "absolute", top: 40, left: 56, fontFamily: LAT, fontWeight: 800, fontSize: 30, color: C.blue, direction: "ltr" }}>Cloud DevOps</div>
+    <div style={{ position: "absolute", top: 40, left: 56, fontFamily: LAT, fontWeight: 800, fontSize: 30, color: C.blue, direction: "ltr" }}>{cx.brand || "Cloud DevOps"}</div>
     <div style={{ position: "absolute", top: 82, left: 56, fontFamily: LAT, fontWeight: 600, fontSize: 22, color: C.grey, direction: "ltr" }}>{cx.ep}</div>
     <div style={{ position: "absolute", top: 32, right: 56, fontFamily: AR, fontWeight: 700, fontSize: 60, color: C.ink, direction: "rtl" }}>{title}</div>
     <svg width={1920} height={1080} viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>{children}</svg>

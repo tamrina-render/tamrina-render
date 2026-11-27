@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  { k: "title", title: "الحلقة الأولى", l1: "OpenShift", l2: "vs Kubernetes", sub: "Interview Prep", chip: "Episode 1" },
+  { k: "chips", title: "كوبرنيتس وحده", chips: ["Container engine", "Networking", "Logging", "Monitoring", "Deployment"], note: "pieces you assemble yourself" },
+  { k: "rows", title: "طبقتين", rows: [["OpenShift", "complete platform"], ["Kubernetes", "the foundation"]] },
+  { k: "chips", title: "المعادلة", chips: ["Kubernetes", "+ RHCOS", "+ Install & Update", "+ Operators", "+ Web console", "+ Security"] },
+  { k: "chips", title: "أماكن التشغيل", chips: ["Bare metal", "Virtual machines", "On-premise", "Cloud"] },
+  { k: "rows", title: "نظام التشغيل", rows: [["Control plane", "RHCOS required"], ["Workers", "RHCOS or RHEL"]] },
+  { k: "chips", title: "جوه RHCOS", chips: ["Ignition", "CRI-O", "kubelet"], note: "configure, run, manage" },
+  { k: "rows", title: "المحرك", rows: [["OpenShift 3", "Docker Engine"], ["Now", "CRI-O"]] },
+  { k: "rows", title: "العقد", rows: [["Control plane", "manages the work"], ["Worker nodes", "run the containers"]] },
+  { k: "rows", title: "التثبيت", rows: [["Supported cloud", "one command"], ["Data center", "also supported"]] },
+  { k: "rows", title: "التحديث", rows: [["All nodes", "run RHCOS"], ["Updates", "mostly automatic"]] },
+  { k: "rows", title: "الأوبريترز", rows: [["Operator", "core unit of the platform"], ["Cluster Version Operator", "sensitive components"], ["Machine Config Operator", "sensitive components"]] },
+  { k: "flow", title: "التوزيع", steps: ["OLM", "Software catalog", "Developers"], note: "Operator Lifecycle Manager" },
+  { k: "flow", title: "الصور", steps: ["Quay", "Images + Operators", "Internal registry"] },
+  { k: "chips", title: "الواجهات", chips: ["Web console", "oc CLI"], note: "covered in the next episodes" },
+  { k: "chips", title: "تحسينات", chips: ["Networking", "Authentication", "Logging", "Monitoring", "Routing"] },
+  { k: "flow", title: "دورة الحياة", steps: ["Create", "Manage", "Develop + Deploy", "Scale"] },
+  { k: "cmp", title: "المقارنة", l: "Kubernetes alone", r: "OpenShift", ls: ["You assemble", "the platform"], rs: ["Platform ready", "Install, update, UI, security"] },
+  { k: "chips", title: "نفس الأساس", chips: ["Pods", "Deployments", "Services"], note: "same foundation as Kubernetes" },
+  { k: "q", title: "سؤال 1", q: "OpenShift vs Kubernetes?", terms: ["Built on Kubernetes", "Adds platform"] },
+  { k: "q", title: "سؤال 2", q: "What is RHCOS?", terms: ["Ignition", "CRI-O", "kubelet"] },
+  { k: "q", title: "سؤال 3", q: "What is an Operator?", terms: ["Core unit", "Manages cluster"] },
+  { k: "q", title: "سؤال 4", q: "Does it replace Kubernetes?", terms: ["No", "Built on it"] },
+  { k: "chips", title: "الملخص", chips: ["Kubernetes base", "RHCOS", "Operators", "Console + oc"] },
+  { k: "end", title: "الختام", l1: "OpenShift", sub: "Interview Prep", chips: ["Platform", "RHCOS", "Operators", "Console", "Security", "Next: Projects"] },
+];
+export const Lesson7 = makeOS(SP, "OpenShift - Episode 1");
