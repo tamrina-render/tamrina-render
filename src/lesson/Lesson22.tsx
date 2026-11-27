@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الرابعة", "l1": "Rules", "l2": "Alerting", "sub": "Interview Prep", "chip": "Episode 4"},
+  {"k": "chips", "title": "نوعين القواعد", "chips": ["Alerting rules", "Recording rules"], "note": "both written in YAML files"},
+  {"k": "rows", "title": "التحميل", "rows": [["rule_files", "listed in the config"], ["Evaluated", "every evaluation_interval"]]},
+  {"k": "flow", "title": "التعديل", "steps": ["Edit the file", "Send SIGHUP", "Prometheus reloads"]},
+  {"k": "rows", "title": "الفحص", "rows": [["promtool", "check rules"], ["Run", "before you deploy"]]},
+  {"k": "flow", "title": "قاعدة التنبيه", "steps": ["PromQL condition", "Condition is true", "Alert is sent"]},
+  {"k": "rows", "title": "الحقول", "rows": [["alert", "the alert name"], ["expr", "the condition"]]},
+  {"k": "rows", "title": "for", "rows": [["for", "how long the condition must hold"], ["Then", "the alert is firing"]]},
+  {"k": "flow", "title": "الحالات", "steps": ["Condition true", "pending", "firing"], "note": "fewer false alerts"},
+  {"k": "rows", "title": "الإضافات", "rows": [["labels", "extra data"], ["annotations", "descriptions"], ["Templates", "use labels and value"]]},
+  {"k": "rows", "title": "مثال", "rows": [["expr", "up == 0"], ["for", "5m"], ["Meaning", "target not responding"]]},
+  {"k": "rows", "title": "Recording rules", "rows": [["Recording rule", "precomputes expensive queries"], ["Result", "saved as a new time series"]]},
+  {"k": "flow", "title": "الفايدة", "steps": ["Heavy query", "Recording rule", "Fast dashboard"]},
+  {"k": "rows", "title": "التسمية", "rows": [["Colons", "reserved for recording rules"], ["Example", "level:metric:operation"]]},
+  {"k": "flow", "title": "المسار", "steps": ["Prometheus", "sends alerts", "Alertmanager"]},
+  {"k": "chips", "title": "مهام Alertmanager", "chips": ["Deduplication", "Grouping"], "note": "one notification for similar alerts"},
+  {"k": "rows", "title": "التوجيه", "rows": [["Routing", "right receiver for each alert"], ["Receivers", "email, PagerDuty, OpsGenie"]]},
+  {"k": "rows", "title": "Inhibition", "rows": [["Inhibition", "mutes some alerts"], ["When", "a more important alert fires"]]},
+  {"k": "rows", "title": "Silences", "rows": [["Silences", "mute alerts for a set time"], ["Set in", "the web interface"]]},
+  {"k": "rows", "title": "الاعتمادية", "rows": [["High availability", "supported"], ["Silences", "replicated between instances"]]},
+  {"k": "flow", "title": "المسار كله", "steps": ["Alerting rule", "Alertmanager", "Receiver"]},
+  {"k": "q", "title": "سؤال 1", "q": "Alerting vs recording rules?", "terms": ["Alerting: sends alerts", "Recording: precomputes"]},
+  {"k": "q", "title": "سؤال 2", "q": "What is the for field?", "terms": ["Condition must hold", "Then firing"]},
+  {"k": "q", "title": "سؤال 3", "q": "Role of Alertmanager?", "terms": ["Group + route", "Inhibit + silence"]},
+  {"k": "end", "title": "الختام", "l1": "Alerting", "sub": "Interview Prep", "chips": ["Alerting rules", "Recording rules", "for", "Alertmanager", "Silences", "Next: Grafana"]},
+];
+export const Lesson22 = makeOS(SP, "Prometheus - Episode 4", "Prometheus");
