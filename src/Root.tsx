@@ -27,6 +27,7 @@ import { Lesson } from "./lesson/Lesson";
 import { Lesson3 } from "./lesson/Lesson3";
 import { Lesson4 } from "./lesson/Lesson4";
 import { Lesson5 } from "./lesson/Lesson5";
+import { Lesson6 } from "./lesson/Lesson6";
 import { CameraBench } from "./scenes/CameraBench";
 
 const fit = async ({ props }: { props: Record<string, unknown> }) => {
@@ -65,6 +66,7 @@ export const RemotionRoot: React.FC = () => {
     <Composition id="Lesson3" component={Lesson3 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="Lesson4" component={Lesson4 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="Lesson5" component={Lesson5 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
+    <Composition id="Lesson6" component={Lesson6 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="CameraBench" component={CameraBench as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={450} />
     <Composition id="ThumbOnly"component={ThumbOnly as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={103} defaultProps={{ kind: "man" }} />
     <Composition id="CoinOnly"component={CoinOnly as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={180}
