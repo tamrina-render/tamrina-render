@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  { k: "title", title: "الحلقة التانية", l1: "Projects", l2: "RBAC + SCC", sub: "OpenShift Interview Prep", chip: "Episode 2" },
+  { k: "rows", title: "المشروع", rows: [["Project", "namespace + extras"], ["Purpose", "isolate teams and apps"]] },
+  { k: "rows", title: "إنشاء مشروع", rows: [["oc new-project", "create a project"], ["openshift-*  kube-*", "reserved names"], ["oc adm new-project", "cluster admin only"]] },
+  { k: "rows", title: "الحد", rows: [["Projects limit", "set by the administrator"], ["Limit reached", "delete an old project"]] },
+  { k: "q", title: "الصلاحيات", q: "Who can do what?", terms: ["RBAC", "Role-Based Access Control"] },
+  { k: "chips", title: "ثلاث أجزاء", chips: ["Rules", "Roles", "Bindings"], note: "actions, sets of rules, user links" },
+  { k: "cmp", title: "مستويين", l: "Cluster RBAC", r: "Local RBAC", ls: ["All projects"], rs: ["One project only"] },
+  { k: "cmp", title: "الربط", l: "Cluster role binding", r: "Local role binding", ls: ["Cluster roles only"], rs: ["Cluster roles", "and local roles"] },
+  { k: "rows", title: "الدور الأول", rows: [["admin", "project manager"], ["can modify", "everything except quota"]] },
+  { k: "rows", title: "الدور التاني", rows: [["edit", "modify most objects"], ["cannot", "view roles or bindings"]] },
+  { k: "rows", title: "الدور التالت", rows: [["view", "read only"], ["basic-user", "basic info on projects"]] },
+  { k: "rows", title: "الأقوى", rows: [["cluster-admin", "super-user"], ["local binding", "super admin in one project"]] },
+  { k: "cmp", title: "تحذير", l: "cluster-admin via local binding", r: "Real cluster admin", ls: ["Limited to the project"], rs: ["Whole cluster"] },
+  { k: "rows", title: "الأمر", rows: [["oc adm policy", "add-role-to-user"], ["Gives", "a role to a user"]] },
+  { k: "rows", title: "المراجعة", rows: [["Local roles", "per project"], ["Local bindings", "viewable by admin"]] },
+  { k: "q", title: "أمان الـ pod", q: "What can a pod do?", terms: ["SCC", "Security Context Constraints"] },
+  { k: "chips", title: "ما يحدده", chips: ["Privileged containers", "Host network", "Host volumes", "Run as UID"] },
+  { k: "rows", title: "الافتراضي", rows: [["restricted-v2", "default SCC"], ["Drops", "all capabilities"], ["UID", "from project range"]] },
+  { k: "cmp", title: "مشكلة شهيرة", l: "Plain Docker", r: "OpenShift", ls: ["Image runs as root"], rs: ["Random UID", "image fails"] },
+  { k: "rows", title: "الحل", rows: [["Best", "image runs as non-root"], ["Fallback", "anyuid SCC, with care"]] },
+  { k: "chips", title: "الأقوى", chips: ["hostnetwork", "privileged"], note: "privileged: cluster administration only" },
+  { k: "rows", title: "قاعدتين", rows: [["Default SCCs", "do not modify"], ["System namespaces", "no pods: default, kube-system"]] },
+  { k: "chips", title: "مراجعة", chips: ["Project", "RBAC", "SCC"], note: "namespace, who, what a pod can do" },
+  { k: "q", title: "سؤال", q: "Image fails on OpenShift?", terms: ["restricted-v2", "Random UID", "Use non-root"] },
+  { k: "end", title: "الختام", l1: "Projects", sub: "RBAC + SCC", chips: ["Project", "RBAC", "SCC", "admin", "edit", "Next: Routes"] },
+];
+export const Lesson8 = makeOS(SP, "OpenShift - Episode 2");
