@@ -23,7 +23,7 @@ const SP: Spec[] = [
   { k: "rows", title: "بدون تعديل يدوي", rows: [["ReplicaSets", "do not edit by hand"], ["The system", "propagates changes"]] },
   { k: "rows", title: "استراتيجية مخصصة", rows: [["Manual steps needed", "custom deployment strategy"]] },
   { k: "chips", title: "مراجعة", chips: ["BuildConfig", "Docker / S2I / Custom", "ImageStream", "Deployment"] },
-  { k: "q", title: "سؤال 1", q: "Deployment vs DeploymentConfig?", terms: ["ReplicaSets: recommended", "Replication controllers: deprecated"] },
+  { k: "q", title: "سؤال 1", q: "Deployment vs DeploymentConfig?", terms: ["Recommended", "Deprecated since 4.14"] },
   { k: "q", title: "سؤال 2", q: "What is S2I?", terms: ["Source into builder image", "No Dockerfile"] },
   { k: "end", title: "الختام", l1: "Builds + Deployments", sub: "ImageStreams", chips: ["Docker", "S2I", "ImageStream", "Deployment", "Tekton", "Next: oc"] },
 ];
