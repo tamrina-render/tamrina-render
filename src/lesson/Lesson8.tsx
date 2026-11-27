@@ -16,7 +16,7 @@ const SP: Spec[] = [
   { k: "cmp", title: "تحذير", l: "cluster-admin via local binding", r: "Real cluster admin", ls: ["Limited to the project"], rs: ["Whole cluster"] },
   { k: "rows", title: "الأمر", rows: [["oc adm policy", "add-role-to-user"], ["Gives", "a role to a user"]] },
   { k: "rows", title: "المراجعة", rows: [["Local roles", "per project"], ["Local bindings", "viewable by admin"]] },
-  { k: "q", title: "أمان الـ pod", q: "What can a pod do?", terms: ["SCC", "Security Context Constraints"] },
+  { k: "q", title: "أمان الحاوية", q: "What can a pod do?", terms: ["SCC", "Security Context Constraints"] },
   { k: "chips", title: "ما يحدده", chips: ["Privileged containers", "Host network", "Host volumes", "Run as UID"] },
   { k: "rows", title: "الافتراضي", rows: [["restricted-v2", "default SCC"], ["Drops", "all capabilities"], ["UID", "from project range"]] },
   { k: "cmp", title: "مشكلة شهيرة", l: "Plain Docker", r: "OpenShift", ls: ["Image runs as root"], rs: ["Random UID", "image fails"] },
