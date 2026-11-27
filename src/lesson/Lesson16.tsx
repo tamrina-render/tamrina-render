@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الرابعة", "l1": "Ansible", "l2": "Automation", "sub": "Interview Prep", "chip": "Episode 4"},
+  {"k": "flow", "title": "بعد البناء", "steps": ["Terraform builds", "Servers exist", "Ansible configures"]},
+  {"k": "chips", "title": "الاستخدامات", "chips": ["System configuration", "Deploy software", "Rolling updates"], "note": "open source automation"},
+  {"k": "rows", "title": "ملف التشغيل", "rows": [["Playbook", "YAML automation file"], ["Describes", "the desired state"]]},
+  {"k": "rows", "title": "بدون وكيل", "rows": [["Agentless", "no software on servers"], ["Result", "less maintenance"]]},
+  {"k": "flow", "title": "الاتصال", "steps": ["Control node", "SSH", "Managed nodes"]},
+  {"k": "rows", "title": "البساطة", "rows": [["YAML", "reads like documentation"]]},
+  {"k": "rows", "title": "التكرار الآمن", "rows": [["Idempotence", "same state, no change"], ["Run twice", "nothing breaks"]]},
+  {"k": "cmp", "title": "الأجهزة", "l": "Control node", "r": "Managed nodes", "ls": ["Runs Ansible"], "rs": ["Machines you manage"]},
+  {"k": "flow", "title": "قائمة الأجهزة", "steps": ["Inventory", "lists", "Managed nodes"]},
+  {"k": "chips", "title": "الصيغ", "chips": ["INI", "YAML"], "note": "most common formats"},
+  {"k": "rows", "title": "المجموعات", "rows": [["Groups", "webservers, dbservers"], ["Run", "a task on a whole group"]]},
+  {"k": "rows", "title": "المجموعات الافتراضية", "rows": [["all", "every host"], ["ungrouped", "hosts with no group"]]},
+  {"k": "rows", "title": "أمر سريع", "rows": [["ad hoc command", "one task, no playbook"], ["Uses", "pattern and module"]]},
+  {"k": "flow", "title": "مثال", "steps": ["Choose group", "Run command", "Reboot"]},
+  {"k": "flow", "title": "لو متكرر", "steps": ["Repeated work", "Write playbook", "Keep in Git"]},
+  {"k": "flow", "title": "ترتيب التنفيذ", "steps": ["Playbook", "Plays", "Tasks"]},
+  {"k": "flow", "title": "المهمة", "steps": ["Task", "calls", "Module"], "note": "the module does the real work"},
+  {"k": "rows", "title": "التنفيذ", "rows": [["Playbook", "top to bottom"], ["Tasks", "in order"]]},
+  {"k": "rows", "title": "الاسم الكامل", "rows": [["FQCN", "full module name"], ["Example", "ansible.builtin.yum"]]},
+  {"k": "flow", "title": "الدورة", "steps": ["Read inventory", "Connect by SSH", "Run tasks"]},
+  {"k": "q", "title": "سؤال 1", "q": "Why agentless?", "terms": ["SSH", "No agent to install"]},
+  {"k": "q", "title": "سؤال 2", "q": "What is idempotence?", "terms": ["State already met", "No change"]},
+  {"k": "q", "title": "سؤال 3", "q": "Inventory, playbook, module?", "terms": ["Hosts list", "Tasks", "Does the work"]},
+  {"k": "end", "title": "الختام", "l1": "Ansible", "sub": "Interview Prep", "chips": ["Agentless", "Inventory", "Playbook", "Module", "Idempotence", "Next: Roles"]},
+];
+export const Lesson16 = makeOS(SP, "Ansible - Episode 4", "Ansible");

@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثانية", "l1": "Variables", "l2": "Outputs + Data", "sub": "Interview Prep", "chip": "Episode 2"},
+  {"k": "chips", "title": "المشكلة", "chips": ["Hardcoded name", "Hardcoded size", "Edit per environment"], "note": "not practical"},
+  {"k": "flow", "title": "المتغيرات", "steps": ["Input variables", "Same code", "Many environments"]},
+  {"k": "chips", "title": "تعريف المتغير", "chips": ["type", "default", "validation", "sensitive"], "note": "all optional"},
+  {"k": "rows", "title": "النوع", "rows": [["type", "limits the allowed value"], ["No type", "accepts any type"], ["Wrong type", "clear error message"]]},
+  {"k": "rows", "title": "القيمة الافتراضية", "rows": [["default", "fallback value"], ["No default", "value is required"]]},
+  {"k": "rows", "title": "التحقق", "rows": [["validation", "extra rule for the value"], ["Beyond", "the type constraint"]]},
+  {"k": "rows", "title": "الحماية", "rows": [["sensitive", "hides the value in the plan"], ["Shown as", "(sensitive value)"]]},
+  {"k": "rows", "title": "تمرير القيمة", "rows": [["terraform apply", "add -var name=value"], ["Command line", "one-off overrides"]]},
+  {"k": "chips", "title": "ملفات القيم", "chips": ["terraform.tfvars", "auto.tfvars files", "Loaded automatically"]},
+  {"k": "rows", "title": "الأولوية", "rows": [["Highest", "-var and -var-file"], ["Then", "auto.tfvars"], ["Then", "terraform.tfvars"], ["Lowest", "default"]]},
+  {"k": "rows", "title": "المخرجات", "rows": [["output block", "shows values after apply"], ["Example", "an IP address"]]},
+  {"k": "chips", "title": "إعدادات المخرج", "chips": ["description", "sensitive"], "note": "hidden in the UI"},
+  {"k": "flow", "title": "بين الوحدات", "steps": ["Child module", "output", "Parent module"]},
+  {"k": "cmp", "title": "مصدر البيانات", "l": "resource", "r": "data", "ls": ["Creates", "and manages"], "rs": ["Reads only", "existing data"]},
+  {"k": "flow", "title": "مثال", "steps": ["data aws_ami", "Read the image", "Use in resource"]},
+  {"k": "rows", "title": "المقارنة", "rows": [["resource", "creates and manages"], ["data", "reads only"]]},
+  {"k": "rows", "title": "عدد النسخ", "rows": [["count", "a whole number"], ["Result", "that many copies"]]},
+  {"k": "rows", "title": "التكرار بالمفتاح", "rows": [["for_each", "map or set of strings"], ["Each copy", "its own real object"]]},
+  {"k": "rows", "title": "دورة الحياة", "rows": [["lifecycle", "controls resource behavior"], ["create_before_destroy", "new first, then delete old"]]},
+  {"k": "rows", "title": "الحماية من المسح", "rows": [["prevent_destroy", "rejects plans that delete"], ["Warning", "removing config still deletes"]]},
+  {"k": "q", "title": "سؤال 1", "q": "variable vs output?", "terms": ["Input", "Output"]},
+  {"k": "q", "title": "سؤال 2", "q": "resource vs data?", "terms": ["Manages", "Reads only"]},
+  {"k": "q", "title": "سؤال 3", "q": "count vs for_each?", "terms": ["Number", "Map or set"]},
+  {"k": "end", "title": "الختام", "l1": "Variables", "sub": "Interview Prep", "chips": ["Variables", "Outputs", "Data sources", "count", "for_each", "Next: State"]},
+];
+export const Lesson14 = makeOS(SP, "Terraform - Episode 2", "Terraform");

@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثالثة", "l1": "State", "l2": "Backends + Modules", "sub": "Interview Prep", "chip": "Episode 3"},
+  {"k": "q", "title": "السؤال", "q": "How does Terraform know what exists?", "terms": ["The state"]},
+  {"k": "flow", "title": "الحالة", "steps": ["Configuration", "State", "Real resources"]},
+  {"k": "flow", "title": "عند الإنشاء", "steps": ["Create resource", "Record identity", "Update or delete later"]},
+  {"k": "flow", "title": "قبل أي عملية", "steps": ["Refresh", "Update state", "Then plan"]},
+  {"k": "rows", "title": "التخزين المحلي", "rows": [["terraform.tfstate", "default local file"], ["Backup", "previous state file"]]},
+  {"k": "cmp", "title": "عيوب المحلي", "l": "Local state", "r": "Problems", "ls": ["No extra setup"], "rs": ["Hard to share", "Lost if file lost"]},
+  {"k": "chips", "title": "الحل", "chips": ["HCP Terraform", "Remote backend", "S3"], "note": "recommended"},
+  {"k": "rows", "title": "تحذير", "rows": [["Git", "not for state"], ["Why", "secrets, no locking"]]},
+  {"k": "rows", "title": "الملف", "rows": [["JSON file", "do not edit by hand"], ["terraform state", "use the CLI"]]},
+  {"k": "flow", "title": "القفل", "steps": ["Operation", "Lock state", "One writer"]},
+  {"k": "rows", "title": "لو فشل القفل", "rows": [["Lock fails", "Terraform stops"], ["Backends", "not all support locking"]]},
+  {"k": "rows", "title": "تخزين S3", "rows": [["use_lockfile", "enables S3 locking"], ["DynamoDB locking", "deprecated"]]},
+  {"k": "rows", "title": "فك القفل", "rows": [["force-unlock", "needs the lock ID"], ["Use only", "for your own stuck lock"]]},
+  {"k": "rows", "title": "مساحات العمل", "rows": [["Workspace", "separate state, same folder"], ["default", "the first workspace"]]},
+  {"k": "chips", "title": "أوامر مساحات العمل", "chips": ["list", "new", "select", "delete"], "note": "one at a time"},
+  {"k": "rows", "title": "تنبيه", "rows": [["Complex setups", "need other approaches"], ["Why", "separate credentials"]]},
+  {"k": "rows", "title": "الوحدة", "rows": [["Module", "resources managed together"]]},
+  {"k": "flow", "title": "الأنواع", "steps": ["Root module", "calls", "Child module"]},
+  {"k": "chips", "title": "إعادة الاستخدام", "chips": ["Call it many times", "Network per environment"]},
+  {"k": "chips", "title": "مصادر الوحدات", "chips": ["Local folder", "Terraform Registry", "VCS repository"]},
+  {"k": "rows", "title": "الاستيراد", "rows": [["terraform import", "ADDRESS and ID"], ["One address", "per real object"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Why is state important?", "terms": ["Maps code to reality", "Remote + locking"]},
+  {"k": "q", "title": "سؤال 2", "q": "What is a module?", "terms": ["Reusable resources", "Standard setup"]},
+  {"k": "end", "title": "الختام", "l1": "State", "sub": "Interview Prep", "chips": ["State", "Backend", "Locking", "Workspaces", "Modules", "Next: Ansible"]},
+];
+export const Lesson15 = makeOS(SP, "Terraform - Episode 3", "Terraform");

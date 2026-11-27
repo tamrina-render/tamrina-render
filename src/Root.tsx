@@ -35,6 +35,11 @@ import { Lesson10 } from "./lesson/Lesson10";
 import { Lesson11 } from "./lesson/Lesson11";
 import { Lesson12 } from "./lesson/Lesson12";
 import { Lesson13 } from "./lesson/Lesson13";
+import { Lesson18 } from "./lesson/Lesson18";
+import { Lesson17 } from "./lesson/Lesson17";
+import { Lesson16 } from "./lesson/Lesson16";
+import { Lesson15 } from "./lesson/Lesson15";
+import { Lesson14 } from "./lesson/Lesson14";
 import { CameraBench } from "./scenes/CameraBench";
 
 const fit = async ({ props }: { props: Record<string, unknown> }) => {
@@ -81,6 +86,11 @@ export const RemotionRoot: React.FC = () => {
     <Composition id="Lesson11" component={Lesson11 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="Lesson12" component={Lesson12 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="Lesson13" component={Lesson13 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
+    <Composition id="Lesson18" component={Lesson18 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
+    <Composition id="Lesson17" component={Lesson17 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
+    <Composition id="Lesson16" component={Lesson16 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
+    <Composition id="Lesson15" component={Lesson15 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
+    <Composition id="Lesson14" component={Lesson14 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="CameraBench" component={CameraBench as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={450} />
     <Composition id="ThumbOnly"component={ThumbOnly as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={103} defaultProps={{ kind: "man" }} />
     <Composition id="CoinOnly"component={CoinOnly as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={180}

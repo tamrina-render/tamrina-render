@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الخامسة", "l1": "Playbooks", "l2": "Roles + Vault", "sub": "Interview Prep", "chip": "Episode 5"},
+  {"k": "flow", "title": "البنية", "steps": ["hosts", "tasks", "modules"]},
+  {"k": "rows", "title": "مثال", "rows": [["Play", "targets webservers"], ["Task 1", "install Apache"], ["Task 2", "write the config file"]]},
+  {"k": "chips", "title": "المتغيرات", "chips": ["In the playbook", "In files", "In inventory"]},
+  {"k": "rows", "title": "الاستخدام", "rows": [["Jinja2", "double curly braces"], ["Example", "a variable name"]]},
+  {"k": "rows", "title": "القوالب", "rows": [["Template", "a .j2 file"], ["Module", "template copies it"]]},
+  {"k": "rows", "title": "الشرط", "rows": [["when", "runs a task on condition"], ["Written", "as a Jinja2 expression"]]},
+  {"k": "rows", "title": "التكرار", "rows": [["loop", "repeat a task"], ["Items", "one run per item"]]},
+  {"k": "rows", "title": "المعالجات", "rows": [["Handler", "runs only when notified"]]},
+  {"k": "flow", "title": "المثال الشائع", "steps": ["Config changed", "notify", "Restart service"]},
+  {"k": "flow", "title": "الإشعار", "steps": ["Task changes file", "notify", "Handler runs"]},
+  {"k": "rows", "title": "مرة واحدة", "rows": [["Many notifies", "one handler run"]]},
+  {"k": "rows", "title": "الترتيب", "rows": [["Handlers order", "as defined"], ["Not", "as notified"]]},
+  {"k": "rows", "title": "التبكير", "rows": [["meta: flush_handlers", "run handlers now"]]},
+  {"k": "rows", "title": "الأدوار", "rows": [["Role", "fixed folder structure"], ["Contains", "tasks, handlers, vars, templates"]]},
+  {"k": "chips", "title": "ملفات الدور", "chips": ["tasks/main.yml", "handlers/main.yml", "templates/", "files/"]},
+  {"k": "rows", "title": "القيم", "rows": [["defaults/main.yml", "lowest priority"], ["vars/main.yml", "high priority"]]},
+  {"k": "rows", "title": "مش إجباري", "rows": [["Every part", "is optional"], ["One file", "still a valid role"]]},
+  {"k": "chips", "title": "الفايدة", "chips": ["Reuse", "Organized", "Share between projects"]},
+  {"k": "rows", "title": "وضع الفحص", "rows": [["check mode", "dry run, no changes"], ["ansible-playbook", "add the check flag"]]},
+  {"k": "rows", "title": "وضع الفرق", "rows": [["diff mode", "before and after"], ["Combine", "check + diff"]]},
+  {"k": "rows", "title": "التشفير", "rows": [["ansible-vault", "encrypts sensitive data"], ["Commands", "create, encrypt, edit, view"]]},
+  {"k": "rows", "title": "تشفير قيمة", "rows": [["encrypt_string", "one value in YAML"]]},
+  {"k": "q", "title": "سؤال", "q": "Handler and role?", "terms": ["Runs on notify", "Fixed structure"]},
+  {"k": "end", "title": "الختام", "l1": "Playbooks", "sub": "Interview Prep", "chips": ["Variables", "Handlers", "Roles", "Vault", "Check mode", "Next: Together"]},
+];
+export const Lesson17 = makeOS(SP, "Ansible - Episode 5", "Ansible");

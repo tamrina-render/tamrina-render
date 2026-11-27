@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة السادسة", "l1": "Terraform", "l2": "+ Ansible", "sub": "Interview Prep", "chip": "Review"},
+  {"k": "cmp", "title": "مكملين لبعض", "l": "Terraform", "r": "Ansible", "ls": ["Builds", "infrastructure"], "rs": ["Configures", "systems"]},
+  {"k": "chips", "title": "الأول", "chips": ["Servers", "Networks", "Storage", "DNS"], "note": "builds and manages resources"},
+  {"k": "chips", "title": "التاني", "chips": ["Configure systems", "Deploy software", "Keep desired state"]},
+  {"k": "flow", "title": "التشبيه", "steps": ["Terraform builds", "Ansible furnishes", "Ready system"]},
+  {"k": "cmp", "title": "الاتصال", "l": "Terraform", "r": "Ansible", "ls": ["Provider", "Cloud API"], "rs": ["SSH", "No agent"]},
+  {"k": "rows", "title": "مميزات الأول", "rows": [["State file", "maps code to reality"], ["plan", "preview before apply"]]},
+  {"k": "rows", "title": "مميزات التاني", "rows": [["Playbooks", "and modules"], ["Idempotence", "no change if already set"]]},
+  {"k": "chips", "title": "المشترك", "chips": ["Declarative", "Files in Git", "Desired state"]},
+  {"k": "flow", "title": "التكامل", "steps": ["Terraform creates", "Ansible configures"]},
+  {"k": "rows", "title": "الخطوة الأولى", "rows": [["terraform apply", "creates the servers"]]},
+  {"k": "rows", "title": "الخطوة الثانية", "rows": [["output", "exposes IP addresses"]]},
+  {"k": "rows", "title": "المخرجات الجاهزة", "rows": [["terraform output", "with the json flag"], ["Result", "machine readable JSON"]]},
+  {"k": "rows", "title": "الخطوة الثالثة", "rows": [["Inventory", "holds the addresses"], ["Groups", "organize the hosts"]]},
+  {"k": "rows", "title": "الخطوة الرابعة", "rows": [["ansible-playbook", "connects over SSH"], ["Result", "installs and configures"]]},
+  {"k": "cmp", "title": "المعاينة", "l": "Terraform", "r": "Ansible", "ls": ["plan"], "rs": ["check mode"]},
+  {"k": "cmp", "title": "الأسرار", "l": "Terraform", "r": "Ansible", "ls": ["sensitive"], "rs": ["Vault"]},
+  {"k": "rows", "title": "قواعد جيت", "rows": [["State", "never in Git"], ["Lock file", "commit it"], ["Playbooks, roles", "commit them"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Terraform vs Ansible?", "terms": ["Builds infra", "Configures systems"]},
+  {"k": "q", "title": "سؤال 2", "q": "What is state?", "terms": ["Maps code to reality", "Remote + locking"]},
+  {"k": "q", "title": "سؤال 3", "q": "What is idempotence?", "terms": ["Run twice", "No extra change"]},
+  {"k": "q", "title": "سؤال 4", "q": "Handler and role?", "terms": ["Runs on notify", "Fixed structure"]},
+  {"k": "q", "title": "سؤال 5", "q": "Handling secrets?", "terms": ["sensitive", "Vault", "No state in Git"]},
+  {"k": "chips", "title": "الملخص", "chips": ["Terraform builds", "Ansible configures", "state + plan", "inventory + playbook"]},
+  {"k": "end", "title": "الختام", "l1": "IaC + Automation", "sub": "Interview Prep", "chips": ["IaC", "State", "Plan", "Playbook", "Roles", "Vault"]},
+];
+export const Lesson18 = makeOS(SP, "Terraform + Ansible - Episode 6", "Terraform + Ansible");
