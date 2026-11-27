@@ -8,7 +8,7 @@ const Bad: React.FC<{ x: number; y: number; o?: number }> = ({ x, y, o = 1 }) =>
 const Good: React.FC<{ x: number; y: number; o?: number }> = ({ x, y, o = 1 }) => (<path opacity={o} d={`M ${x - 26} ${y} l 18 20 l 36 -42`} fill="none" stroke={C.green} strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" />);
 const Stat: React.FC<{ x: number; y: number; w?: number; label: string; col: string; o?: number; sub?: string }> = ({ x, y, w = 520, label, col, o = 1, sub }) => (
   <g opacity={o}>
-    <Box x={x} y={y} w={w} h={sub ? 190 : 130} col={col} fill="#fff" />
+    <Box x={x} y={y} w={w} h={sub ? 190 : 150} col={col} fill="#fff" />
     <T x={x + w / 2} y={y + 62} s={30} c={C.grey} f={MONO}>web-7d9f</T>
     <T x={x + w / 2} y={y + 112} s={42} c={col}>{label}</T>
     {sub && <T x={x + w / 2} y={y + 160} s={28} c={C.grey}>{sub}</T>}
@@ -75,8 +75,8 @@ const S5: React.FC<P> = ({ t }) => {
       {it.map(([a, b], i) => (
         <g key={a} opacity={ap(t, 0.8 + i * 2.2)}>
           <Chip x={200} y={230 + i * 170} w={700} label={a} col={C.amber} s={36} />
-          <Arr x1={930} y1={272 + i * 170} x2={1040} y2={272 + i * 170} />
-          <ARt x={1070} y={284 + i * 170} s={40} a="start" c={C.grey}>{b}</ARt>
+          <Arr x1={930} y1={272 + i * 170} x2={1020} y2={272 + i * 170} />
+          <ARt x={1300} y={284 + i * 170} s={40} c={C.grey}>{b}</ARt>
         </g>
       ))}
     </Frame>
@@ -140,9 +140,9 @@ const S11: React.FC<P> = ({ t }) => (
   <Frame title="الصورة مش بتتسحب" n={11}>
     <Stat x={140} y={300} label="ImagePullBackOff" col={C.blue} w={620} o={ap(t, 0.5)} sub="state: Waiting" />
     <Box x={1000} y={260} w={380} h={230} col={C.green} fill="#fff" o={ap(t, 2.5)}><T x={1190} y={390} s={40} c={C.green}>node</T></Box>
-    <Box x={1450} y={260} w={330} h={230} col={C.grey} fill="#fff" o={ap(t, 3)}><T x={1615} y={390} s={36} c={C.grey}>registry</T></Box>
-    <Arr x1={1390} y1={375} x2={1440} y2={375} col={C.red} dash o={ap(t, 4)} />
-    <Bad x={1415} y={470} o={ap(t, 4.5)} />
+    <Box x={1500} y={260} w={280} h={230} col={C.grey} fill="#fff" o={ap(t, 3)}><T x={1640} y={390} s={36} c={C.grey}>registry</T></Box>
+    <Arr x1={1390} y1={375} x2={1490} y2={375} col={C.red} dash o={ap(t, 4)} />
+    <Bad x={1440} y={470} o={ap(t, 4.5)} />
   </Frame>
 );
 const S12: React.FC<P> = ({ t }) => (
