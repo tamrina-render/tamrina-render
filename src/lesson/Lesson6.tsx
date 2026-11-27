@@ -12,7 +12,7 @@ const Q: React.FC<{ t: number; n: number; q: string; terms: string[] }> = ({ t, 
       <T x={960} y={330} s={52} c={C.blue}>{q}</T>
     </Box>
     {terms.map((a, i) => (
-      <Chip key={a} x={960 - (terms.length * 440 - 40) / 2 + i * 440} y={560} w={400} label={a} col={COLS[i % 5]} s={30} o={ap(t, 2 + i * 1.5)} />
+      <Chip key={a} x={960 - (terms.length * (Math.min(400, 1700 / terms.length - 40) + 40) - 40) / 2 + i * (Math.min(400, 1700 / terms.length - 40) + 40)} y={560} w={Math.min(400, 1700 / terms.length - 40)} label={a} col={COLS[i % 5]} s={30} o={ap(t, 2 + i * 1.5)} />
     ))}
   </Frame>
 );
