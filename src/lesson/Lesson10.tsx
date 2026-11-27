@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  { k: "title", title: "الحلقة الرابعة", l1: "Builds + Deployments", l2: "ImageStreams", sub: "OpenShift Interview Prep", chip: "Episode 4" },
+  { k: "flow", title: "البناء", steps: ["Source code", "BuildConfig", "Runnable image"], note: "a build turns input into an image" },
+  { k: "chips", title: "الأنواع", chips: ["Docker build", "Source-to-image", "Custom build"], note: "Docker and S2I are supported by default" },
+  { k: "flow", title: "بناء Docker", steps: ["Dockerfile", "Buildah", "Image"] },
+  { k: "flow", title: "الـ S2I", steps: ["Source", "Builder image", "Ready image"], note: "injects source into a builder image" },
+  { k: "rows", title: "ميزة الـ S2I", rows: [["No Dockerfile", "just give the code"], ["Incremental builds", "reuse dependencies"]] },
+  { k: "rows", title: "البناء المخصص", rows: [["Custom build", "your own builder image"], ["Access", "cluster administrators only"]] },
+  { k: "rows", title: "مهجور", rows: [["Pipeline build", "deprecated in OpenShift 4"], ["Replacement", "OpenShift Pipelines (Tekton)"]] },
+  { k: "q", title: "سؤال", q: "Where do built images go?", terms: ["ImageStream"] },
+  { k: "rows", title: "الـ ImageStream", rows: [["ImageStream", "virtual view of images"], ["Holds", "no image data"], ["Like", "an image repository"]] },
+  { k: "flow", title: "الإشارة", steps: ["Build / Deployment", "Image stream tag", "Exact image ID"] },
+  { k: "rows", title: "التاجات", rows: [["Tag", "quickly"], ["Rollback a tag", "no re-push"]] },
+  { k: "rows", title: "الـ triggers", rows: [["New image pushed", "trigger a build"], ["Or", "trigger a deployment"]] },
+  { k: "rows", title: "الأمان", rows: [["Registry image changes", "tag still points to old"], ["Result", "app does not break"]] },
+  { k: "rows", title: "الصلاحيات", rows: [["Permissions", "on the image stream"], ["Controls", "who can view and use images"]] },
+  { k: "flow", title: "الـ Deployment", steps: ["Deployment", "ReplicaSet", "Pods"] },
+  { k: "flow", title: "القديم", steps: ["DeploymentConfig", "ReplicationController", "Pods"] },
+  { k: "cmp", title: "مهجور من 4.14", l: "DeploymentConfig", r: "Still supported, but", ls: ["Deprecated", "since 4.14"], rs: ["Not for new installations", "Only critical fixes"] },
+  { k: "rows", title: "القاعدة", rows: [["Default choice", "Deployment"], ["Exception", "a DeploymentConfig-only feature"]] },
+  { k: "rows", title: "بدون تعديل يدوي", rows: [["ReplicaSets", "do not edit by hand"], ["The system", "propagates changes"]] },
+  { k: "rows", title: "استراتيجية مخصصة", rows: [["Manual steps needed", "custom deployment strategy"]] },
+  { k: "chips", title: "مراجعة", chips: ["BuildConfig", "Docker / S2I / Custom", "ImageStream", "Deployment"] },
+  { k: "q", title: "سؤال 1", q: "Deployment vs DeploymentConfig?", terms: ["ReplicaSets: recommended", "Replication controllers: deprecated"] },
+  { k: "q", title: "سؤال 2", q: "What is S2I?", terms: ["Source into builder image", "No Dockerfile"] },
+  { k: "end", title: "الختام", l1: "Builds + Deployments", sub: "ImageStreams", chips: ["Docker", "S2I", "ImageStream", "Deployment", "Tekton", "Next: oc"] },
+];
+export const Lesson10 = makeOS(SP, "OpenShift - Episode 4");
