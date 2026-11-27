@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة السادسة", "l1": "Full Stack", "l2": "+ Storage", "sub": "Interview Prep", "chip": "Review"},
+  {"k": "flow", "title": "الصورة الكاملة", "steps": ["Targets expose metrics", "Prometheus scrapes", "Grafana displays"]},
+  {"k": "flow", "title": "التنبيهات", "steps": ["Rules", "Alertmanager", "Receivers"]},
+  {"k": "rows", "title": "الخطوة الأولى", "rows": [["Node Exporter", "one binary on the server"], ["Exposes", "host and OS metrics"]]},
+  {"k": "rows", "title": "الخطوة الثانية", "rows": [["scrape_configs", "add the exporter as a target"]]},
+  {"k": "rows", "title": "الخطوة الثالثة", "rows": [["Query: up", "in the Prometheus UI"], ["Value 1", "scrape works"]]},
+  {"k": "rows", "title": "الخطوة الرابعة", "rows": [["Grafana", "add Prometheus as data source"]]},
+  {"k": "rows", "title": "الخطوة الخامسة", "rows": [["Dashboard", "panels with PromQL queries"]]},
+  {"k": "rows", "title": "الخطوة السادسة", "rows": [["Variable", "choose the instance"], ["Result", "one dashboard, many servers"]]},
+  {"k": "chips", "title": "التنبيه", "chips": ["Alerting rule", "Alertmanager", "or Grafana Alerting"]},
+  {"k": "rows", "title": "التخزين", "rows": [["Local", "own time series database"]]},
+  {"k": "flow", "title": "الكتل", "steps": ["New samples", "2-hour block in memory", "Written to disk"]},
+  {"k": "rows", "title": "سجل الحماية", "rows": [["WAL", "write-ahead log"], ["Segments", "128MB files"], ["Why", "no data loss on crash"]]},
+  {"k": "rows", "title": "الدمج", "rows": [["Compaction", "merges older blocks"]]},
+  {"k": "rows", "title": "الاحتفاظ", "rows": [["Default", "15 days"], ["Flag", "storage.tsdb.retention.time"]]},
+  {"k": "rows", "title": "حسب الحجم", "rows": [["Size limit", "storage.tsdb.retention.size"]]},
+  {"k": "rows", "title": "المسار", "rows": [["Data location", "storage.tsdb.path"]]},
+  {"k": "rows", "title": "النسخ الاحتياطي", "rows": [["Snapshots", "the recommended way"]]},
+  {"k": "rows", "title": "المدى الطويل", "rows": [["Long-term", "Mimir"], ["Prometheus", "standalone server"]]},
+  {"k": "rows", "title": "خارج المقاييس", "rows": [["Logs", "Loki"], ["Traces", "Tempo"]]},
+  {"k": "q", "title": "سؤال 1", "q": "What is the pull model?", "terms": ["Prometheus asks", "Targets answer"]},
+  {"k": "rows", "title": "الإجابة", "rows": [["Prometheus", "scrapes over HTTP"], ["Targets", "do not push"]]},
+  {"k": "q", "title": "سؤال 2", "q": "How do you know a target is alive?", "terms": ["Metric: up", "1 ok, 0 failed"]},
+  {"k": "q", "title": "سؤال 3", "q": "Default retention?", "terms": ["15 days", "Change with the flag"]},
+  {"k": "end", "title": "الختام", "l1": "Monitoring", "sub": "Interview Prep", "chips": ["Prometheus", "PromQL", "Alerting", "Grafana", "Storage", "Good luck"]},
+];
+export const Lesson24 = makeOS(SP, "Monitoring - Episode 6", "Monitoring");
