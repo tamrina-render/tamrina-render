@@ -236,7 +236,7 @@ const S14: React.FC<P> = ({ t }) => {
         <g key={i} opacity={ap(t, 2 + i * 0.4)}>
           <Arr x1={1040} y1={490} x2={1260} y2={290 + i * 200} col={C.line} />
           <PodV x={1280} y={240 + i * 200} />
-          <T x={1365} y={400 + i * 200 - 14} s={26} c={C.grey} f={MONO}>{swap && i === 1 ? "10.0.9.4" : ips[i]}</T>
+          <T x={1365} y={400 + i * 200 - 14} s={26} c={C.grey} f={MONO}>{ips[i]}</T>
         </g>
       ))}
       <ARt x={800} y={850} s={46} o={ap(t, 5)}>العنوان ثابت مهما اتغيّر اللي وراه</ARt>
@@ -296,7 +296,7 @@ const S17: React.FC<P> = ({ t }) => (
     <Arr x1={1060} y1={480} x2={1280} y2={480} o={ap(t, 3.5)} />
     <Box x={1300} y={340} w={460} h={280} col={C.green} fill="#fff" o={ap(t, 3.5)}>
       <T x={1530} y={420} s={44} c={C.green}>container</T>
-      <T x={1530} y={520} s={50} c={C.ink} f={MONO}>targetPort: 8080</T>
+      <T x={1530} y={520} s={36} c={C.ink} f={MONO}>targetPort: 8080</T>
     </Box>
     <ARt x={810} y={800} s={44} c={C.grey} o={ap(t, 6)}>بيستقبل عليه</ARt>
     <ARt x={1530} y={800} s={44} c={C.grey} o={ap(t, 7)}>بيسمع عليه فعلا</ARt>
@@ -315,7 +315,7 @@ const S18: React.FC<P> = ({ t }) => (
     ))}
     <Client x={860} y={820} o={ap(t, 4)} label="Outside" />
     <Arr x1={960} y1={810} x2={780} y2={610} o={ap(t, 5)} col={C.green} />
-    <T x={960} y={950} s={34} c={C.grey} o={ap(t, 7)}>30000 - 32767</T>
+    <T x={960} y={950} s={44} c={C.grey} o={ap(t, 7)}>30000 - 32767</T>
   </Frame>
 );
 
