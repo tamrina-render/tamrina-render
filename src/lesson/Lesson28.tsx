@@ -13,7 +13,7 @@ const SP: Spec[] = [
   {"k": "rows", "title": "المهمة", "rows": [["A job", "has a name"], ["And", "a script"]]},
   {"k": "rows", "title": "الأوامر", "rows": [["script", "shell commands"], ["Run by", "the runner"]]},
   {"k": "rows", "title": "قبل وبعد", "rows": [["before_script", "before the job"], ["after_script", "after the job"]]},
-  {"k": "rows", "title": "Docker", "rows": [["image", "use a Docker image"], ["services", "add service images"]]},
+  {"k": "rows", "title": "الحاويات", "rows": [["image", "use a Docker image"], ["services", "add service images"]]},
   {"k": "chips", "title": "التشغيل", "chips": ["Commit", "Merge request", "Schedule", "Manual"], "note": "each creates a pipeline"},
   {"k": "rows", "title": "المنفذ", "rows": [["Runner", "runs the jobs"]]},
   {"k": "rows", "title": "التسجيل", "rows": [["Register", "with GitLab first"], ["Result", "a persistent connection"]]},
