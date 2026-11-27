@@ -52,7 +52,7 @@ const S2: React.FC<P> = ({ t }) => {
   );
 };
 const S3: React.FC<P> = ({ t }) => <Q t={t} n={1} q="Pod phases?" terms={["Pending", "Running", "Succeeded", "Failed", "Unknown"]} />;
-const S4: React.FC<P> = ({ t }) => <A t={t} n={1} rows={[["Pending", "created, not started yet"], ["Running", "bound to a node, container runs"], ["deleted Pod", "a new Pod is created"]]} />;
+const S4: React.FC<P> = ({ t }) => <A t={t} n={1} at={1} step={3.5} rows={[["Pending", "created, not started yet"], ["Running", "bound to a node, container runs"], ["Succeeded", "all containers finished OK"], ["Failed", "at least one container failed"], ["Unknown", "no news from the node"]]} />;
 const S5: React.FC<P> = ({ t }) => <Q t={t} n={2} q="CrashLoopBackOff vs ImagePullBackOff?" terms={["CrashLoopBackOff", "ImagePullBackOff"]} />;
 const S6: React.FC<P> = ({ t }) => <A t={t} n={2} rows={[["CrashLoopBackOff", "app starts and exits"], ["ImagePullBackOff", "image not pulled"]]} />;
 const S7: React.FC<P> = ({ t }) => <Q t={t} n={3} q="Pod vs ReplicaSet vs Deployment?" terms={["Pod", "ReplicaSet", "Deployment"]} />;
