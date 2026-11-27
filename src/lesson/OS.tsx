@@ -87,7 +87,7 @@ export const mk = (sp: Spec, n: number, dur = 20): React.FC<P> => ({ t }) => {
     <Frame title={sp.title} n={n}>
       <T x={960} y={300} s={100} w={900} o={ap(t, 0.3)}>{sp.l1}</T>
       <T x={960} y={400} s={44} c={C.grey} o={ap(t, 1)}>{sp.sub}</T>
-      {sp.chips.map((a, i) => <Chip key={a} x={170 + (i % 3) * 550} y={500 + Math.floor(i / 3) * 140} w={500} label={a} col={COLS[i % 5]} s={34} o={ap(t, 1.8 + i * 0.5)} />)}
+      {sp.chips.map((a, i) => <Chip key={a} x={170 + (i % 3) * 550} y={500 + Math.floor(i / 3) * 140} w={500} label={a} col={COLS[i % 5]} s={34} o={ap(t, 0.8 + i * 0.3)} />)}
     </Frame>
   );
 };
