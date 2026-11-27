@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  { k: "title", title: "الحلقة الخامسة", l1: "oc + Console", l2: "Operators", sub: "OpenShift Interview Prep", chip: "Episode 5" },
+  { k: "rows", title: "أداة الأوامر", rows: [["oc", "OpenShift CLI"], ["Use", "apps and projects from a terminal"]] },
+  { k: "chips", title: "التثبيت", chips: ["Customer Portal", "Web console", "RPM", "Homebrew"], note: "ways to install oc" },
+  { k: "rows", title: "الدخول", rows: [["oc login -u user1", "user name"], ["oc login --web", "sign in from the browser"]] },
+  { k: "flow", title: "أمر جاهز", steps: ["Web console", "Login command", "Terminal"], note: "token + server included" },
+  { k: "rows", title: "إنشاء وحالة", rows: [["oc new-app", "app from a Git repository"], ["oc status", "view the app"]] },
+  { k: "rows", title: "المتابعة", rows: [["oc get pods", "pods in the project"], ["oc logs", "logs of one pod"]] },
+  { k: "rows", title: "التطبيق", rows: [["oc apply -f", "apply a YAML file"], ["Same idea", "as kubectl"]] },
+  { k: "rows", title: "الإدارة", rows: [["oc adm", "administrative commands"], ["Example", "oc adm new-project"]] },
+  { k: "rows", title: "الواجهة", rows: [["Web console", "graphical interface"], ["Tasks", "manage and troubleshoot"]] },
+  { k: "rows", title: "مكان التشغيل", rows: [["Runs as pods", "control plane nodes"], ["Project", "openshift-console"], ["Managed by", "console-operator"]] },
+  { k: "rows", title: "الدور الأول", rows: [["Administrator", "inventory, capacity, events"], ["Manages", "workloads, storage, networking, Operators"]] },
+  { k: "chips", title: "كمان للأدمن", chips: ["Identity providers", "Role bindings", "Resource quotas", "Monitoring + alerts"] },
+  { k: "rows", title: "الدور التاني", rows: [["Developer perspective", "for developers"], ["Gives", "ways to deploy apps and databases"]] },
+  { k: "cmp", title: "جديد", l: "Before 4.19", r: "Since 4.19", ls: ["Separate perspectives"], rs: ["Perspectives unified", "Developer not enabled by default"] },
+  { k: "q", title: "الـ Operator", q: "What is an Operator?", terms: ["Software that runs software"] },
+  { k: "rows", title: "التعريف", rows: [["Packages", "Kubernetes applications"], ["Deploys + manages", "them"], ["Watches", "the cluster, decides in real time"]] },
+  { k: "flow", title: "الـ CRD", steps: ["CRD", "Custom object", "Acts like a native one"], note: "example: MongoDB" },
+  { k: "rows", title: "الإطار", rows: [["Operator SDK", "build your own Operator"], ["Operator Registry", "stores Operator data"]] },
+  { k: "rows", title: "الـ OLM", rows: [["OLM", "install, upgrade, RBAC"], ["Default", "installed"]] },
+  { k: "rows", title: "المتجر", rows: [["OperatorHub", "web console catalog"], ["Used by", "cluster administrators"]] },
+  { k: "cmp", title: "الفرق", l: "Service broker", r: "Operator", ls: ["Not long running", "No upgrade or failover"], rs: ["Always watching", "Day 2 operations"] },
+  { k: "chips", title: "مراجعة", chips: ["oc: terminal", "Console: browser", "Operators: software"] },
+  { k: "q", title: "أسئلة", q: "Operator? OLM?", terms: ["Encodes operations + CRDs", "OLM manages Operators"] },
+  { k: "end", title: "الختام", l1: "oc + Console", sub: "Operators", chips: ["oc", "Console", "Operator", "OLM", "OperatorHub", "Next: Review"] },
+];
+export const Lesson11 = makeOS(SP, "OpenShift - Episode 5");
