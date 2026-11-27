@@ -25,6 +25,7 @@ import { FactBrownlee } from "./scenes/FactBrownlee";
 import { FactTendon } from "./scenes/FactTendon";
 import { Lesson } from "./lesson/Lesson";
 import { Lesson3 } from "./lesson/Lesson3";
+import { Lesson4 } from "./lesson/Lesson4";
 import { CameraBench } from "./scenes/CameraBench";
 
 const fit = async ({ props }: { props: Record<string, unknown> }) => {
@@ -61,6 +62,7 @@ export const RemotionRoot: React.FC = () => {
         <Composition id="FactTendon" component={FactTendon as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={807} defaultProps={{ starts: [0, 4.557, 12.006, 18.287, 25.4], durationSec: 32, debug: false }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.durationSec as number) || 29.1) * 30 - 1e-6) })} />
     <Composition id="Lesson" component={Lesson as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="Lesson3" component={Lesson3 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
+    <Composition id="Lesson4" component={Lesson4 as unknown as React.FC<Record<string, unknown>>} width={1920} height={1080} fps={30} durationInFrames={300} defaultProps={{ starts: [0], total: 10 }} calculateMetadata={async ({ props }) => ({ durationInFrames: Math.ceil(((props.total as number) || 10) * 30) })} />
     <Composition id="CameraBench" component={CameraBench as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={450} />
     <Composition id="ThumbOnly"component={ThumbOnly as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={103} defaultProps={{ kind: "man" }} />
     <Composition id="CoinOnly"component={CoinOnly as unknown as React.FC<Record<string, unknown>>} width={1080} height={1920} fps={30} durationInFrames={180}
