@@ -4,7 +4,7 @@ const SP: Spec[] = [
   { k: "title", title: "الحلقة التالتة", l1: "Route", l2: "vs Ingress", sub: "OpenShift Interview Prep", chip: "Episode 3" },
   { k: "rows", title: "المشكلة", rows: [["Pods + Services", "private IPs"], ["Outside clients", "cannot reach them"]] },
   { k: "rows", title: "المسؤول", rows: [["Ingress Operator", "external access"], ["API", "IngressController"]] },
-  { k: "rows", title: "الـ كنترولر", rows: [["Ingress Controller", "HAProxy-based"], ["Managed by", "Ingress Operator"]] },
+  { k: "rows", title: "المتحكم", rows: [["Ingress Controller", "HAProxy-based"], ["Managed by", "Ingress Operator"]] },
   { k: "chips", title: "بيشتغل كحاوية", chips: ["Pod", "Scale", "Replicate"], note: "like any regular pod" },
   { k: "flow", title: "المسار", steps: ["Public host", "Route", "Service"], note: "www.example.com" },
   { k: "rows", title: "أبسط طريقة", rows: [["oc expose svc", "create a route"], ["Host", "auto-generated if empty"]] },
