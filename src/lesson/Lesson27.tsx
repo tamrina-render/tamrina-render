@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثالثة", "l1": "post + when", "l2": "Credentials", "sub": "Interview Prep", "chip": "Episode 3"},
+  {"k": "rows", "title": "القسم", "rows": [["post", "extra steps at the end"], ["Scope", "pipeline or one stage"]]},
+  {"k": "chips", "title": "الشروط", "chips": ["always", "success", "failure", "unstable", "aborted"]},
+  {"k": "rows", "title": "always", "rows": [["always", "runs whatever the result"]]},
+  {"k": "rows", "title": "changed", "rows": [["changed", "status differs from last run"]]},
+  {"k": "rows", "title": "fixed", "rows": [["fixed", "passes after fail or unstable"]]},
+  {"k": "rows", "title": "regression", "rows": [["regression", "fails after a good run"]]},
+  {"k": "rows", "title": "المكان", "rows": [["End of pipeline", "or inside a stage"]]},
+  {"k": "rows", "title": "الشرط", "rows": [["when", "decides if a stage runs"]]},
+  {"k": "rows", "title": "أقل شرط", "rows": [["Needs", "at least one condition"], ["Example", "branch"]]},
+  {"k": "rows", "title": "branch", "rows": [["branch", "works with multibranch only"]]},
+  {"k": "chips", "title": "التركيب", "chips": ["not", "allOf", "anyOf"], "note": "combine conditions"},
+  {"k": "rows", "title": "المتغيرات", "rows": [["environment", "sets variables"]]},
+  {"k": "rows", "title": "الأسرار", "rows": [["credentials()", "helper inside environment"]]},
+  {"k": "chips", "title": "الأنواع المدعومة", "chips": ["Secret text", "Username + password", "Secret file"]},
+  {"k": "rows", "title": "التخزين", "rows": [["Stored encrypted", "on the controller"], ["Pipeline uses", "the credential ID"]]},
+  {"k": "rows", "title": "الأمان", "rows": [["Users", "do not see the real value"]]},
+  {"k": "rows", "title": "النطاق", "rows": [["Global", "whole Jenkins"], ["Or", "one pipeline, or one user"]]},
+  {"k": "rows", "title": "المشغلات", "rows": [["triggers", "re-run the pipeline"], ["Example", "cron"]]},
+  {"k": "rows", "title": "Multibranch", "rows": [["Multibranch", "different Jenkinsfile per branch"]]},
+  {"k": "rows", "title": "الفحص", "rows": [["After save", "Jenkins scans the repository"], ["Creates", "an item per branch"]]},
+  {"k": "q", "title": "سؤال 1", "q": "What is post for?", "terms": ["Steps after the run", "By result"]},
+  {"k": "q", "title": "سؤال 2", "q": "How to handle secrets?", "terms": ["Store as credentials", "Use by ID"]},
+  {"k": "q", "title": "سؤال 3", "q": "What does when do?", "terms": ["Decides if a stage runs", "By a condition"]},
+  {"k": "end", "title": "الختام", "l1": "post + when", "sub": "Interview Prep", "chips": ["post", "when", "credentials"]},
+];
+export const Lesson27 = makeOS(SP, "Jenkins - Episode 3", "Jenkins");

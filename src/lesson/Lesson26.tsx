@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثانية", "l1": "Jenkins", "l2": "Pipeline", "sub": "Interview Prep", "chip": "Episode 2"},
+  {"k": "rows", "title": "التعريف", "rows": [["Jenkins Pipeline", "suite of plugins"], ["Supports", "continuous delivery pipelines"]]},
+  {"k": "rows", "title": "الكود", "rows": [["Pipeline DSL", "pipeline as code"]]},
+  {"k": "rows", "title": "الملف", "rows": [["Jenkinsfile", "a text file"], ["Defines", "the pipeline"]]},
+  {"k": "flow", "title": "المكان", "steps": ["Jenkinsfile", "Source control", "With the project code"]},
+  {"k": "rows", "title": "المفهوم", "rows": [["Pipeline as code", "versioned and reviewed"], ["Like", "any other code"]]},
+  {"k": "chips", "title": "الصيغتين", "chips": ["Declarative", "Scripted"], "note": "two syntaxes"},
+  {"k": "rows", "title": "Declarative", "rows": [["Simpler", "easier to read and write"], ["Extra", "richer syntax features"]]},
+  {"k": "rows", "title": "Scripted", "rows": [["Built differently", "written in Groovy"]]},
+  {"k": "rows", "title": "النموذج", "rows": [["Pipeline", "model of the delivery process"], ["Typical", "build, test, deliver"]]},
+  {"k": "rows", "title": "العقدة", "rows": [["Node", "a machine that runs the Pipeline"]]},
+  {"k": "rows", "title": "المرحلة", "rows": [["Stage", "a distinct subset of tasks"], ["Examples", "Build, Test, Deploy"]]},
+  {"k": "rows", "title": "الخطوة", "rows": [["Step", "one task"], ["Tells Jenkins", "what to do"]]},
+  {"k": "rows", "title": "الهيكل", "rows": [["pipeline block", "wraps everything"]]},
+  {"k": "rows", "title": "المنفذ", "rows": [["agent", "where it runs"], ["Scope", "whole pipeline or one stage"]]},
+  {"k": "rows", "title": "مكان agent", "rows": [["Top level", "required in pipeline"], ["Also", "allowed inside a stage"]]},
+  {"k": "rows", "title": "المراحل", "rows": [["stages", "one or more stage"]]},
+  {"k": "rows", "title": "الخطوات", "rows": [["steps", "inside each stage"]]},
+  {"k": "chips", "title": "أنواع agent", "chips": ["any", "none", "label", "docker"]},
+  {"k": "rows", "title": "Docker", "rows": [["docker", "runs in a container"], ["Also", "dockerfile, kubernetes"]]},
+  {"k": "rows", "title": "في Scripted", "rows": [["node", "first important step"], ["Gives", "executor and workspace"]]},
+  {"k": "q", "title": "سؤال 1", "q": "What is a Jenkinsfile?", "terms": ["Pipeline definition", "In source control"]},
+  {"k": "q", "title": "سؤال 2", "q": "Declarative vs Scripted?", "terms": ["Declarative: simpler", "Scripted: Groovy"]},
+  {"k": "q", "title": "سؤال 3", "q": "Stage vs step?", "terms": ["Stage: a part", "Step: one task"]},
+  {"k": "end", "title": "الختام", "l1": "Pipeline", "sub": "Interview Prep", "chips": ["Jenkinsfile", "Declarative", "Next: post + when"]},
+];
+export const Lesson26 = makeOS(SP, "Jenkins - Episode 2", "Jenkins");
