@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الخامسة", "l1": "GitLab CI", "l2": "Variables + Cache", "sub": "Interview Prep", "chip": "Episode 5"},
+  {"k": "rows", "title": "التعريف", "rows": [["variables", "CI/CD variables"], ["Keyword", "variables"]]},
+  {"k": "rows", "title": "النطاق", "rows": [["Pipeline", "all jobs"], ["Or", "a single job"]]},
+  {"k": "rows", "title": "الجاهزة", "rows": [["Predefined", "ready from GitLab"], ["Example", "CI_JOB_STAGE"]]},
+  {"k": "rows", "title": "الإعدادات", "rows": [["Project settings", "add variables in the UI"]]},
+  {"k": "rows", "title": "الإخفاء", "rows": [["masked", "hides the value in job logs"]]},
+  {"k": "rows", "title": "الحماية", "rows": [["protected", "protected branches or tags only"]]},
+  {"k": "rows", "title": "الأسرار", "rows": [["Secrets", "deployment keys"], ["Use", "masked + protected"]]},
+  {"k": "rows", "title": "المخرجات", "rows": [["Artifacts", "files and directories"], ["Attached to", "the job"]]},
+  {"k": "rows", "title": "الرفع", "rows": [["Uploaded", "after the job ends"], ["Download", "from the UI"]]},
+  {"k": "rows", "title": "الحالة", "rows": [["Default", "successful jobs only"]]},
+  {"k": "rows", "title": "المسارات", "rows": [["artifacts", "paths"], ["Defines", "files to save"]]},
+  {"k": "rows", "title": "التخزين المؤقت", "rows": [["cache", "for dependencies"], ["Example", "downloaded packages"]]},
+  {"k": "rows", "title": "المكان", "rows": [["Cache", "stored where the runner lives"], ["Distributed", "uploaded to S3"]]},
+  {"k": "rows", "title": "التعريف لكل مهمة", "rows": [["cache", "defined per job"], ["Otherwise", "it does not work"]]},
+  {"k": "rows", "title": "المفتاح", "rows": [["key", "cache per branch"]]},
+  {"k": "rows", "title": "المسارات النسبية", "rows": [["Paths", "relative to the project"]]},
+  {"k": "rows", "title": "الشروط", "rows": [["rules", "conditions for a job"], ["Controls", "run or not"]]},
+  {"k": "rows", "title": "الأسبقية", "rows": [["needs", "start a job early"], ["Ignores", "stage order"]]},
+  {"k": "rows", "title": "الفشل", "rows": [["allow_failure", "job can fail"], ["Pipeline", "keeps going"]]},
+  {"k": "rows", "title": "التوازي", "rows": [["parallel", "copies of one job"], ["Run", "at the same time"]]},
+  {"k": "rows", "title": "الوراثة", "rows": [["extends", "inherit settings"], ["From", "another job"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Artifacts vs cache?", "terms": ["Artifacts: job results", "Cache: dependencies"]},
+  {"k": "q", "title": "سؤال 2", "q": "Protect secrets?", "terms": ["variables: masked", "and protected"]},
+  {"k": "end", "title": "الختام", "l1": "GitLab CI", "sub": "Interview Prep", "chips": ["Variables", "Artifacts + Cache", "Next: Jenkins vs GitLab"]},
+];
+export const Lesson29 = makeOS(SP, "GitLab CI - Episode 5", "GitLab CI");
