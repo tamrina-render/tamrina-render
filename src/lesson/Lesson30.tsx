@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة السادسة", "l1": "Jenkins vs GitLab CI", "l2": "Comparison + Review", "sub": "Interview Prep", "chip": "Episode 6"},
+  {"k": "rows", "title": "الهدف", "rows": [["Same goal", "automatic pipeline"], ["From", "commit to deploy"]]},
+  {"k": "rows", "title": "الكود", "rows": [["Pipeline as code", "inside the project"]]},
+  {"k": "cmp", "title": "الملف", "l": "Jenkins", "r": "GitLab CI", "ls": ["Jenkinsfile"], "rs": [".gitlab-ci.yml"]},
+  {"k": "rows", "title": "الصيغة", "rows": [["Jenkinsfile", "Declarative or Scripted"]]},
+  {"k": "rows", "title": "اللغة", "rows": [["GitLab file", "YAML"]]},
+  {"k": "rows", "title": "جنكينز", "rows": [["Jenkins", "stages"], ["Each stage", "has steps"]]},
+  {"k": "rows", "title": "جيت لاب", "rows": [["GitLab", "stages"], ["Each stage", "has jobs"]]},
+  {"k": "cmp", "title": "التنفيذ", "l": "Jenkins", "r": "GitLab CI", "ls": ["controller", "agents", "executors"], "rs": ["runners", "register", "take jobs"]},
+  {"k": "rows", "title": "المنفذات", "rows": [["GitLab", "runners"], ["Register", "take the jobs"]]},
+  {"k": "cmp", "title": "الوحدة", "l": "Jenkins", "r": "GitLab CI", "ls": ["executor", "an execution slot"], "rs": ["runner", "runs the jobs"]},
+  {"k": "cmp", "title": "الأسرار", "l": "Jenkins", "r": "GitLab CI", "ls": ["credentials", "encrypted"], "rs": ["variables", "masked + protected"]},
+  {"k": "rows", "title": "الأسرار في جيت لاب", "rows": [["variables", "masked"], ["And", "protected"]]},
+  {"k": "cmp", "title": "النتيجة", "l": "Jenkins", "r": "GitLab CI", "ls": ["post", "pipeline result"], "rs": ["allow_failure", "rules"]},
+  {"k": "cmp", "title": "الشروط", "l": "Jenkins", "r": "GitLab CI", "ls": ["when", "directive"], "rs": ["rules", "keyword"]},
+  {"k": "cmp", "title": "التوسعة", "l": "Jenkins", "r": "GitLab CI", "ls": ["plugins", "extensible"], "rs": ["Part of", "the GitLab platform"]},
+  {"k": "cmp", "title": "الفروع", "l": "Jenkins", "r": "GitLab CI", "ls": ["multibranch", "finds Jenkinsfile"], "rs": ["merge request", "pipelines"]},
+  {"k": "rows", "title": "التقسيم", "rows": [["parent-child", "split a big pipeline"], ["multi-project", "link projects"]]},
+  {"k": "rows", "title": "البيئة", "rows": [["environment", "deployment target"], ["Examples", "development, staging, production"]]},
+  {"k": "rows", "title": "التشغيل", "rows": [["trigger", "downstream pipeline"]]},
+  {"k": "chips", "title": "المشغلات", "chips": ["Commit", "Merge request", "Schedule", "Manual"], "note": "GitLab pipelines"},
+  {"k": "q", "title": "سؤال 1", "q": "Jenkins vs GitLab CI?", "terms": ["Jenkins: plugins", "GitLab: YAML platform"]},
+  {"k": "q", "title": "سؤال 2", "q": "Pipeline as code?", "terms": ["Defined in a file", "inside the project"]},
+  {"k": "q", "title": "سؤال 3", "q": "Protect secrets?", "terms": ["Jenkins: credentials", "GitLab: masked + protected"]},
+  {"k": "end", "title": "الختام", "l1": "CI/CD", "sub": "Interview Prep", "chips": ["Jenkins", "GitLab CI", "Good luck!"]},
+];
+export const Lesson30 = makeOS(SP, "CI/CD - Episode 6", "CI/CD");
