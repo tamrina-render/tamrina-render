@@ -35,7 +35,7 @@ const S2: React.FC<P> = ({ t }) => (
     <Arr x1={520} y1={300} x2={760} y2={300} o={ap(t, 4)} col={C.grey} dash />
     <PodV x={800} y={240} o={ap(t, 4.5)} />
     <T x={885} y={400} s={32} c={C.red} o={ap(t, 5)}>10.0.7.9</T>
-    <ARt x={1400} y={300} s={46} c={C.red} o={ap(t, 5.5)}>الـ IP اتغير</ARt>
+    <ARt x={1400} y={300} s={46} c={C.red} o={ap(t, 5.5)}>العنوان اتغير</ARt>
     <Chip x={200} y={600} w={500} label="Deployment" col={C.green} o={ap(t, 8)} />
     <ARt x={450} y={760} s={46} o={ap(t, 9)}>يحافظ على العدد</ARt>
     <Chip x={1100} y={600} w={500} label="Service" col={C.blue} o={ap(t, 11)} />
@@ -44,7 +44,7 @@ const S2: React.FC<P> = ({ t }) => (
 );
 
 const S3: React.FC<P> = ({ t }) => (
-  <Frame title="الـ Labels" n={3}>
+  <Frame title="الليبلز" n={3}>
     <T x={960} y={220} s={50} c={C.grey} o={ap(t, 0.3)}>key = value</T>
     {[0, 1, 2].map((i) => <PodV key={i} x={300 + i * 480} y={420} o={ap(t, 0.5 + i * 0.3)} />)}
     <Tag x={310 + 0 * 480} y={560} label="app=web" o={ap(t, 3)} col={C.blue} />
@@ -55,7 +55,7 @@ const S3: React.FC<P> = ({ t }) => (
 );
 
 const S4: React.FC<P> = ({ t }) => (
-  <Frame title="الـ Selector" n={4}>
+  <Frame title="السيليكتور" n={4}>
     <Code x={600} y={190} w={720} s={40} lines={["selector: app=web"]} o={ap(t, 0.3)} hl={0} />
     {[0, 1, 2, 3].map((i) => {
       const web = i < 2, bad = i === 3;
@@ -69,7 +69,7 @@ const S4: React.FC<P> = ({ t }) => (
         </g>
       );
     })}
-    <ARt x={960} y={900} s={46} c={C.red} o={ap(t, 8)}>label غلط = مفيش حاجة بتشتغل</ARt>
+    <ARt x={960} y={900} s={46} c={C.red} o={ap(t, 8)}>الليبل غلط = مفيش حاجة بتشتغل</ARt>
   </Frame>
 );
 
@@ -193,7 +193,7 @@ const S11: React.FC<P> = ({ t }) => (
 const S12: React.FC<P> = ({ t }) => (
   <Frame title="أوامر لازم تحفظها" n={12}>
     <Code x={260} y={220} w={1400} s={38} lines={["kubectl set image deployment/web app=app:v2"]} o={ap(t, 0.5)} />
-    <ARt x={960} y={380} s={44} c={C.grey} o={ap(t, 1)}>غيّر الـ image</ARt>
+    <ARt x={960} y={380} s={44} c={C.grey} o={ap(t, 1)}>غيّر الصورة</ARt>
     <Code x={260} y={470} w={1400} s={38} lines={["kubectl rollout status deployment/web"]} o={ap(t, 3.5)} />
     <ARt x={960} y={630} s={44} c={C.grey} o={ap(t, 4)}>تابع التحديث</ARt>
     <Code x={260} y={720} w={1400} s={38} lines={["kubectl rollout history deployment/web"]} o={ap(t, 7)} />
@@ -224,7 +224,7 @@ const S14: React.FC<P> = ({ t }) => {
   const ips = ["10.0.1.5", "10.0.7.9", "10.0.3.2"];
   const swap = t > 6;
   return (
-    <Frame title="الـ Service" n={14}>
+    <Frame title="الخدمة" n={14}>
       <Client x={120} y={440} o={ap(t, 0.3)} />
       <Arr x1={340} y1={490} x2={560} y2={490} o={ap(t, 1)} />
       <Box x={580} y={380} w={440} h={220} col={C.blue} fill="#fff" o={ap(t, 1)}>
@@ -239,7 +239,7 @@ const S14: React.FC<P> = ({ t }) => {
           <T x={1365} y={400 + i * 200 - 14} s={26} c={C.grey} f={MONO}>{swap && i === 1 ? "10.0.9.4" : ips[i]}</T>
         </g>
       ))}
-      <ARt x={800} y={850} s={46} o={ap(t, 5)}>العنوان ثابت حتى لو الـ Pods اتغيرت</ARt>
+      <ARt x={800} y={850} s={46} o={ap(t, 5)}>العنوان ثابت مهما اتغيّر اللي وراه</ARt>
     </Frame>
   );
 };
@@ -281,7 +281,7 @@ const S16: React.FC<P> = ({ t }) => (
     <Client x={1400} y={490} o={ap(t, 5)} label="Outside" />
     <Arr x1={1390} y1={540} x2={1190} y2={540} col={C.red} dash o={ap(t, 6)} />
     <T x={1290} y={520} s={80} c={C.red} o={ap(t, 6.5)}>✕</T>
-    <ARt x={960} y={940} s={44} c={C.grey} o={ap(t, 8)}>للخدمات الداخلية: backend و database</ARt>
+    <ARt x={960} y={940} s={44} c={C.grey} o={ap(t, 8)}>للخدمات الداخلية بس</ARt>
   </Frame>
 );
 
@@ -333,7 +333,7 @@ const S19: React.FC<P> = ({ t }) => (
         <PodV x={1440} y={285 + i * 220} />
       </g>
     ))}
-    <ARt x={700} y={930} s={44} c={C.grey} o={ap(t, 6)}>بيبني فوق NodePort</ARt>
+    <ARt x={700} y={930} s={44} c={C.grey} o={ap(t, 6)}>بيبني فوق اللي قبله</ARt>
   </Frame>
 );
 
@@ -342,19 +342,19 @@ const S20: React.FC<P> = ({ t }) => (
     <Box x={260} y={180} w={1400} h={760} col={C.green} fill="#F1FAF5" o={ap(t, 0.3)}><T x={960} y={250} s={44} c={C.green}>LoadBalancer</T></Box>
     <Box x={420} y={320} w={1080} h={540} col={C.amber} fill="#FFF8EA" o={ap(t, 2)}><T x={960} y={390} s={44} c={C.amber}>NodePort</T></Box>
     <Box x={600} y={450} w={720} h={340} col={C.blue} fill="#EEF2F9" o={ap(t, 4)}><T x={960} y={530} s={44} c={C.blue}>ClusterIP</T></Box>
-    <ARt x={960} y={720} s={42} c={C.grey} o={ap(t, 8)}>مش على cloud؟ مش هيشتغل لوحده</ARt>
+    <ARt x={960} y={720} s={42} c={C.grey} o={ap(t, 8)}>مش على كلاود؟ مش هيشتغل لوحده</ARt>
   </Frame>
 );
 
 const S21: React.FC<P> = ({ t }) => (
-  <Frame title="الـ DNS" n={21}>
+  <Frame title="الأسماء" n={21}>
     <Box x={700} y={180} w={520} h={110} col={C.blue} fill="#fff" o={ap(t, 0.3)}><T x={960} y={252} s={44} c={C.blue}>CoreDNS</T></Box>
     <PodV x={160} y={420} o={ap(t, 1)} label="Pod" />
     <Arr x1={350} y1={470} x2={700} y2={300} o={ap(t, 2)} col={C.grey} />
     <Box x={640} y={430} w={640} h={120} col={C.blue} fill="#fff" o={ap(t, 3)}><T x={960} y={510} s={40} c={C.blue}>Service: web</T></Box>
     <Code x={260} y={650} w={1400} s={38} lines={["web", "web.prod"]} o={ap(t, 4.5)} hl={t > 8 ? 1 : 0} />
-    <ARt x={500} y={860} s={44} o={ap(t, 5)}>نفس الـ namespace</ARt>
-    <ARt x={1360} y={860} s={44} o={ap(t, 8)}>namespace تاني</ARt>
+    <ARt x={500} y={860} s={44} o={ap(t, 5)}>نفس النطاق</ARt>
+    <ARt x={1360} y={860} s={44} o={ap(t, 8)}>نطاق تاني</ARt>
   </Frame>
 );
 
@@ -378,11 +378,11 @@ const S23: React.FC<P> = ({ t }) => (
     </Box>
     <Box x={1060} y={210} w={700} h={400} col={C.green} o={ap(t, 3)}>
       <T x={1410} y={290} s={46} c={C.green}>Deployment</T>
-      <ARt x={1410} y={400} s={44} o={ap(t, 4)}>بيدير الـ ReplicaSets</ARt>
+      <ARt x={1410} y={400} s={44} o={ap(t, 4)}>بيدير اللي تحته</ARt>
       <T x={1410} y={480} s={36} o={ap(t, 5)}>rolling update</T>
       <T x={1410} y={540} s={36} o={ap(t, 6)}>rollback</T>
     </Box>
-    <ARt x={960} y={730} s={44} c={C.grey} o={ap(t, 8)}>zero downtime؟</ARt>
+    <T x={960} y={730} s={40} c={C.grey} o={ap(t, 8)}>zero downtime?</T>
     <Chip x={460} y={790} w={1000} label="rolling update + readiness probe" col={C.green} o={ap(t, 9)} s={40} />
   </Frame>
 );
