@@ -18,7 +18,7 @@ const SP: Spec[] = [
   {"k": "rows", "title": "غير المتكرر", "rows": [["Standard-IA + One Zone-IA", "rarely accessed data"], ["Note", "retrieval fee applies"]]},
   {"k": "rows", "title": "الذكي", "rows": [["Intelligent-Tiering", "moves objects automatically"], ["Based on", "access patterns"]]},
   {"k": "chips", "title": "الأرشيف", "chips": ["Instant Retrieval", "Flexible Retrieval", "Deep Archive"], "note": "Glacier classes"},
-  {"k": "rows", "title": "دورة الحياة", "rows": [["Lifecycle", "move to cheaper classes"], ["Or", "expire objects"]]},
+  {"k": "rows", "title": "دورة الحياة", "rows": [["Lifecycle", "move to cheaper classes"], ["Expiration", "delete objects"]]},
   {"k": "rows", "title": "التكرار", "rows": [["Replication", "copy to other buckets"], ["Same or", "a different Region"]]},
   {"k": "cmp", "title": "المقارنة", "l": "S3", "r": "EBS", "ls": ["object storage", "buckets"], "rs": ["block storage", "attached to EC2"]},
   {"k": "rows", "title": "الحماية", "rows": [["EBS volume", "replicated inside the AZ"], ["Snapshots", "backups"]]},
