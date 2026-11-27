@@ -444,15 +444,15 @@ const S20: React.FC<P> = ({ t }) => (
 );
 
 const S21: React.FC<P> = ({ t }) => (
-  <Frame title="مثال: ubuntu" n={21}>
+  <Frame title="مثال" n={21}>
     <Code x={360} y={190} w={1200} s={40} lines={["kubectl run test --image=ubuntu"]} o={ap(t, 0.3)} />
     <Box x={260} y={400} w={1400} h={380} col={C.line} o={ap(t, 1.5)} />
     <T x={330} y={470} s={32} c={C.grey} a="start" o={ap(t, 1.5)}>container timeline</T>
     <rect x={330} y={540} width={ap(t, 3, 0.2) * 40} height={70} rx={8} fill={C.green} />
-    <T x={382} y={500} s={28} c={C.green} a="start" o={ap(t, 3.2)}>start</T>
+    <T x={385} y={595} s={28} c={C.green} a="start" o={ap(t, 3.2)}>start</T>
     <T x={400} y={680} s={34} c={C.red} a="start" o={ap(t, 4.5)}>exit immediately: no long-running process</T>
     <Chip x={620} y={850} w={680} label="CrashLoopBackOff" col={C.red} o={ap(t, 7)} s={44} />
-    <ARt x={960} y={1000} s={42} c={C.grey} o={ap(t, 9)}>ubuntu مش server</ARt>
+    <T x={700} y={1030} s={40} c={C.ink} o={ap(t, 9)}>ubuntu</T><ARt x={1100} y={1030} s={42} c={C.grey} o={ap(t, 9)}>مش سيرفر</ARt>
   </Frame>
 );
 
