@@ -3,49 +3,49 @@ import { AbsoluteFill, Sequence, delayRender, continueRender, useCurrentFrame, u
 import { loadFonts } from "../lib/fonts";
 
 // ---------- palette + helpers ----------
-const C = { bg: "#F7F9FC", ink: "#17202B", blue: "#326CE5", green: "#1E9E62", red: "#E04848", amber: "#F2A31B", grey: "#8A94A3", line: "#D5DCE8", card: "#FFFFFF", code: "#0F1722" };
-const AR = "IBM Plex Sans Arabic, Cairo, sans-serif";
-const LAT = "Manrope, sans-serif";
-const MONO = "JetBrains Mono, monospace";
-const E = (x: number) => { const v = Math.min(1, Math.max(0, x)); return 1 - Math.pow(1 - v, 3); };
-const ap = (t: number, at: number, d = 0.5) => E((t - at) / d);
-const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+export const C = { bg: "#F7F9FC", ink: "#17202B", blue: "#326CE5", green: "#1E9E62", red: "#E04848", amber: "#F2A31B", grey: "#8A94A3", line: "#D5DCE8", card: "#FFFFFF", code: "#0F1722" };
+export const AR = "IBM Plex Sans Arabic, Cairo, sans-serif";
+export const LAT = "Manrope, sans-serif";
+export const MONO = "JetBrains Mono, monospace";
+export const E = (x: number) => { const v = Math.min(1, Math.max(0, x)); return 1 - Math.pow(1 - v, 3); };
+export const ap = (t: number, at: number, d = 0.5) => E((t - at) / d);
+export const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
-type P = { t: number };
+export type P = { t: number };
 
 // ---------- primitives (SVG, 1920x1080) ----------
-const T: React.FC<{ x: number; y: number; s?: number; c?: string; w?: number; a?: "start" | "middle" | "end"; o?: number; f?: string; children: React.ReactNode }> = ({ x, y, s = 40, c = C.ink, w = 700, a = "middle", o = 1, f = LAT, children }) => (
+export const T: React.FC<{ x: number; y: number; s?: number; c?: string; w?: number; a?: "start" | "middle" | "end"; o?: number; f?: string; children: React.ReactNode }> = ({ x, y, s = 40, c = C.ink, w = 700, a = "middle", o = 1, f = LAT, children }) => (
   <text x={x} y={y} fontSize={s} fill={c} fontWeight={w} textAnchor={a} opacity={o} fontFamily={f} style={{ direction: "ltr", unicodeBidi: "isolate" }}>{children}</text>
 );
-const ARt: React.FC<{ x: number; y: number; s?: number; c?: string; w?: number; a?: "start" | "middle" | "end"; o?: number; children: React.ReactNode }> = ({ x, y, s = 44, c = C.ink, w = 600, a = "middle", o = 1, children }) => (
+export const ARt: React.FC<{ x: number; y: number; s?: number; c?: string; w?: number; a?: "start" | "middle" | "end"; o?: number; children: React.ReactNode }> = ({ x, y, s = 44, c = C.ink, w = 600, a = "middle", o = 1, children }) => (
   <text x={x} y={y} fontSize={s} fill={c} fontWeight={w} textAnchor={a} opacity={o} fontFamily={AR} style={{ direction: "rtl", unicodeBidi: "isolate" }}>{children}</text>
 );
-const Box: React.FC<{ x: number; y: number; w: number; h: number; col?: string; fill?: string; o?: number; dash?: boolean; r?: number; sw?: number; children?: React.ReactNode }> = ({ x, y, w, h, col = C.line, fill = C.card, o = 1, dash, r = 22, sw = 4, children }) => (
+export const Box: React.FC<{ x: number; y: number; w: number; h: number; col?: string; fill?: string; o?: number; dash?: boolean; r?: number; sw?: number; children?: React.ReactNode }> = ({ x, y, w, h, col = C.line, fill = C.card, o = 1, dash, r = 22, sw = 4, children }) => (
   <g opacity={o}>
     <rect x={x} y={y} width={w} height={h} rx={r} fill={fill} stroke={col} strokeWidth={sw} strokeDasharray={dash ? "14 10" : undefined} />
     {children}
   </g>
 );
-const Cont: React.FC<{ x: number; y: number; col?: string; s?: number; o?: number; mark?: string }> = ({ x, y, col = C.green, s = 46, o = 1, mark }) => (
+export const Cont: React.FC<{ x: number; y: number; col?: string; s?: number; o?: number; mark?: string }> = ({ x, y, col = C.green, s = 46, o = 1, mark }) => (
   <g opacity={o}>
     <rect x={x} y={y} width={s} height={s} rx={9} fill={col} />
     {mark && <T x={x + s / 2} y={y + s * 0.72} s={s * 0.62} c="#fff">{mark}</T>}
   </g>
 );
-const Pod: React.FC<{ x: number; y: number; w?: number; h?: number; col?: string; label?: string; o?: number; dash?: boolean; conts?: { col: string; mark?: string }[] }> = ({ x, y, w = 230, h = 120, col = C.blue, label = "Pod", o = 1, dash, conts = [] }) => (
+export const Pod: React.FC<{ x: number; y: number; w?: number; h?: number; col?: string; label?: string; o?: number; dash?: boolean; conts?: { col: string; mark?: string }[] }> = ({ x, y, w = 230, h = 120, col = C.blue, label = "Pod", o = 1, dash, conts = [] }) => (
   <g opacity={o}>
     <Box x={x} y={y} w={w} h={h} col={col} fill="#fff" dash={dash} r={20} />
     <T x={x + w / 2} y={y + 36} s={26} c={col} w={800}>{label}</T>
     {conts.map((c, i) => <Cont key={i} x={x + 28 + i * 62} y={y + 56} col={c.col} s={48} mark={c.mark} />)}
   </g>
 );
-const Node: React.FC<{ x: number; y: number; w?: number; h?: number; label: string; col?: string; o?: number; dead?: boolean }> = ({ x, y, w = 420, h = 260, label, col = C.grey, o = 1, dead }) => (
+export const Node: React.FC<{ x: number; y: number; w?: number; h?: number; label: string; col?: string; o?: number; dead?: boolean }> = ({ x, y, w = 420, h = 260, label, col = C.grey, o = 1, dead }) => (
   <g opacity={o}>
     <Box x={x} y={y} w={w} h={h} col={col} fill={dead ? "#FBEAEA" : "#EEF2F9"} sw={4} dash={dead} />
     <T x={x + 20} y={y + 40} s={28} c={dead ? C.red : C.grey} w={800} a="start">{label}</T>
   </g>
 );
-const Arr: React.FC<{ x1: number; y1: number; x2: number; y2: number; col?: string; o?: number; dash?: boolean; w?: number }> = ({ x1, y1, x2, y2, col = C.ink, o = 1, dash, w = 5 }) => {
+export const Arr: React.FC<{ x1: number; y1: number; x2: number; y2: number; col?: string; o?: number; dash?: boolean; w?: number }> = ({ x1, y1, x2, y2, col = C.ink, o = 1, dash, w = 5 }) => {
   const a = Math.atan2(y2 - y1, x2 - x1), hl = 22;
   return (
     <g opacity={o}>
@@ -54,41 +54,45 @@ const Arr: React.FC<{ x1: number; y1: number; x2: number; y2: number; col?: stri
     </g>
   );
 };
-const Code: React.FC<{ x: number; y: number; w?: number; lines: string[]; o?: number; s?: number; hl?: number }> = ({ x, y, w = 900, lines, o = 1, s = 34, hl }) => (
+export const Code: React.FC<{ x: number; y: number; w?: number; lines: string[]; o?: number; s?: number; hl?: number }> = ({ x, y, w = 900, lines, o = 1, s = 34, hl }) => (
   <g opacity={o}>
     <rect x={x} y={y} width={w} height={lines.length * (s * 1.5) + 40} rx={18} fill={C.code} />
     {lines.map((l, i) => <text key={i} x={x + 30} y={y + 48 + i * s * 1.5} fontSize={s} fill={hl === i ? "#7CFFB2" : "#E6EDF7"} fontFamily={MONO} style={{ direction: "ltr", unicodeBidi: "isolate", whiteSpace: "pre" }} xmlSpace="preserve">{l}</text>)}
   </g>
 );
-const Chip: React.FC<{ x: number; y: number; w?: number; label: string; col: string; o?: number; s?: number }> = ({ x, y, w = 300, label, col, o = 1, s = 38 }) => (
+export const Chip: React.FC<{ x: number; y: number; w?: number; label: string; col: string; o?: number; s?: number }> = ({ x, y, w = 300, label, col, o = 1, s = 38 }) => (
   <g opacity={o}>
     <rect x={x} y={y} width={w} height={84} rx={42} fill={col} />
     <T x={x + w / 2} y={y + 56} s={s} c="#fff" w={800}>{label}</T>
   </g>
 );
-const Spinner: React.FC<{ x: number; y: number; t: number; col?: string; r?: number }> = ({ x, y, t, col = C.blue, r = 20 }) => (
+export const Spinner: React.FC<{ x: number; y: number; t: number; col?: string; r?: number }> = ({ x, y, t, col = C.blue, r = 20 }) => (
   <g transform={`translate(${x},${y}) rotate(${t * 300})`}>
     <circle r={r} fill="none" stroke={C.line} strokeWidth={6} />
     <path d={`M0,${-r} A${r},${r} 0 0 1 ${r},0`} fill="none" stroke={col} strokeWidth={6} strokeLinecap="round" />
   </g>
 );
-const Cloud: React.FC<{ x: number; y: number; label: string; col?: string; o?: number }> = ({ x, y, label, col = C.blue, o = 1 }) => (
+export const Cloud: React.FC<{ x: number; y: number; label: string; col?: string; o?: number }> = ({ x, y, label, col = C.blue, o = 1 }) => (
   <g opacity={o}>
     <ellipse cx={x} cy={y} rx={150} ry={64} fill="#fff" stroke={col} strokeWidth={5} />
     <T x={x} y={y + 14} s={36} c={col} w={800}>{label}</T>
   </g>
 );
 
+export const LessonCtx = React.createContext<{ ep: string; total: number }>({ ep: "Episode 1", total: 24 });
 // ---------- scene frame ----------
-const Frame: React.FC<{ title: string; n: number; children: React.ReactNode }> = ({ title, n, children }) => (
+export const Frame: React.FC<{ title: string; n: number; children: React.ReactNode }> = ({ title, n, children }) => {
+  const cx = React.useContext(LessonCtx);
+  return (
   <AbsoluteFill style={{ background: C.bg }}>
     <div style={{ position: "absolute", top: 40, left: 56, fontFamily: LAT, fontWeight: 800, fontSize: 30, color: C.blue, direction: "ltr" }}>Cloud DevOps</div>
-    <div style={{ position: "absolute", top: 82, left: 56, fontFamily: LAT, fontWeight: 600, fontSize: 22, color: C.grey, direction: "ltr" }}>Episode 1</div>
+    <div style={{ position: "absolute", top: 82, left: 56, fontFamily: LAT, fontWeight: 600, fontSize: 22, color: C.grey, direction: "ltr" }}>{cx.ep}</div>
     <div style={{ position: "absolute", top: 32, right: 56, fontFamily: AR, fontWeight: 700, fontSize: 60, color: C.ink, direction: "rtl" }}>{title}</div>
     <svg width={1920} height={1080} viewBox="0 0 1920 1080" style={{ position: "absolute", inset: 0 }}>{children}</svg>
-    <div style={{ position: "absolute", bottom: 0, left: 0, height: 10, width: `${(n / 24) * 100}%`, background: C.blue }} />
+    <div style={{ position: "absolute", bottom: 0, left: 0, height: 10, width: `${(n / cx.total) * 100}%`, background: C.blue }} />
   </AbsoluteFill>
-);
+  );
+};
 
 // ---------- scenes ----------
 const NODE_X = [150, 750, 1350];
@@ -513,12 +517,13 @@ const S24: React.FC<P> = ({ t }) => {
 
 const SCENES: React.FC<P>[] = [S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20, S21, S22, S23, S24];
 
-export type LessonProps = { starts: number[]; total: number };
-export const Lesson: React.FC<LessonProps> = ({ starts, total }) => {
+export type LessonProps = { starts: number[]; total: number; ep?: string };
+export const Lesson: React.FC<LessonProps> = ({ starts, total, ep }) => {
   const { fps } = useVideoConfig();
   const [h] = React.useState(() => delayRender("fonts"));
   React.useEffect(() => { loadFonts().then(() => continueRender(h)).catch(() => continueRender(h)); }, [h]);
   return (
+    <LessonCtx.Provider value={{ ep: ep || "Episode 1", total: 24 }}>
     <AbsoluteFill style={{ background: C.bg }}>
       {SCENES.map((S, i) => {
         const from = Math.round(starts[i] * fps);
@@ -530,9 +535,10 @@ export const Lesson: React.FC<LessonProps> = ({ starts, total }) => {
         );
       })}
     </AbsoluteFill>
+    </LessonCtx.Provider>
   );
 };
-const Inner: React.FC<{ S: React.FC<P> }> = ({ S }) => {
+export const Inner: React.FC<{ S: React.FC<P> }> = ({ S }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   return <S t={f / fps} />;
