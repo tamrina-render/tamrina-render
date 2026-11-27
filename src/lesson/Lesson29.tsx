@@ -3,7 +3,7 @@ import type { Spec } from "./OS";
 const SP: Spec[] = [
   {"k": "title", "title": "الحلقة الخامسة", "l1": "GitLab CI", "l2": "Variables + Cache", "sub": "Interview Prep", "chip": "Episode 5"},
   {"k": "rows", "title": "التعريف", "rows": [["variables", "CI/CD variables"], ["Keyword", "variables"]]},
-  {"k": "rows", "title": "النطاق", "rows": [["Pipeline", "all jobs"], ["Or", "a single job"]]},
+  {"k": "rows", "title": "النطاق", "rows": [["Pipeline", "all jobs"], ["Job", "a single job"]]},
   {"k": "rows", "title": "الجاهزة", "rows": [["Predefined", "ready from GitLab"], ["Example", "CI_JOB_STAGE"]]},
   {"k": "rows", "title": "الإعدادات", "rows": [["Project settings", "add variables in the UI"]]},
   {"k": "rows", "title": "الإخفاء", "rows": [["masked", "hides the value in job logs"]]},
@@ -15,7 +15,7 @@ const SP: Spec[] = [
   {"k": "rows", "title": "المسارات", "rows": [["artifacts", "paths"], ["Defines", "files to save"]]},
   {"k": "rows", "title": "التخزين المؤقت", "rows": [["cache", "for dependencies"], ["Example", "downloaded packages"]]},
   {"k": "rows", "title": "المكان", "rows": [["Cache", "stored where the runner lives"], ["Distributed", "uploaded to S3"]]},
-  {"k": "rows", "title": "التعريف لكل مهمة", "rows": [["cache", "defined per job"], ["Otherwise", "it does not work"]]},
+  {"k": "rows", "title": "التعريف لكل مهمة", "rows": [["cache", "global or per job"], ["Per job", "overrides it"]]},
   {"k": "rows", "title": "المفتاح", "rows": [["key", "cache per branch"]]},
   {"k": "rows", "title": "المسارات النسبية", "rows": [["Paths", "relative to the project"]]},
   {"k": "rows", "title": "الشروط", "rows": [["rules", "conditions for a job"], ["Controls", "run or not"]]},
