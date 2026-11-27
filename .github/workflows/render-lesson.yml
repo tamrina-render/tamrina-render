@@ -1,0 +1,54 @@
+name: render-lesson
+on:
+  workflow_dispatch:
+    inputs:
+      slug: { description: "lesson slug (ci/<slug>-props.json)", required: true }
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      chunks: ${{ steps.p.outputs.chunks }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: p
+        run: |
+          T=$(jq -r .total ci/${{ inputs.slug }}-props.json)
+          N=$(python3 -c "import math;print(math.ceil($T*30))")
+          python3 - <<PY >> $GITHUB_OUTPUT
+          import json
+          n=$N; step=450
+          ch=[{"s":s,"e":min(n-1,s+step-1)} for s in range(0,n,step)]
+          print("chunks="+json.dumps(ch))
+          PY
+  render:
+    needs: [plan]
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+      matrix:
+        c: ${{ fromJson(needs.plan.outputs.chunks) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg libnss3 libdbus-1-3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libasound2t64 libxkbcommon0 libpango-1.0-0
+      - run: |
+          node node_modules/@remotion/cli/remotion-cli.js render src/index.ts Lesson r.mp4 --props=ci/${{ inputs.slug }}-props.json --frames=${{ matrix.c.s }}-${{ matrix.c.e }} --concurrency 2 --gl=swangle --codec=h264 --crf=20 --pixel-format=yuv420p --muted --log=error
+      - uses: actions/upload-artifact@v4
+        with: { name: "lesson-${{ matrix.c.s }}", path: r.mp4 }
+  final:
+    needs: [plan, render]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - uses: actions/download-artifact@v4
+        with: { pattern: "lesson-*", path: rc }
+      - run: |
+          for d in $(ls rc | sed 's/lesson-//' | sort -n); do echo "file '$PWD/rc/lesson-$d/r.mp4'"; done > l.txt
+          ffmpeg -loglevel error -f concat -safe 0 -i l.txt -c copy all.mp4
+          ffmpeg -loglevel error -i all.mp4 -i public/v/${{ inputs.slug }}/voice.mp3 -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -shortest ${{ inputs.slug }}-final.mp4
+      - uses: actions/upload-artifact@v4
+        with: { name: "${{ inputs.slug }}-final", path: "${{ inputs.slug }}-final.mp4", retention-days: 7 }
