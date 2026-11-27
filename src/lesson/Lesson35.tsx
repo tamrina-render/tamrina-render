@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الخامسة", "l1": "AWS", "l2": "VPC", "sub": "Interview Prep", "chip": "Episode 5"},
+  {"k": "rows", "title": "التعريف", "rows": [["VPC", "isolated virtual network"], ["Like", "a data center network"]]},
+  {"k": "rows", "title": "الإضافة", "rows": [["After the VPC", "add subnets"]]},
+  {"k": "rows", "title": "الشبكة الفرعية", "rows": [["Subnet", "a range of IP addresses"], ["Inside", "the VPC"]]},
+  {"k": "rows", "title": "المكان", "rows": [["Subnet", "one Availability Zone only"]]},
+  {"k": "rows", "title": "العناوين", "rows": [["IP addressing", "IPv4 and IPv6"]]},
+  {"k": "rows", "title": "المسارات", "rows": [["Route tables", "where traffic goes"]]},
+  {"k": "rows", "title": "الربط", "rows": [["Each subnet", "has a route table"], ["Default", "the main route table"]]},
+  {"k": "rows", "title": "البوابة", "rows": [["Internet gateway", "VPC to internet"]]},
+  {"k": "rows", "title": "الخصائص", "rows": [["Highly available", "no gateway charge"], ["But", "data transfer is charged"]]},
+  {"k": "rows", "title": "العامة", "rows": [["Public subnet", "route to internet gateway"]]},
+  {"k": "rows", "title": "العنوان", "rows": [["Resource", "needs a public IP"], ["To reach", "the internet"]]},
+  {"k": "rows", "title": "الخاصة", "rows": [["Private subnet", "no direct route to gateway"]]},
+  {"k": "rows", "title": "الخروج", "rows": [["Need internet?", "use a NAT device"]]},
+  {"k": "rows", "title": "الترجمة", "rows": [["NAT gateway", "outbound only"], ["Nobody outside", "starts a connection"]]},
+  {"k": "rows", "title": "العام", "rows": [["Public NAT gateway", "in a public subnet"], ["Needs", "an Elastic IP"]]},
+  {"k": "rows", "title": "النصيحة", "rows": [["Prefer", "private subnets"], ["To", "protect resources"]]},
+  {"k": "rows", "title": "الجدار", "rows": [["Security group", "at the resource level"], ["Type", "stateful"]]},
+  {"k": "rows", "title": "القائمة", "rows": [["Network ACL", "at the subnet level"], ["Type", "stateless"]]},
+  {"k": "rows", "title": "القواعد", "rows": [["NACL rules", "allow or deny"], ["Order", "lowest number first"]]},
+  {"k": "rows", "title": "الافتراضي", "rows": [["Every VPC", "has a default security group"], ["And", "a default network ACL"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Public vs private subnet?", "terms": ["Public: gateway route", "Private: no direct route"]},
+  {"k": "q", "title": "سؤال 2", "q": "Security group vs NACL?", "terms": ["SG: resource, stateful", "NACL: subnet, stateless"]},
+  {"k": "q", "title": "سؤال 3", "q": "When use a NAT gateway?", "terms": ["Private subnet outbound", "No inbound connections"]},
+  {"k": "end", "title": "الختام", "l1": "VPC", "sub": "Interview Prep", "chips": ["Subnets + Routes", "Gateways + NAT", "Next: Scaling"]},
+];
+export const Lesson35 = makeOS(SP, "AWS - Episode 5", "AWS");

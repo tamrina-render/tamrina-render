@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الأولى", "l1": "AWS", "l2": "Cloud Basics", "sub": "Interview Prep", "chip": "Episode 1"},
+  {"k": "rows", "title": "التعريف", "rows": [["Cloud computing", "IT resources on demand"], ["Pricing", "pay-as-you-go"]]},
+  {"k": "rows", "title": "الفكرة", "rows": [["Instead of", "buying data centers"], ["Use", "what you need"]]},
+  {"k": "chips", "title": "الأنواع", "chips": ["IaaS", "PaaS", "SaaS"], "note": "three main types"},
+  {"k": "rows", "title": "الأول", "rows": [["IaaS", "networks, servers, storage"], ["Control", "highest level"]]},
+  {"k": "rows", "title": "الثاني", "rows": [["PaaS", "no infrastructure to manage"], ["Focus", "the application"]]},
+  {"k": "rows", "title": "الثالث", "rows": [["SaaS", "a complete product"], ["Example", "web-based email"]]},
+  {"k": "rows", "title": "الشركة", "rows": [["AWS", "Amazon Web Services"], ["Offers", "compute, storage, databases"]]},
+  {"k": "flow", "title": "البنية", "steps": ["Global infrastructure", "Regions", "Availability Zones"]},
+  {"k": "rows", "title": "الإقليم", "rows": [["Region", "a place in the world"], ["Has", "multiple AZs"]]},
+  {"k": "rows", "title": "المنطقة", "rows": [["AZ", "one or more data centers"], ["Has", "redundant power and network"]]},
+  {"k": "rows", "title": "الفصل", "rows": [["AZs", "separate facilities"], ["In", "the same Region"]]},
+  {"k": "rows", "title": "التوافر", "rows": [["Multiple AZs", "highly available"], ["And", "fault tolerant"]]},
+  {"k": "rows", "title": "الانتشار", "rows": [["Multiple Regions", "deploy around the world"]]},
+  {"k": "rows", "title": "الأطراف", "rows": [["Edge locations", "data centers worldwide"], ["Used by", "CloudFront"]]},
+  {"k": "flow", "title": "التوصيل", "steps": ["User request", "Edge location", "Origin"]},
+  {"k": "rows", "title": "المسؤولية", "rows": [["Shared", "AWS + customer"], ["Topic", "security"]]},
+  {"k": "rows", "title": "مسؤولية المزود", "rows": [["AWS", "security of the cloud"], ["Covers", "hardware, software, facilities"]]},
+  {"k": "rows", "title": "مسؤولية العميل", "rows": [["Customer", "security in the cloud"], ["Depends on", "the service chosen"]]},
+  {"k": "rows", "title": "المثال", "rows": [["EC2", "guest OS + patches"], ["And", "security group config"]]},
+  {"k": "rows", "title": "المشتركة", "rows": [["AWS patches", "the infrastructure"], ["You patch", "guest OS and apps"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Region vs AZ?", "terms": ["Region: location", "AZ: data centers"]},
+  {"k": "q", "title": "سؤال 2", "q": "Who patches the guest OS?", "terms": ["On EC2", "the customer"]},
+  {"k": "q", "title": "سؤال 3", "q": "IaaS vs SaaS?", "terms": ["IaaS: control", "SaaS: full product"]},
+  {"k": "end", "title": "الختام", "l1": "AWS", "sub": "Interview Prep", "chips": ["Cloud + Global", "Shared Responsibility", "Next: IAM"]},
+];
+export const Lesson31 = makeOS(SP, "AWS - Episode 1", "AWS");

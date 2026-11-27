@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثالثة", "l1": "AWS", "l2": "EC2", "sub": "Interview Prep", "chip": "Episode 3"},
+  {"k": "rows", "title": "التعريف", "rows": [["EC2", "compute capacity on demand"], ["Scalable", "add or remove capacity"]]},
+  {"k": "rows", "title": "المثيل", "rows": [["Instance", "a virtual server"]]},
+  {"k": "rows", "title": "القالب", "rows": [["AMI", "a ready template"], ["Includes", "OS and software"]]},
+  {"k": "rows", "title": "الاختيار", "rows": [["AMI", "required at launch"], ["Tied to", "a Region"]]},
+  {"k": "rows", "title": "النسخ", "rows": [["Copy", "an AMI to another Region"], ["Then", "launch from it"]]},
+  {"k": "rows", "title": "النوع", "rows": [["Instance type", "sets the hardware"], ["Balance", "compute, memory, network, storage"]]},
+  {"k": "flow", "title": "التسمية", "steps": ["Series", "Generation", "Size"], "note": "example: c7gn.2xlarge"},
+  {"k": "rows", "title": "المفتاح", "rows": [["Key pair", "public + private key"], ["Used to", "prove your identity"]]},
+  {"k": "rows", "title": "الحفظ", "rows": [["AWS", "keeps the public key"], ["You", "keep the private key"]]},
+  {"k": "rows", "title": "الاتصال", "rows": [["Linux", "connect with SSH"], ["Using", "the private key"]]},
+  {"k": "rows", "title": "الجدار", "rows": [["Security group", "a virtual firewall"], ["Controls", "inbound and outbound traffic"]]},
+  {"k": "rows", "title": "القواعد", "rows": [["Rules", "protocol, port, source"]]},
+  {"k": "rows", "title": "الحالة", "rows": [["Stateful", "allowed in, reply allowed out"]]},
+  {"k": "rows", "title": "التكلفة", "rows": [["Security groups", "no extra charge"]]},
+  {"k": "rows", "title": "القرص", "rows": [["EBS volume", "block storage"], ["Used like", "a hard drive"]]},
+  {"k": "rows", "title": "النسخ الاحتياطي", "rows": [["EBS snapshot", "point-in-time backup"], ["Lives on", "after the volume is deleted"]]},
+  {"k": "rows", "title": "المؤقت", "rows": [["Instance store", "temporary storage"], ["Deleted on", "stop, hibernate, terminate"]]},
+  {"k": "rows", "title": "الأول", "rows": [["On-Demand", "pay by the second"]]},
+  {"k": "rows", "title": "الالتزام", "rows": [["Savings Plans", "commit for 1 or 3 years"], ["Reserved Instances", "commit for 1 or 3 years"]]},
+  {"k": "rows", "title": "المرن", "rows": [["Spot", "unused capacity, lower cost"], ["Risk", "can be interrupted"]]},
+  {"k": "q", "title": "سؤال 1", "q": "What is an AMI?", "terms": ["A template", "OS + software"]},
+  {"k": "q", "title": "سؤال 2", "q": "Stateful security group?", "terms": ["Allowed traffic", "gets replies back"]},
+  {"k": "q", "title": "سؤال 3", "q": "On-Demand vs Spot?", "terms": ["On-Demand: by the second", "Spot: cheaper, interruptible"]},
+  {"k": "end", "title": "الختام", "l1": "EC2", "sub": "Interview Prep", "chips": ["Instances + AMI", "Security + EBS", "Next: S3"]},
+];
+export const Lesson33 = makeOS(SP, "AWS - Episode 3", "AWS");

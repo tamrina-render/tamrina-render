@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الثانية", "l1": "AWS", "l2": "IAM", "sub": "Interview Prep", "chip": "Episode 2"},
+  {"k": "rows", "title": "التعريف", "rows": [["IAM", "controls access to AWS"]]},
+  {"k": "rows", "title": "الأساس", "rows": [["Authentication", "who signed in"], ["Authorization", "what they can do"]]},
+  {"k": "rows", "title": "التكلفة", "rows": [["IAM", "no additional charge"], ["You pay for", "other services you use"]]},
+  {"k": "rows", "title": "الجذر", "rows": [["Root user", "complete access"], ["Created", "with the account"]]},
+  {"k": "rows", "title": "التحذير", "rows": [["Root user", "not for everyday tasks"]]},
+  {"k": "rows", "title": "الهويات", "rows": [["Other identities", "admins, developers, analysts"], ["Access", "only what they need"]]},
+  {"k": "rows", "title": "المستخدم", "rows": [["IAM user", "an identity in the account"], ["Has", "credentials"]]},
+  {"k": "rows", "title": "المجموعة", "rows": [["User group", "a collection of users"], ["Permissions", "attached once"]]},
+  {"k": "rows", "title": "القيود", "rows": [["A user", "can be in many groups"], ["Groups", "cannot be nested"]]},
+  {"k": "rows", "title": "السياسة", "rows": [["Policy", "defines permissions"], ["Attach to", "user, group, or role"]]},
+  {"k": "rows", "title": "الأنواع", "rows": [["Identity-based", "attached to identities"], ["Resource-based", "attached to resources"]]},
+  {"k": "rows", "title": "الجاهزة", "rows": [["AWS managed", "ready for common cases"], ["But", "not always least privilege"]]},
+  {"k": "rows", "title": "الدور", "rows": [["Role", "not tied to one person"], ["Anyone", "can assume it"]]},
+  {"k": "rows", "title": "المؤقتة", "rows": [["Role", "no long-term credentials"], ["Gives", "temporary credentials"]]},
+  {"k": "rows", "title": "الخدمات", "rows": [["EC2 or Lambda", "get role credentials"], ["No need", "for access keys in the app"]]},
+  {"k": "rows", "title": "الثقة", "rows": [["Trust policy", "who can assume the role"], ["Permissions policy", "what the role can do"]]},
+  {"k": "rows", "title": "الأقل", "rows": [["Least privilege", "only what the task needs"]]},
+  {"k": "rows", "title": "التحقق", "rows": [["MFA", "turn it on"], ["Especially", "root user and IAM users"]]},
+  {"k": "rows", "title": "المراجعة", "rows": [["Prefer", "temporary credentials"], ["Remove", "unused users and permissions"]]},
+  {"k": "rows", "title": "المحلل", "rows": [["Access Analyzer", "generates least-privilege policies"], ["Based on", "CloudTrail activity"]]},
+  {"k": "q", "title": "سؤال 1", "q": "User vs role?", "terms": ["User: one person", "Role: temporary access"]},
+  {"k": "q", "title": "سؤال 2", "q": "What is least privilege?", "terms": ["Needed permissions", "nothing more"]},
+  {"k": "q", "title": "سؤال 3", "q": "Protect the root user?", "terms": ["Avoid daily use", "Turn on MFA"]},
+  {"k": "end", "title": "الختام", "l1": "IAM", "sub": "Interview Prep", "chips": ["Users + Roles", "Policies + MFA", "Next: EC2"]},
+];
+export const Lesson32 = makeOS(SP, "AWS - Episode 2", "AWS");

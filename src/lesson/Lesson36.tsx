@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة السادسة", "l1": "AWS", "l2": "Scaling + Databases", "sub": "Interview Prep", "chip": "Episode 6"},
+  {"k": "rows", "title": "التوزيع", "rows": [["Load balancing", "distributes traffic"], ["Across", "targets in multiple AZs"]]},
+  {"k": "rows", "title": "الفحص", "rows": [["Health checks", "on the targets"], ["Traffic", "only to healthy ones"]]},
+  {"k": "rows", "title": "الفائدة", "rows": [["Availability", "and fault tolerance"], ["Add or remove", "instances freely"]]},
+  {"k": "rows", "title": "التوسع", "rows": [["Auto Scaling", "right number of instances"]]},
+  {"k": "flow", "title": "المجموعة", "steps": ["Minimum", "Desired", "Maximum"], "note": "Auto Scaling group"},
+  {"k": "rows", "title": "السياسات", "rows": [["Scaling policies", "add or remove instances"], ["Within", "minimum and maximum"]]},
+  {"k": "rows", "title": "القالب", "rows": [["Launch template", "how to build instances"]]},
+  {"k": "rows", "title": "الصحة", "rows": [["Health monitoring", "replaces bad instances"], ["Impaired", "or terminated"]]},
+  {"k": "rows", "title": "العلائقية", "rows": [["RDS", "managed relational database"]]},
+  {"k": "chips", "title": "المحركات", "chips": ["MySQL", "PostgreSQL", "MariaDB", "Oracle"], "note": "also SQL Server and Db2"},
+  {"k": "rows", "title": "الإدارة", "rows": [["RDS manages", "backups and patching"], ["And", "failure detection"]]},
+  {"k": "rows", "title": "التوافر", "rows": [["Multi-AZ", "standby DB instance"], ["Use", "failover"]]},
+  {"k": "rows", "title": "الاحتياطي", "rows": [["Standby", "does not serve reads"], ["In", "Multi-AZ DB instance"]]},
+  {"k": "rows", "title": "القراءة", "rows": [["Read replicas", "read scaling"]]},
+  {"k": "rows", "title": "المرنة", "rows": [["DynamoDB", "NoSQL, serverless"], ["Fully", "managed"]]},
+  {"k": "rows", "title": "النماذج", "rows": [["Data models", "key-value and document"], ["Speed", "single-digit millisecond"]]},
+  {"k": "rows", "title": "السعة", "rows": [["On-demand mode", "pay per request"]]},
+  {"k": "rows", "title": "العالمية", "rows": [["Global tables", "multi-Region replication"]]},
+  {"k": "rows", "title": "المراقبة", "rows": [["CloudWatch", "monitors AWS in real time"], ["Using", "metrics and dashboards"]]},
+  {"k": "rows", "title": "التنبيه", "rows": [["Alarms", "watch metrics vs a threshold"], ["Can trigger", "automated actions"]]},
+  {"k": "q", "title": "سؤال 1", "q": "Load balancer vs Auto Scaling?", "terms": ["LB: distributes traffic", "ASG: changes instance count"]},
+  {"k": "q", "title": "سؤال 2", "q": "Multi-AZ vs read replica?", "terms": ["Multi-AZ: failover", "Replica: read scaling"]},
+  {"k": "q", "title": "سؤال 3", "q": "RDS vs DynamoDB?", "terms": ["RDS: relational", "DynamoDB: NoSQL"]},
+  {"k": "end", "title": "الختام", "l1": "AWS", "sub": "Interview Prep", "chips": ["Scaling", "Databases + Monitoring", "Good luck!"]},
+];
+export const Lesson36 = makeOS(SP, "AWS - Episode 6", "AWS");

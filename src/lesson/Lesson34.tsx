@@ -1,0 +1,30 @@
+import { makeOS } from "./OS";
+import type { Spec } from "./OS";
+const SP: Spec[] = [
+  {"k": "title", "title": "الحلقة الرابعة", "l1": "AWS", "l2": "S3 Storage", "sub": "Interview Prep", "chip": "Episode 4"},
+  {"k": "rows", "title": "التعريف", "rows": [["S3", "object storage"], ["Offers", "scalability and availability"]]},
+  {"k": "rows", "title": "التخزين", "rows": [["Data", "stored as objects"], ["Inside", "buckets"]]},
+  {"k": "rows", "title": "الأجزاء", "rows": [["Object", "a file + metadata"], ["Bucket", "a container"]]},
+  {"k": "rows", "title": "المفتاح", "rows": [["Key", "unique name of the object"], ["Within", "the bucket"]]},
+  {"k": "rows", "title": "الإنشاء", "rows": [["Create a bucket", "name + Region"]]},
+  {"k": "rows", "title": "الاسم", "rows": [["Bucket name", "unique by default"], ["Across", "all accounts and Regions"]]},
+  {"k": "rows", "title": "الخصوصية", "rows": [["Default", "private"], ["Block Public Access", "on by default"]]},
+  {"k": "rows", "title": "التحكم", "rows": [["IAM", "who can access"], ["Bucket policies", "resource-based"]]},
+  {"k": "rows", "title": "الاتساق", "rows": [["Strong", "read-after-write"], ["For", "PUT and DELETE"]]},
+  {"k": "rows", "title": "النسخ", "rows": [["Versioning", "keeps multiple versions"], ["Default", "disabled"]]},
+  {"k": "rows", "title": "الحذف", "rows": [["Delete", "adds a delete marker"], ["Old versions", "stay"]]},
+  {"k": "rows", "title": "التكلفة", "rows": [["Each version", "billed as a full object"]]},
+  {"k": "rows", "title": "الفئات", "rows": [["Storage class", "one per object"], ["Default", "S3 Standard"]]},
+  {"k": "rows", "title": "غير المتكرر", "rows": [["Standard-IA + One Zone-IA", "rarely accessed data"], ["Note", "retrieval fee applies"]]},
+  {"k": "rows", "title": "الذكي", "rows": [["Intelligent-Tiering", "moves objects automatically"], ["Based on", "access patterns"]]},
+  {"k": "chips", "title": "الأرشيف", "chips": ["Instant Retrieval", "Flexible Retrieval", "Deep Archive"], "note": "Glacier classes"},
+  {"k": "rows", "title": "دورة الحياة", "rows": [["Lifecycle", "move to cheaper classes"], ["Or", "expire objects"]]},
+  {"k": "rows", "title": "التكرار", "rows": [["Replication", "copy to other buckets"], ["Same or", "a different Region"]]},
+  {"k": "cmp", "title": "المقارنة", "l": "S3", "r": "EBS", "ls": ["object storage", "buckets"], "rs": ["block storage", "attached to EC2"]},
+  {"k": "rows", "title": "الحماية", "rows": [["EBS volume", "replicated inside the AZ"], ["Snapshots", "backups"]]},
+  {"k": "q", "title": "سؤال 1", "q": "S3 vs EBS?", "terms": ["S3: objects", "EBS: block storage"]},
+  {"k": "q", "title": "سؤال 2", "q": "Delete with versioning?", "terms": ["Delete marker added", "Old versions stay"]},
+  {"k": "q", "title": "سؤال 3", "q": "Protect a bucket?", "terms": ["Block Public Access", "IAM + bucket policies"]},
+  {"k": "end", "title": "الختام", "l1": "S3", "sub": "Interview Prep", "chips": ["Buckets + Objects", "Versioning + Classes", "Next: VPC"]},
+];
+export const Lesson34 = makeOS(SP, "AWS - Episode 4", "AWS");
