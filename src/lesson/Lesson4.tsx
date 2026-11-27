@@ -9,7 +9,7 @@ const Disk: React.FC<{ x: number; y: number; w?: number; h?: number; col?: strin
     <rect x={x} y={y + 30} width={w} height={h - 60} fill="#fff" stroke={col} strokeWidth={5} />
     <ellipse cx={x + w / 2} cy={y + h - 30} rx={w / 2} ry={30} fill="#fff" stroke={col} strokeWidth={5} />
     <ellipse cx={x + w / 2} cy={y + 30} rx={w / 2} ry={30} fill="#EAF0FD" stroke={col} strokeWidth={5} />
-    {label && <T x={x + w / 2} y={y + h / 2 + 22} s={34} c={col}>{label}</T>}
+    {label && <T x={x + w / 2} y={y + h / 2 + 10} s={30} c={col}>{label}</T>}
   </g>
 );
 const Card: React.FC<{ x: number; y: number; w: number; h: number; col: string; title: string; o?: number; lock?: boolean }> = ({ x, y, w, h, col, title, o = 1, lock }) => (
@@ -206,9 +206,9 @@ const S16: React.FC<P> = ({ t }) => (
     <Box x={160} y={200} w={1200} h={560} col={C.blue} fill="#fff" dash o={ap(t, 0.3)}><T x={760} y={250} s={32} c={C.blue}>Pod</T></Box>
     <Ct x={220} y={300} w={400} h={200} label="app" o={ap(t, 1)} />
     <Ct x={900} y={300} w={400} h={200} label="sidecar" o={ap(t, 1.5)} col={C.amber} />
-    <Disk x={620} y={560} w={240} h={160} col={C.blue} label="emptyDir" o={ap(t, 3)} />
-    <Arr x1={420} y1={510} x2={640} y2={600} o={ap(t, 4)} />
-    <Arr x1={1100} y1={510} x2={860} y2={600} o={ap(t, 4.5)} />
+    <Disk x={600} y={540} w={280} h={200} col={C.blue} label="emptyDir" o={ap(t, 3)} />
+    <Arr x1={420} y1={510} x2={620} y2={590} o={ap(t, 4)} />
+    <Arr x1={1100} y1={510} x2={860} y2={590} o={ap(t, 4.5)} />
     <Bad x={1560} y={480} o={ap(t, 8)} />
     <T x={1560} y={560} s={36} c={C.red} o={ap(t, 8)}>Pod deleted</T>
     <T x={1560} y={620} s={36} c={C.red} o={ap(t, 9)}>folder gone</T>
