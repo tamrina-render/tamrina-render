@@ -25,6 +25,6 @@ const SP: Spec[] = [
   {"k": "q", "title": "سؤال 1", "q": "Alerting vs recording rules?", "terms": ["Alerting: sends alerts", "Recording: precomputes"]},
   {"k": "q", "title": "سؤال 2", "q": "What is the for field?", "terms": ["Condition must hold", "Then firing"]},
   {"k": "q", "title": "سؤال 3", "q": "Role of Alertmanager?", "terms": ["Group + route", "Inhibit + silence"]},
-  {"k": "end", "title": "الختام", "l1": "Alerting", "sub": "Interview Prep", "chips": ["Alerting rules", "Recording rules", "for", "Alertmanager", "Silences", "Next: Grafana"]},
+  {"k": "end", "title": "الختام", "l1": "Alerting", "sub": "Interview Prep", "chips": ["Alerting rules", "Alertmanager", "Next: Grafana"]},
 ];
 export const Lesson22 = makeOS(SP, "Prometheus - Episode 4", "Prometheus");
