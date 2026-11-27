@@ -14,7 +14,7 @@ const SP: Spec[] = [
   {"k": "rows", "title": "السياسة", "rows": [["Policy", "defines permissions"], ["Attach to", "user, group, or role"]]},
   {"k": "rows", "title": "الأنواع", "rows": [["Identity-based", "attached to identities"], ["Resource-based", "attached to resources"]]},
   {"k": "rows", "title": "الجاهزة", "rows": [["AWS managed", "ready for common cases"], ["But", "not always least privilege"]]},
-  {"k": "rows", "title": "الدور", "rows": [["Role", "not tied to one person"], ["Anyone", "can assume it"]]},
+  {"k": "rows", "title": "الدور", "rows": [["Role", "not tied to one person"], ["Trusted", "can assume it"]]},
   {"k": "rows", "title": "المؤقتة", "rows": [["Role", "no long-term credentials"], ["Gives", "temporary credentials"]]},
   {"k": "rows", "title": "الخدمات", "rows": [["EC2 or Lambda", "get role credentials"], ["No need", "for access keys in the app"]]},
   {"k": "rows", "title": "الثقة", "rows": [["Trust policy", "who can assume the role"], ["Permissions policy", "what the role can do"]]},
